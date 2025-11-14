@@ -1,113 +1,61 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento - Amanda Sampaio</title>
+    <meta http-equiv="refresh" content="0; url=index.html">
+    <title>Amanda PMU • Atualização disponível</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f3f1ed;
-            color: #333;
             margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: #fff;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-        }
-        h1, p {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: 'Source Sans 3', Arial, sans-serif;
+            background: linear-gradient(180deg, #fdfef6 0%, #e6f3b0 100%);
+            color: #384219;
             text-align: center;
+            padding: 32px;
         }
-        label {
-            font-weight: bold;
-            display: block;
+
+        main {
+            max-width: 520px;
+            background: rgba(255, 255, 255, 0.94);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 20px 48px rgba(152, 173, 58, 0.18);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            margin-bottom: 18px;
+        }
+
+        p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        a {
+            display: inline-block;
             margin-top: 20px;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
-        button {
-            margin-top: 30px;
-            width: 100%;
-            padding: 15px;
-            background-color: #8bc34a;
-            border: none;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #7cb342;
+            padding: 12px 26px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #BCD054, #9CAF3A);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            box-shadow: 0 12px 30px rgba(156, 176, 56, 0.28);
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Agende seu horário</h1>
-    <p>com Amanda Sampaio</p>
-    <form id="agendamentoForm">
-        <label for="nome">Seu nome:</label>
-        <input type="text" id="nome" required>
-
-        <label for="servico">Serviço desejado:</label>
-        <select id="servico" required>
-            <option value="Design Personalizado">Design Personalizado - R$ 35,00</option>
-            <option value="Design com Henna">Design com Henna - R$ 60,00</option>
-            <option value="Micropigmentação">Micropigmentação - R$ 350,00</option>
-            <option value="Brow Lamination">Brow Lamination - R$ 120,00</option>
-            <option value="Extensão de cílios (Tufo)">Extensão de cílios (Tufo) - R$ 170,00</option>
-            <option value="Cílios fio a fio (volume inglês)">Cílios fio a fio (volume inglês) - R$ 90,00</option>
-            <option value="Limpeza de pele">Limpeza de pele - R$ 90,00</option>
-            <option value="Hydra Gloss">Hydra Gloss - R$ 90,00</option>
-            <option value="Ensaio com maquiagem (10 fotos)">Ensaio com maquiagem (10 fotos) - R$ 90,00</option>
-        </select>
-
-        <label for="dia">Dia preferido (segunda a sábado):</label>
-        <select id="dia" required>
-            <option value="Segunda-feira">Segunda-feira</option>
-            <option value="Terça-feira">Terça-feira</option>
-            <option value="Quarta-feira">Quarta-feira</option>
-            <option value="Quinta-feira">Quinta-feira</option>
-            <option value="Sexta-feira">Sexta-feira</option>
-            <option value="Sábado">Sábado</option>
-        </select>
-
-        <label for="horario">Horário preferido:</label>
-        <input type="time" id="horario" required>
-
-        <button type="submit">Agendar via WhatsApp</button>
-    </form>
-</div>
-
-<script>
-document.getElementById('agendamentoForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const nome = document.getElementById('nome').value;
-    const servico = document.getElementById('servico').value;
-    const dia = document.getElementById('dia').value;
-    const horario = document.getElementById('horario').value;
-
-    const numeroWhatsApp = 'SEU_NUMERO_AQUI'; // Substitua pelo número real, ex: 5598999999999
-    const mensagem = `Olá! Me chamo ${nome} e gostaria de agendar o serviço ${servico} para ${dia} às ${horario}.`;
-
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, '_blank');
-});
-</script>
-
+    <main>
+        <h1>Redirecionando para a nova versão…</h1>
+        <p>Se você não for redirecionada automaticamente, clique abaixo para abrir a página atualizada.</p>
+        <a href="index.html">Abrir página atualizada</a>
+    </main>
 </body>
 </html>
