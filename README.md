@@ -14,7 +14,7 @@ Este repositório contém a landing page estática desenvolvida para apresentar 
 ## Estrutura dos arquivos
 
 - `index.html`: página principal com degradê verde-branco, fontes Playfair Display e Source Sans 3, galeria animada de serviços e formulário integrado ao WhatsApp.
-- Imagens dos serviços carregadas de bancos gratuitos (Unsplash) diretamente via URL, evitando anexos binários no repositório.
+- As ilustrações dos serviços são geradas dinamicamente como SVG embutidos (data URI), garantindo que nenhuma imagem externa precise ser carregada — isso evita os erros de "arquivo binário" e impede que as figuras apareçam quebradas por bloqueios de terceiros.
 - `index.html.html`: página de apoio que redireciona para a versão atualizada, mantendo compatibilidade com atalhos antigos.
 - `README.md`: este guia rápido com as instruções de uso.
 
@@ -24,4 +24,4 @@ Como este projeto é um site estático (apenas HTML, CSS e JavaScript), não há
 
 ## Personalizações futuras
 
-Caso seja necessário ajustar textos, preços, imagens ou o número de WhatsApp, edite o arquivo `index.html` e recarregue a página no navegador para ver as alterações.
+Caso seja necessário ajustar textos, preços, imagens ou o número de WhatsApp, edite o arquivo `index.html` e recarregue a página no navegador para ver as alterações. Para substituir alguma ilustração, altere os parâmetros da função `createIllustration` correspondente (título, ícone e cores) mantendo o formato SVG embutido — isso garante compatibilidade com plataformas que não aceitam uploads de arquivos binários.

@@ -653,60 +653,81 @@
     </footer>
 
     <script>
+        function createIllustration(title, icon, primary, accent) {
+            const svg = `
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+                    <defs>
+                        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="${primary}" />
+                            <stop offset="1" stop-color="${accent}" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="640" height="480" fill="url(#bg)" />
+                    <circle cx="520" cy="120" r="96" fill="rgba(255,255,255,0.35)" />
+                    <circle cx="140" cy="360" r="140" fill="rgba(255,255,255,0.25)" />
+                    <path d="M120 220c40-78 120-126 200-118s140 84 172 164c30 74 22 156-22 170-56 18-118-86-186-82-72 4-150 116-198 82-44-32-28-160 34-216z" fill="rgba(255,255,255,0.45)" />
+                    <text x="80" y="132" font-family="'Playfair Display', serif" font-size="88" fill="rgba(36,36,15,0.72)">${icon}</text>
+                    <text x="80" y="230" font-family="'Playfair Display', serif" font-size="46" fill="rgba(36,36,15,0.82)" letter-spacing="2">${title}</text>
+                </svg>
+            `.replace(/\s+/g, ' ');
+
+            return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+        }
+
         const services = [
             {
                 name: 'Design Personalizado',
                 price: 35,
                 description: 'Mapeamento exclusivo, finalização polida e dicas de cuidado para sobrancelhas impecáveis.',
-                image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=80'
+                image: createIllustration('Design de Sobrancelhas', '✨', '#f3f8e8', '#bcd054')
             },
             {
                 name: 'Design com Henna',
                 price: 60,
                 description: 'Coloração suave e alinhamento que valorizam o desenho natural por até duas semanas.',
-                image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80'
+                image: createIllustration('Henna Deluxe', '🎨', '#f9f5ec', '#d5b26f')
             },
             {
                 name: 'Micropigmentação',
                 price: 350,
                 description: 'Técnica premium que garante sobrancelhas preenchidas, harmônicas e de longa duração.',
-                image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80'
+                image: createIllustration('Micropigmentação', '🖋️', '#f4f1ff', '#c7b3e6')
             },
             {
                 name: 'Brow Lamination',
                 price: 120,
                 description: 'Fios alinhados e volumosos com acabamento espelhado e definição impecável.',
-                image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80'
+                image: createIllustration('Brow Lamination', '🌿', '#f1fbf4', '#9ed3a6')
             },
             {
                 name: 'Extensão de cílios (Tufo)',
                 price: 170,
                 description: 'Volume construído fio a fio com tufos estratégicos para um olhar intenso e confortável.',
-                image: 'https://images.unsplash.com/photo-1512250591270-0bea37004c8e?auto=format&fit=crop&w=900&q=80'
+                image: createIllustration('Extensão Tufo', '👁️', '#f5f4ff', '#a6a6e8')
             },
             {
                 name: 'Cílios fio a fio (volume inglês)',
                 price: 90,
                 description: 'Camadas leves que alongam e destacam o olhar sem perder a naturalidade.',
-                image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=80'
+                image: createIllustration('Fio a Fio', '💫', '#f4faff', '#8ec5d8')
             },
             {
                 name: 'Limpeza de pele',
                 price: 90,
                 description: 'Protocolo detox que purifica, hidrata e devolve luminosidade imediata.',
-                image: 'https://images.unsplash.com/photo-1556228578-8c89e6adf1eb?auto=format&fit=crop&w=900&q=80'
+                image: createIllustration('Limpeza Facial', '🫧', '#f3f8ff', '#a6c4f3')
             },
             {
                 name: 'Hydra Gloss',
                 price: 90,
                 description: 'Tratamento labial com hidratação intensa e acabamento espelhado sofisticado.',
-                image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80'
+                image: createIllustration('Hydra Gloss', '💋', '#fff2f7', '#f5a6c9')
             },
             {
                 name: 'Ensaio com maquiagem (10 fotos)',
                 price: 90,
                 description: 'Produção completa com maquiagem exclusiva e mini ensaio fotográfico autoral.',
-                image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80'
+                image: createIllustration('Ensaio Beauty', '📸', '#fff6ed', '#f0b587')
             }
         ];
 
