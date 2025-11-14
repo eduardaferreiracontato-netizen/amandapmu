@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda PMU • Estúdio Boutique</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage-05: #f9fbe9;
+            --sage-10: #f3f8dd;
+            --sage-30: #dce9b8;
+            --sage-50: #cbdc86;
+            --sage-60: #bcd054;
+            --sage-70: #a9c046;
+            --champagne: #e6d9b0;
+            --ink: #1f2616;
+            --ink-soft: rgba(31, 38, 22, 0.72);
+            --surface-strong: rgba(255, 255, 255, 0.94);
+            --surface-soft: rgba(255, 255, 255, 0.82);
+            --shadow-lg: 0 34px 64px rgba(74, 95, 34, 0.22);
+            --shadow-md: 0 24px 48px rgba(74, 95, 34, 0.18);
+            --radius-card: 30px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--ink);
+            background: radial-gradient(120% 120% at 12% 20%, rgba(188, 208, 84, 0.28) 0%, rgba(188, 208, 84, 0) 55%),
+                        radial-gradient(160% 140% at 82% 8%, rgba(230, 217, 176, 0.35) 0%, rgba(230, 217, 176, 0) 48%),
+                        linear-gradient(158deg, #ffffff 0%, var(--sage-05) 52%, rgba(188, 208, 84, 0.2) 100%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        body::before {
+            background: radial-gradient(circle at 18% 78%, rgba(166, 190, 70, 0.28), transparent 58%),
+                        radial-gradient(circle at 82% 26%, rgba(230, 217, 176, 0.26), transparent 52%);
+            animation: shimmer 18s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            background: radial-gradient(circle at 50% 110%, rgba(188, 208, 84, 0.14), transparent 70%);
+        }
+
+        @keyframes shimmer {
+            0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
+            100% { transform: translate3d(16px, -18px, 0) scale(1.05); opacity: 1; }
+        }
+
+        header {
+            padding: clamp(68px, 12vw, 132px) 24px 92px;
+        }
+
+        .hero {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(36px, 8vw, 88px);
+            align-items: center;
+        }
+
+        .hero-copy {
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.9s ease forwards;
+        }
+
+        .hero-copy::before {
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: 12px;
+            width: 88px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--sage-60), rgba(188, 208, 84, 0));
+        }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translate3d(0, 24px, 0); }
+            100% { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        .hero-pretitle {
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.26em;
+            font-size: 0.78rem;
+            color: rgba(31, 38, 22, 0.62);
+            margin-left: 96px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.2rem, 6.2vw, 4.9rem);
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            margin: 26px 0 18px;
+        }
+
+        .hero-lead {
+            max-width: 500px;
+            font-size: 1.12rem;
+            line-height: 1.8;
+            color: var(--ink-soft);
+            margin-bottom: 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 32px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            color: #1f2616;
+            background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
+            border: 1px solid rgba(188, 208, 84, 0.55);
+            box-shadow: 0 18px 42px rgba(98, 122, 36, 0.18);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .cta:hover,
+        .cta:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 28px 54px rgba(98, 122, 36, 0.25);
+        }
+
+        .ghost-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 26px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: rgba(31, 38, 22, 0.82);
+            background: rgba(255, 255, 255, 0.36);
+            border: 1px solid rgba(188, 208, 84, 0.28);
+            transition: transform 0.35s ease, background 0.35s ease;
+        }
+
+        .ghost-link:hover,
+        .ghost-link:focus-visible {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .hero-display {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-frame {
+            position: relative;
+            padding: clamp(34px, 5vw, 52px);
+            border-radius: 40px;
+            background: var(--surface-strong);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            min-height: 360px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.12s forwards;
+        }
+
+        .hero-frame::before {
+            content: "";
+            position: absolute;
+            inset: 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(188, 208, 84, 0.32);
+            backdrop-filter: blur(1px);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translate3d(0, 18px, 0); }
+            100% { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        .hero-frame-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 18px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 20px;
+            border-radius: 999px;
+            background: rgba(188, 208, 84, 0.22);
+            color: rgba(31, 38, 22, 0.8);
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-size: 0.76rem;
+        }
+
+        .hero-frame h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+            margin: 0;
+            color: var(--sage-70);
+        }
+
+        .hero-frame p {
+            margin: 0;
+            line-height: 1.7;
+            color: var(--ink-soft);
+        }
+
+        .hero-float {
+            position: absolute;
+            border-radius: 999px;
+            opacity: 0.7;
+            filter: blur(0px);
+            animation: drift 14s ease-in-out infinite;
+        }
+
+        .hero-float--one {
+            width: 220px;
+            height: 220px;
+            top: -80px;
+            right: -70px;
+            background: radial-gradient(circle at 30% 30%, rgba(188, 208, 84, 0.55), transparent 65%);
+            animation-delay: -2s;
+        }
+
+        .hero-float--two {
+            width: 180px;
+            height: 180px;
+            bottom: -70px;
+            left: -60px;
+            background: radial-gradient(circle at 70% 70%, rgba(230, 217, 176, 0.5), transparent 68%);
+            animation-delay: -5s;
+        }
+
+        @keyframes drift {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(12px, -16px, 0) scale(1.05); }
+            100% { transform: translate3d(-10px, 12px, 0) scale(1); }
+        }
+
+        main {
+            padding: 0 24px 128px;
+        }
+
+        .section-header {
+            max-width: 880px;
+            margin: 0 auto 56px;
+            text-align: center;
+        }
+
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 20px;
+            border-radius: 999px;
+            background: rgba(188, 208, 84, 0.22);
+            color: rgba(31, 38, 22, 0.78);
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+            margin: 0 0 20px;
+        }
+
+        .section-header p {
+            margin: 0 auto;
+            max-width: 640px;
+            color: var(--ink-soft);
+            line-height: 1.75;
+            font-size: 1.02rem;
+        }
+
+        .booking {
+            max-width: 1180px;
+            margin: 0 auto;
+            background: var(--surface-soft);
+            border-radius: 40px;
+            box-shadow: var(--shadow-md);
+            padding: clamp(30px, 5.5vw, 54px);
+            backdrop-filter: blur(8px);
+        }
+
+        .booking-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+            gap: clamp(32px, 6vw, 68px);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 26px;
+        }
+
+        .service-card {
+            position: relative;
+            display: block;
+            cursor: pointer;
+        }
+
+        .service-card input {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .card-shell {
+            position: relative;
+            display: grid;
+            gap: 18px;
+            align-content: start;
+            height: 100%;
+            padding: 26px 24px;
+            border-radius: var(--radius-card);
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(249, 251, 233, 0.94));
+            border: 1px solid transparent;
+            box-shadow: 0 20px 46px rgba(96, 122, 38, 0.14);
+            transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease;
+        }
+
+        .service-card:hover .card-shell {
+            transform: translateY(-6px);
+            box-shadow: 0 32px 64px rgba(96, 122, 38, 0.18);
+        }
+
+        .card-accent {
+            position: relative;
+            width: 68px;
+            height: 68px;
+            border-radius: 24px;
+            display: grid;
+            place-items: center;
+            background: radial-gradient(circle at 25% 25%, rgba(188, 208, 84, 0.86), rgba(188, 208, 84, 0.45));
+            overflow: hidden;
+        }
+
+        .card-accent::after {
+            content: "";
+            position: absolute;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.28), transparent 70%);
+            transform: translate3d(-40%, -40%, 0);
+            animation: glow 6s ease-in-out infinite;
+            mix-blend-mode: screen;
+        }
+
+        @keyframes glow {
+            0% { transform: translate3d(-40%, -40%, 0); opacity: 0.6; }
+            50% { transform: translate3d(-10%, -10%, 0); opacity: 1; }
+            100% { transform: translate3d(-40%, -40%, 0); opacity: 0.6; }
+        }
+
+        .service-icon {
+            width: 34px;
+            height: 34px;
+            fill: none;
+            stroke: var(--ink);
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            z-index: 1;
+        }
+
+        .card-copy h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin: 0 0 6px;
+        }
+
+        .card-copy p {
+            margin: 0;
+            color: var(--ink-soft);
+            line-height: 1.65;
+            font-size: 0.98rem;
+        }
+
+        .service-price {
+            justify-self: flex-start;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: rgba(230, 217, 176, 0.42);
+            color: var(--ink);
+            font-weight: 600;
+            font-size: 0.96rem;
+            letter-spacing: 0.03em;
+        }
+
+        .service-card input:checked + .card-shell {
+            border-color: rgba(188, 208, 84, 0.6);
+            box-shadow: 0 34px 70px rgba(101, 128, 38, 0.26);
+            transform: translateY(-6px);
+        }
+
+        .service-card input:checked + .card-shell::after {
+            content: "";
+            position: absolute;
+            top: 20px;
+            right: 22px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage-60), var(--sage-70));
+            box-shadow: 0 0 0 6px rgba(188, 208, 84, 0.22);
+        }
+
+        .summary-card {
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(244, 248, 223, 0.92));
+            border-radius: 36px;
+            box-shadow: var(--shadow-lg);
+            padding: clamp(28px, 4.5vw, 40px);
+            display: grid;
+            gap: 22px;
+            position: sticky;
+            top: 32px;
+            height: fit-content;
+        }
+
+        .summary-card h3 {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+        }
+
+        .summary-empty {
+            margin: 0;
+            color: var(--ink-soft);
+            font-size: 0.98rem;
+        }
+
+        .summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 14px;
+        }
+
+        .summary-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.99rem;
+        }
+
+        .summary-list span:last-child {
+            font-weight: 600;
+        }
+
+        .total {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 18px 22px;
+            border-radius: 22px;
+            background: rgba(188, 208, 84, 0.22);
+            font-size: 1.04rem;
+            letter-spacing: 0.03em;
+        }
+
+        .total strong {
+            font-size: 1.24rem;
+        }
+
+        .form-fields {
+            display: grid;
+            gap: 18px;
+        }
+
+        .field-group {
+            display: grid;
+            gap: 8px;
+        }
+
+        .field-group label {
+            font-weight: 600;
+            color: rgba(31, 38, 22, 0.84);
+            font-size: 0.94rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        input[type="text"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(188, 208, 84, 0.35);
+            font-size: 1rem;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.88);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="time"]:focus,
+        select:focus {
+            outline: none;
+            border-color: rgba(188, 208, 84, 0.6);
+            box-shadow: 0 0 0 3px rgba(188, 208, 84, 0.22);
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 15px 24px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            color: #ffffff;
+            background: linear-gradient(135deg, #1fa675, #148d5f);
+            box-shadow: 0 22px 48px rgba(20, 141, 95, 0.26);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-link[aria-disabled="true"] {
+            opacity: 0.5;
+            pointer-events: none;
+            box-shadow: none;
+        }
+
+        .whatsapp-link:hover,
+        .whatsapp-link:focus-visible {
+            transform: translateY(-3px);
+            box-shadow: 0 30px 56px rgba(20, 141, 95, 0.32);
+        }
+
+        footer {
+            text-align: center;
+            padding: 66px 24px 90px;
+            font-size: 0.95rem;
+            color: rgba(31, 38, 22, 0.64);
+        }
+
+        @media (max-width: 1100px) {
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-card {
+                position: static;
+            }
+        }
+
+        @media (max-width: 780px) {
+            header {
+                padding-top: 60px;
+            }
+
+            h1 {
+                font-size: clamp(2.6rem, 9vw, 3.4rem);
+            }
+
+            .hero {
+                gap: 54px;
+            }
+
+            .hero-copy::before {
+                left: 0;
+            }
+
+            .hero-pretitle {
+                margin-left: 86px;
+            }
+
+            .hero-frame {
+                min-height: 300px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .booking {
+                padding: 26px 22px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <div class="hero-copy">
+                <span class="hero-pretitle">Estúdio boutique em Salvador</span>
+                <h1>Amanda PMU</h1>
+                <p class="hero-lead">
+                    Rituais de sobrancelhas, cílios, pele e maquiagem com técnicas premium, acabamento impecável e cuidado acolhedor.
+                </p>
+                <div class="hero-actions">
+                    <a class="cta" href="#agendamento">Montar ritual agora</a>
+                    <a class="ghost-link" href="#servicos">Ver serviços</a>
+                </div>
+            </div>
+            <div class="hero-display" aria-hidden="true">
+                <div class="hero-frame">
+                    <div class="hero-float hero-float--one"></div>
+                    <div class="hero-float hero-float--two"></div>
+                    <div class="hero-frame-inner">
+                        <span class="hero-badge">Beleza com assinatura</span>
+                        <h2>Detalhes que elevam o seu olhar</h2>
+                        <p>Design de sobrancelhas, cílios, pele e maquiagem com acabamento elegante em cada atendimento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="section-header" id="servicos">
+            <span class="section-eyebrow">Seleção Amanda PMU</span>
+            <h2>Escolha os cuidados que combinam com você</h2>
+            <p>
+                Marque quantos procedimentos desejar. O resumo calcula o investimento estimado e monta a mensagem automática para você confirmar pelo WhatsApp.
+            </p>
+        </div>
+
+        <form class="booking" id="booking-form" autocomplete="off">
+            <div class="booking-grid">
+                <div class="service-grid" id="service-grid">
+                    <!-- Cards gerados via JavaScript -->
+                </div>
+
+                <aside class="summary-card" id="agendamento">
+                    <h3>Resumo do agendamento</h3>
+                    <p class="summary-empty" id="empty-state">Adicione serviços para montar seu ritual personalizado.</p>
+                    <ul class="summary-list" id="summary-list" hidden></ul>
+                    <div class="total" id="summary-total" hidden>
+                        <span>Total estimado</span>
+                        <strong></strong>
+                    </div>
+
+                    <div class="form-fields">
+                        <div class="field-group">
+                            <label for="client-name">Seu nome</label>
+                            <input id="client-name" type="text" placeholder="Como devo te chamar?" autocomplete="name">
+                        </div>
+
+                        <div class="field-group">
+                            <label for="preferred-day">Dia preferido</label>
+                            <select id="preferred-day">
+                                <option value="">Selecione…</option>
+                                <option>Segunda-feira</option>
+                                <option>Terça-feira</option>
+                                <option>Quarta-feira</option>
+                                <option>Quinta-feira</option>
+                                <option>Sexta-feira</option>
+                                <option>Sábado</option>
+                            </select>
+                        </div>
+
+                        <div class="field-group">
+                            <label for="preferred-time">Horário preferido</label>
+                            <input id="preferred-time" type="time">
+                        </div>
+                    </div>
+
+                    <a id="whatsapp-link" class="whatsapp-link" href="#" aria-disabled="true" target="_blank" rel="noopener">
+                        Confirmar pelo WhatsApp
+                    </a>
+                </aside>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        © <span id="current-year"></span> Amanda PMU · Estúdio Boutique em Salvador
+    </footer>
+
+    <script>
+        const serviceGrid = document.getElementById('service-grid');
+        const summaryList = document.getElementById('summary-list');
+        const summaryTotal = document.getElementById('summary-total');
+        const emptyState = document.getElementById('empty-state');
+        const clientName = document.getElementById('client-name');
+        const preferredDay = document.getElementById('preferred-day');
+        const preferredTime = document.getElementById('preferred-time');
+        const whatsappLink = document.getElementById('whatsapp-link');
+        const numberFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        const servicesData = [
+            {
+                name: 'Design Personalizado',
+                price: 35,
+                description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.',
+                paths: [
+                    'M6 30c9-4 13-13 18-12s9 10 18 12',
+                    'M14 32c2 4 8 8 10 8s8-4 10-8'
+                ]
+            },
+            {
+                name: 'Design com Henna',
+                price: 60,
+                description: 'Coloração temporária que preenche falhas e destaca o desenho com suavidade.',
+                paths: [
+                    'M10 30c4-10 10-16 14-16s10 6 14 16',
+                    'M14 28c2 4 6 8 10 8s8-4 10-8',
+                    'M12 18l4-6 6-2'
+                ]
+            },
+            {
+                name: 'Micropigmentação',
+                price: 350,
+                description: 'Estrutura fio a fio com efeito duradouro e desenho sob medida para você.',
+                paths: [
+                    'M12 16l12 12 12-12',
+                    'M12 16l12-8 12 8',
+                    'M12 32l12 8 12-8'
+                ]
+            },
+            {
+                name: 'Brow Lamination',
+                price: 120,
+                description: 'Alinhamento e brilho que levantam o olhar com acabamento polido.',
+                paths: [
+                    'M10 24c6-6 22-6 28 0',
+                    'M12 28c4-4 16-4 20 0',
+                    'M14 32c2-2 12-2 14 0'
+                ]
+            },
+            {
+                name: 'Extensão de Cílios (Tufo)',
+                price: 170,
+                description: 'Volume elegante com aplicação precisa e conforto no dia a dia.',
+                paths: [
+                    'M6 24c10 6 26 6 36 0',
+                    'M12 26l-2 6',
+                    'M18 28l-1 6',
+                    'M24 28v6',
+                    'M30 28l1 6',
+                    'M36 26l2 6'
+                ]
+            },
+            {
+                name: 'Cílios fio a fio (volume inglês)',
+                price: 90,
+                description: 'Fios leves e alongados para um efeito sofisticado com naturalidade.',
+                paths: [
+                    'M8 24c8 4 24 4 32 0',
+                    'M16 26l-1 5',
+                    'M22 27v5',
+                    'M28 27v5',
+                    'M34 26l1 5'
+                ]
+            },
+            {
+                name: 'Limpeza de pele',
+                price: 90,
+                description: 'Renovação suave com máscaras calmantes e toque hidratante.',
+                paths: [
+                    'M18 12h12',
+                    'M12 20c4-4 20-4 24 0',
+                    'M14 24c2 4 6 10 10 10s8-6 10-10'
+                ]
+            },
+            {
+                name: 'Hydra Gloss',
+                price: 90,
+                description: 'Hidratação profunda para lábios com brilho acetinado e toque volumoso.',
+                paths: [
+                    'M16 12l16 4v18c0 4-16 4-16 0z',
+                    'M24 16v22'
+                ]
+            },
+            {
+                name: 'Ensaio com maquiagem (10 fotos)',
+                price: 90,
+                description: 'Produção completa e registro fotográfico com 10 imagens finalizadas.',
+                paths: [
+                    'M8 14h32v22a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z',
+                    'M16 14l2-4h12l2 4',
+                    'M24 24a6 6 0 1 1 0 12a6 6 0 0 1 0-12'
+                ]
+            }
+        ];
+
+        function createServiceCard(service) {
+            const label = document.createElement('label');
+            label.className = 'service-card';
+            label.innerHTML = `
+                <input type="checkbox" name="services" value="${service.name}" data-price="${service.price}">
+                <div class="card-shell">
+                    <div class="card-accent">
+                        <svg class="service-icon" viewBox="0 0 48 48">
+                            ${service.paths.map(path => `<path d="${path}" />`).join('')}
+                        </svg>
+                    </div>
+                    <div class="card-copy">
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                    </div>
+                    <span class="service-price">${numberFormat.format(service.price)}</span>
+                </div>
+            `;
+            return label;
+        }
+
+        servicesData.forEach(service => {
+            serviceGrid.appendChild(createServiceCard(service));
+        });
+
+        const serviceCheckboxes = Array.from(serviceGrid.querySelectorAll('input[type="checkbox"]'));
+
+        function getSelectedServices() {
+            return serviceCheckboxes
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => ({
+                    name: checkbox.value,
+                    price: Number(checkbox.dataset.price)
+                }));
+        }
+
+        function updateSummary() {
+            const services = getSelectedServices();
+
+            if (services.length === 0) {
+                summaryList.hidden = true;
+                summaryTotal.hidden = true;
+                emptyState.hidden = false;
+            } else {
+                summaryList.innerHTML = services.map(service => `
+                    <li>
+                        <span>${service.name}</span>
+                        <span>${numberFormat.format(service.price)}</span>
+                    </li>
+                `).join('');
+                summaryList.hidden = false;
+                summaryTotal.hidden = false;
+                emptyState.hidden = true;
+
+                const total = services.reduce((acc, service) => acc + service.price, 0);
+                summaryTotal.querySelector('strong').textContent = numberFormat.format(total);
+            }
+
+            updateWhatsAppLink(services);
+        }
+
+        function updateWhatsAppLink(services) {
+            const name = clientName.value.trim();
+            const day = preferredDay.value;
+            const time = preferredTime.value;
+
+            if (services.length === 0) {
+                whatsappLink.setAttribute('aria-disabled', 'true');
+                whatsappLink.href = '#';
+                return;
+            }
+
+            const serviceLines = services
+                .map(service => `• ${service.name} — ${numberFormat.format(service.price)}`)
+                .join('\n');
+            const total = services.reduce((acc, service) => acc + service.price, 0);
+
+            const greeting = name ? `Olá, Amanda! Aqui é ${name}.` : 'Olá, Amanda!';
+            const scheduling = day ? `Preferência de dia: ${day}.` : 'Gostaria de verificar disponibilidade.';
+            const timeInfo = time ? `Horário sugerido: ${time}.` : '';
+
+            const message = `${greeting}\n\nTenho interesse nos serviços:\n${serviceLines}\n\nTotal estimado: ${numberFormat.format(total)}.\n${scheduling}${timeInfo ? ` ${timeInfo}` : ''}\n\nPodemos confirmar?`;
+
+            const url = `https://wa.me/5571983996400?text=${encodeURIComponent(message)}`;
+            whatsappLink.href = url;
+            whatsappLink.setAttribute('aria-disabled', 'false');
+        }
+
+        serviceCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateSummary);
+        });
+
+        [clientName, preferredDay, preferredTime].forEach(field => {
+            field.addEventListener('input', updateSummary);
+            field.addEventListener('change', updateSummary);
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        updateSummary();
+    </script>
+</body>
+</html>
