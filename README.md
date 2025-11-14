@@ -25,3 +25,4 @@ Como este projeto é um site estático (apenas HTML, CSS e JavaScript), não há
 ## Personalizações futuras
 
 Caso seja necessário ajustar textos, preços, imagens ou o número de WhatsApp, edite o arquivo `index.html` e recarregue a página no navegador para ver as alterações. Para substituir alguma ilustração, altere os parâmetros da função `createIllustration` correspondente (título, ícone e cores) mantendo o formato SVG embutido — isso garante compatibilidade com plataformas que não aceitam uploads de arquivos binários.
+Caso seja necessário ajustar textos, preços, imagens ou o número de WhatsApp, basta editar o arquivo `index.html` e recarregar a página no navegador para ver as alterações.
