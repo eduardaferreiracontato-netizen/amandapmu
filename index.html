@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda PMU • Elegância Contemporânea</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mint-50: #f9fffd;
+            --mint-100: #ecfbf6;
+            --mint-400: #86d8c8;
+            --mint-500: #5ecab7;
+            --mint-600: #36b2a0;
+            --gold: #d1b271;
+            --ink: #152a2d;
+            --ink-soft: rgba(21, 42, 45, 0.68);
+            --surface: rgba(255, 255, 255, 0.92);
+            --shadow-lg: 0 30px 60px rgba(36, 94, 88, 0.16);
+            --shadow-md: 0 18px 32px rgba(44, 110, 104, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Work Sans', sans-serif;
+            color: var(--ink);
+            background: linear-gradient(135deg, var(--mint-50) 0%, var(--mint-100) 46%, #e8f7f1 100%);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -120px;
+            background: radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.6), transparent 58%),
+                        radial-gradient(circle at 82% 18%, rgba(214, 239, 233, 0.68), transparent 62%),
+                        radial-gradient(circle at 50% 90%, rgba(214, 232, 228, 0.9), transparent 68%);
+            z-index: -3;
+            animation: drift 18s ease-in-out infinite;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(94, 202, 183, 0.16) 0%, rgba(255, 255, 255, 0.0) 35%, rgba(209, 178, 113, 0.18) 100%);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate3d(0,0,0); }
+            50% { transform: translate3d(18px, -22px, 0); }
+        }
+
+        .sparkle {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .sparkle span {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.75) 0%, rgba(134,216,200,0.35) 55%, transparent 72%);
+            filter: blur(0);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .sparkle span:nth-child(1) { left: 12%; top: 22%; animation-delay: 0s; }
+        .sparkle span:nth-child(2) { right: 18%; top: 28%; animation-delay: 4s; }
+        .sparkle span:nth-child(3) { left: 8%; bottom: 12%; animation-delay: 8s; }
+        .sparkle span:nth-child(4) { right: 10%; bottom: 18%; animation-delay: 12s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate3d(0,0,0) scale(1); opacity: 0.8; }
+            50% { transform: translate3d(18px,-20px,0) scale(1.05); opacity: 1; }
+        }
+
+        header {
+            padding: 120px 24px 96px;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-copy {
+            position: relative;
+        }
+
+        .hero-copy::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 72px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), rgba(209, 178, 113, 0));
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.46em;
+            font-size: 0.78rem;
+            color: var(--gold);
+            margin-left: 96px;
+            display: inline-block;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.2rem, 6vw, 4.8rem);
+            margin: 24px 0 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--ink-soft);
+            max-width: 480px;
+            margin-bottom: 36px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 28px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--mint-500), var(--mint-600));
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 36px 70px rgba(54, 178, 160, 0.22);
+        }
+
+        .hero-portrait {
+            position: relative;
+        }
+
+        .hero-portrait::before {
+            content: "";
+            position: absolute;
+            inset: -28px;
+            border-radius: 42px;
+            background: linear-gradient(140deg, rgba(255,255,255,0.85) 0%, rgba(209,178,113,0.28) 100%);
+            filter: blur(0);
+            z-index: -1;
+        }
+
+        .hero-portrait img {
+            width: 100%;
+            display: block;
+            border-radius: 34px;
+            box-shadow: var(--shadow-lg);
+            object-fit: cover;
+            max-height: 620px;
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            padding: 0 24px;
+        }
+
+        .section-heading {
+            max-width: 760px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+
+        .section-heading .eyebrow {
+            margin-left: 0;
+            margin-bottom: 18px;
+            display: inline-block;
+        }
+
+        .section-heading h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            margin: 12px 0;
+            letter-spacing: 0.02em;
+        }
+
+        .section-heading p {
+            color: var(--ink-soft);
+            line-height: 1.7;
+            font-size: 1.02rem;
+        }
+
+        .service-grid {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            position: relative;
+            background: var(--surface);
+            border-radius: 28px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform 0.45s ease, box-shadow 0.45s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 36px 70px rgba(21, 42, 45, 0.18);
+        }
+
+        .service-card label {
+            display: grid;
+            grid-template-columns: 1fr;
+            height: 100%;
+            cursor: pointer;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .service-image {
+            position: relative;
+            padding-top: 64%;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 24px 26px 30px;
+            display: grid;
+            gap: 14px;
+        }
+
+        .service-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+        }
+
+        .service-title h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            margin: 0;
+        }
+
+        .service-title span {
+            font-weight: 600;
+            color: var(--mint-600);
+            font-size: 1.05rem;
+        }
+
+        .service-description {
+            color: var(--ink-soft);
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+
+        .service-select {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        .service-select input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid rgba(21,42,45,0.2);
+            accent-color: var(--mint-600);
+        }
+
+        .booking {
+            margin: 120px auto 0;
+            max-width: 1120px;
+            background: var(--surface);
+            border-radius: 36px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+        }
+
+        .booking-illustration {
+            background: linear-gradient(160deg, rgba(94, 202, 183, 0.16) 0%, rgba(209, 178, 113, 0.28) 100%);
+            padding: 56px;
+            display: grid;
+            align-content: center;
+            gap: 28px;
+        }
+
+        .booking-illustration h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            margin: 0;
+        }
+
+        .booking-illustration p {
+            color: var(--ink-soft);
+            line-height: 1.7;
+            font-size: 1.02rem;
+        }
+
+        form {
+            padding: 48px;
+            display: grid;
+            gap: 26px;
+            background: rgba(255,255,255,0.8);
+        }
+
+        .input-group {
+            display: grid;
+            gap: 12px;
+        }
+
+        label span {
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.76rem;
+            color: var(--ink-soft);
+        }
+
+        input[type="text"],
+        select,
+        input[type="time"] {
+            padding: 16px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(21,42,45,0.12);
+            background: rgba(255,255,255,0.86);
+            font: inherit;
+            color: var(--ink);
+        }
+
+        select { appearance: none; }
+
+        .summary-card {
+            padding: 24px 26px;
+            border-radius: 24px;
+            background: rgba(134, 216, 200, 0.14);
+            border: 1px solid rgba(94, 202, 183, 0.28);
+            display: grid;
+            gap: 14px;
+        }
+
+        .summary-card h4 {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+        }
+
+        .summary-list {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--ink-soft);
+            line-height: 1.6;
+            font-size: 0.96rem;
+        }
+
+        .summary-total {
+            font-weight: 600;
+            color: var(--mint-600);
+            font-size: 1.1rem;
+        }
+
+        .form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            align-items: center;
+        }
+
+        button[type="submit"] {
+            border: none;
+            cursor: pointer;
+            padding: 16px 32px;
+            border-radius: 999px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            background: linear-gradient(135deg, var(--mint-500), var(--mint-600));
+            color: #ffffff;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 28px 60px rgba(54, 178, 160, 0.22);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            padding: 80px 24px 60px;
+            text-align: center;
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+        }
+
+        @media (max-width: 1024px) {
+            header {
+                padding-top: 96px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 42px;
+            }
+
+            .hero-copy::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .eyebrow {
+                margin-left: 0;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .booking {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-illustration {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 680px) {
+            header {
+                padding: 84px 18px 72px;
+            }
+
+            section {
+                padding: 0 18px;
+            }
+
+            .service-grid {
+                gap: 24px;
+            }
+
+            form {
+                padding: 36px 24px;
+            }
+
+            .booking-illustration {
+                padding: 42px 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkle" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <header>
+        <div class="hero">
+            <div class="hero-copy reveal">
+                <span class="eyebrow">Beleza essencial</span>
+                <h1>Amanda PMU</h1>
+                <p class="hero-description">Sobrancelhas, cílios e cuidados faciais com assinatura artesanal. Combine seus serviços favoritos e receba um atendimento personalizado diretamente pelo WhatsApp.</p>
+                <div class="hero-actions">
+                    <a class="cta-primary" href="#agendamento">Agendar agora</a>
+                    <span>Segunda a sábado, horários flexíveis.</span>
+                </div>
+            </div>
+            <figure class="hero-portrait reveal">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Amanda PMU recebendo cliente em estúdio elegante">
+            </figure>
+        </div>
+    </header>
+
+    <main>
+        <section id="servicos">
+            <div class="section-heading reveal">
+                <span class="eyebrow">Seleção de serviços</span>
+                <h2>Experiências que destacam a sua beleza</h2>
+                <p>Escolha um ou mais serviços para criar uma jornada completa. Cada opção foi pensada para realçar suas feições com naturalidade e sofisticação.</p>
+            </div>
+            <div class="service-grid" id="lista-servicos"></div>
+        </section>
+
+        <section id="agendamento" class="reveal">
+            <div class="booking">
+                <div class="booking-illustration">
+                    <h3>Transforme sua visita em ritual</h3>
+                    <p>Preencha seus dados, selecione a data ideal e finalize em um clique. O agendamento é enviado para o WhatsApp da Amanda com todos os detalhes do seu atendimento.</p>
+                    <div class="summary-card">
+                        <h4>Resumo elegante</h4>
+                        <ul class="summary-list" id="resumo-itens">
+                            <li>Selecione um serviço para começar.</li>
+                        </ul>
+                        <span class="summary-total" id="resumo-total">Total estimado: R$ 0,00</span>
+                    </div>
+                </div>
+                <form id="form-agendamento">
+                    <div class="input-group">
+                        <label for="nome">
+                            <span>Nome da cliente</span>
+                        </label>
+                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="dia">
+                            <span>Dia preferido</span>
+                        </label>
+                        <select id="dia" name="dia" required>
+                            <option value="">Escolha uma opção</option>
+                            <option>Segunda-feira</option>
+                            <option>Terça-feira</option>
+                            <option>Quarta-feira</option>
+                            <option>Quinta-feira</option>
+                            <option>Sexta-feira</option>
+                            <option>Sábado</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="hora">
+                            <span>Horário preferido</span>
+                        </label>
+                        <input type="time" id="hora" name="hora" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit">Confirmar pelo WhatsApp</button>
+                        <span id="status-msg"></span>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © <span id="ano"></span> Amanda PMU • Estúdio especializado em beleza e bem-estar.
+    </footer>
+
+    <script>
+        const services = [
+            {
+                name: 'Design Personalizado',
+                price: 35,
+                description: 'Harmonização completa das sobrancelhas com mapping exclusivo e finalização delicada.',
+                image: 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=900&q=80'
+            },
+            {
+                name: 'Design com Henna',
+                price: 60,
+                description: 'Coloração suave e natural para realçar o desenho enquanto fortalece os fios.',
+                image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80'
+            },
+            {
+                name: 'Micropigmentação',
+                price: 350,
+                description: 'Técnica premium para sobrancelhas preenchidas e naturais com durabilidade prolongada.',
+                image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80'
+            },
+            {
+                name: 'Brow Lamination',
+                price: 120,
+                description: 'Alinhamento e definição dos fios para um efeito penteado e cheio de atitude.',
+                image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80'
+            },
+            {
+                name: 'Extensão de cílios (Tufo)',
+                price: 170,
+                description: 'Volume e intensidade personalizados com tufos aplicados fio a fio.',
+                image: 'https://images.unsplash.com/photo-1512250591270-0bea37004c8e?auto=format&fit=crop&w=900&q=80'
+            },
+            {
+                name: 'Cílios fio a fio (volume inglês)',
+                price: 90,
+                description: 'Alongamento leve e elegante que mantém a naturalidade dos fios.',
+                image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=900&q=80'
+            },
+            {
+                name: 'Limpeza de pele',
+                price: 90,
+                description: 'Protocolo detox que purifica, hidrata e deixa a pele luminosa e fresca.',
+                image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80'
+            },
+            {
+                name: 'Hydra Gloss',
+                price: 90,
+                description: 'Tratamento labial com hidratação profunda e brilho espelhado imediato.',
+                image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80'
+            },
+            {
+                name: 'Ensaio com maquiagem (10 fotos)',
+                price: 90,
+                description: 'Produção completa com maquiagem exclusiva e mini ensaio fotográfico.',
+                image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80'
+            }
+        ];
+
+        const serviceGrid = document.getElementById('lista-servicos');
+        const resumoItens = document.getElementById('resumo-itens');
+        const resumoTotal = document.getElementById('resumo-total');
+        const form = document.getElementById('form-agendamento');
+        const statusMsg = document.getElementById('status-msg');
+        const yearEl = document.getElementById('ano');
+
+        yearEl.textContent = new Date().getFullYear();
+
+        function formatCurrency(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function renderServices() {
+            serviceGrid.innerHTML = '';
+            services.forEach((service, index) => {
+                const card = document.createElement('article');
+                card.className = 'service-card reveal';
+
+                const label = document.createElement('label');
+
+                const imageWrapper = document.createElement('div');
+                imageWrapper.className = 'service-image';
+                const img = document.createElement('img');
+                img.src = service.image;
+                img.alt = `${service.name} em destaque`;
+                imageWrapper.appendChild(img);
+
+                const content = document.createElement('div');
+                content.className = 'service-content';
+
+                const titleRow = document.createElement('div');
+                titleRow.className = 'service-title';
+
+                const title = document.createElement('h3');
+                title.textContent = service.name;
+
+                const price = document.createElement('span');
+                price.textContent = formatCurrency(service.price);
+
+                titleRow.appendChild(title);
+                titleRow.appendChild(price);
+
+                const description = document.createElement('p');
+                description.className = 'service-description';
+                description.textContent = service.description;
+
+                const selectRow = document.createElement('div');
+                selectRow.className = 'service-select';
+
+                const selectLabel = document.createElement('span');
+                selectLabel.textContent = 'Adicionar ao ritual';
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.name = 'servicos';
+                checkbox.value = service.name;
+                checkbox.dataset.price = service.price;
+
+                selectRow.appendChild(selectLabel);
+                selectRow.appendChild(checkbox);
+
+                content.appendChild(titleRow);
+                content.appendChild(description);
+                content.appendChild(selectRow);
+
+                label.appendChild(imageWrapper);
+                label.appendChild(content);
+
+                card.appendChild(label);
+                serviceGrid.appendChild(card);
+            });
+        }
+
+        function updateSummary() {
+            const selected = Array.from(document.querySelectorAll('input[name="servicos"]:checked')).map((checkbox) => ({
+                name: checkbox.value,
+                price: Number(checkbox.dataset.price)
+            }));
+
+            if (!selected.length) {
+                resumoItens.innerHTML = '<li>Selecione um serviço para começar.</li>';
+                resumoTotal.textContent = 'Total estimado: R$ 0,00';
+                statusMsg.textContent = '';
+                return;
+            }
+
+            resumoItens.innerHTML = selected
+                .map((item) => `<li>${item.name} — ${formatCurrency(item.price)}</li>`)
+                .join('');
+
+            const total = selected.reduce((sum, item) => sum + item.price, 0);
+            resumoTotal.textContent = `Total estimado: ${formatCurrency(total)}`;
+            statusMsg.textContent = '';
+        }
+
+        function buildMessage(formData, selected) {
+            const nome = formData.get('nome');
+            const dia = formData.get('dia');
+            const hora = formData.get('hora');
+            const total = selected.reduce((sum, item) => sum + item.price, 0);
+
+            const servicesText = selected
+                .map((item) => `• ${item.name} — ${formatCurrency(item.price)}`)
+                .join('\n');
+
+            return `Olá, Amanda! Meu nome é ${nome}. Gostaria de agendar os serviços abaixo:\n\n${servicesText}\n\n• Dia preferido: ${dia}\n• Horário preferido: ${hora}\n• Valor estimado: ${formatCurrency(total)}\n\nObrigada!`;
+        }
+
+        function attachEvents() {
+            serviceGrid.addEventListener('change', (event) => {
+                if (event.target.matches('input[name="servicos"]')) {
+                    updateSummary();
+                }
+            });
+
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const formData = new FormData(form);
+                const selected = Array.from(document.querySelectorAll('input[name="servicos"]:checked')).map((checkbox) => ({
+                    name: checkbox.value,
+                    price: Number(checkbox.dataset.price)
+                }));
+
+                if (!selected.length) {
+                    statusMsg.textContent = 'Selecione ao menos um serviço antes de continuar.';
+                    statusMsg.style.color = '#c25757';
+                    return;
+                }
+
+                const message = buildMessage(formData, selected);
+                statusMsg.textContent = 'Redirecionando para o WhatsApp…';
+                statusMsg.style.color = '#2f8f80';
+                const url = `https://wa.me/5571983996400?text=${encodeURIComponent(message)}`;
+                window.open(url, '_blank');
+            });
+        }
+
+        function setupRevealAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            reveals.forEach((element) => observer.observe(element));
+        }
+
+        renderServices();
+        attachEvents();
+        updateSummary();
+        setupRevealAnimations();
+    </script>
+</body>
+</html>
