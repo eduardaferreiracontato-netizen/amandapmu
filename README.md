@@ -1,19 +1,21 @@
 # Landing Page Amanda PMU
 
-Este repositório contém a landing page estática desenvolvida para divulgar os serviços de Amanda PMU e permitir o agendamento via WhatsApp.
+Este repositório contém a landing page estática desenvolvida para apresentar os serviços de Amanda PMU e facilitar o agendamento direto pelo WhatsApp.
 
 ## Como visualizar a página
 
 1. Baixe ou clone este repositório.
-2. Abra o arquivo `index.html` diretamente no seu navegador (caso ainda tenha um atalho antigo, o arquivo `index.html.html` redireciona automaticamente para a versão nova).
-3. Preencha o formulário informando seu nome, os dias e horários desejados e marque um ou mais serviços para montar o combo ideal.
-4. Acompanhe o **Resumo do agendamento**, que lista os serviços marcados e soma o total estimado em tempo real.
-5. Clique em **Agendar pelo WhatsApp** para abrir o aplicativo com a mensagem pronta — ela já inclui todos os serviços selecionados, o valor estimado e direciona para o número oficial (55 71 98399-6400).
+2. Abra o arquivo `index.html` diretamente no navegador (caso ainda tenha um atalho antigo, o arquivo `index.html.html` redireciona automaticamente para a versão nova).
+3. Explore a capa em degradê branco e verde #BCD054 com detalhes dourados suaves — ela destaca apenas o nome da profissional com tipografia elegante Playfair Display.
+4. Percorra os cards de serviço organizados em grade responsiva. Cada cartão exibe a foto do procedimento, descrição, preço e um marcador animado para indicar a seleção.
+5. Marque um ou mais serviços para montar sua combinação; o **Resumo do agendamento** mostra todos os itens escolhidos e o total estimado em tempo real.
+6. Preencha seu nome, dia e horário desejados. Ao clicar em **Confirmar pelo WhatsApp**, a mensagem é montada automaticamente com os serviços selecionados, valor estimado e direcionada para o número oficial (55 71 98399-6400).
 
 ## Estrutura dos arquivos
 
-- `index.html`: página principal com o layout em verde #BCD054, animações suaves e formulário de agendamento.
-- retrato da Amanda incorporado diretamente no `index.html` via Data URL, dispensando pastas externas de imagem.
+- `index.html`: página principal com degradê verde-branco, fontes Playfair Display e Source Sans 3, galeria animada de serviços e formulário integrado ao WhatsApp.
+- As ilustrações dos serviços são geradas dinamicamente como SVG embutidos (data URI), garantindo que nenhuma imagem externa precise ser carregada — isso evita os erros de "arquivo binário" e impede que as figuras apareçam quebradas por bloqueios de terceiros.
+- `index.html.html`: página de apoio que redireciona para a versão atualizada, mantendo compatibilidade com atalhos antigos.
 - `README.md`: este guia rápido com as instruções de uso.
 
 ## Sobre a seção "Testing"
@@ -22,4 +24,5 @@ Como este projeto é um site estático (apenas HTML, CSS e JavaScript), não há
 
 ## Personalizações futuras
 
+Caso seja necessário ajustar textos, preços, imagens ou o número de WhatsApp, edite o arquivo `index.html` e recarregue a página no navegador para ver as alterações. Para substituir alguma ilustração, altere os parâmetros da função `createIllustration` correspondente (título, ícone e cores) mantendo o formato SVG embutido — isso garante compatibilidade com plataformas que não aceitam uploads de arquivos binários.
 Caso seja necessário ajustar textos, preços, imagens ou o número de WhatsApp, basta editar o arquivo `index.html` e recarregar a página no navegador para ver as alterações.
