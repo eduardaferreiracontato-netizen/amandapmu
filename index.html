@@ -716,6 +716,11 @@
     <footer>
         © <span id="current-year"></span> Amanda PMU · Estúdio Boutique em Salvador
     </footer>
+
+    <footer>
+        © <span id="current-year"></span> Amanda PMU · Estúdio Boutique em Salvador
+    </footer>
+
     <script>
         const serviceGrid = document.getElementById('service-grid');
         const summaryList = document.getElementById('summary-list');
@@ -906,7 +911,7 @@
             const scheduling = day ? `Preferência de dia: ${day}.` : 'Gostaria de verificar disponibilidade.';
             const timeInfo = time ? `Horário sugerido: ${time}.` : '';
 
-            const message = `${greeting}\n\nTenho interesse nos serviços:\n${serviceLines}\n\nTotal estimado: ${numberFormat.format(total)}.\n${scheduling}${timeInfo ? ` ${timeInfo}` : ''}\n\nPodemos agendar?`;
+            const message = `${greeting}\n\nTenho interesse nos serviços:\n${serviceLines}\n\nTotal estimado: ${numberFormat.format(total)}.\n${scheduling}${timeInfo ? ` ${timeInfo}` : ''}\n\nPodemos confirmar?`;
 
             const url = `https://wa.me/5571983996400?text=${encodeURIComponent(message)}`;
             whatsappLink.href = url;
@@ -945,3 +950,908 @@
     </script>
 </body>
 </html>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        updateSummary();
+    </script>
+</body>
+</html>
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..c54a6b66a1b79b555e758c30d76b4c4639a40c0e
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,893 @@
++<!DOCTYPE html>
++<html lang="pt-BR">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Amanda PMU • Estúdio Boutique</title>
++    <link rel="preconnect" href="https://fonts.googleapis.com">
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
++    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
++    <style>
++        :root {
++            --pear-50: #fdfcf5;
++            --pear-100: #f7f2df;
++            --pear-200: #eee7c0;
++            --pear-300: #e5dda3;
++            --pear-400: #d7d27f;
++            --pear-500: #c9c964;
++            --pear-600: #a7ad49;
++            --pear-700: #7d8035;
++            --accent: #bcd054;
++            --champagne: #d9c27c;
++            --ink: #24240f;
++            --ink-soft: rgba(36, 36, 15, 0.72);
++            --surface: rgba(255, 255, 255, 0.94);
++            --shadow-lg: 0 34px 72px rgba(95, 108, 44, 0.24);
++            --shadow-md: 0 24px 44px rgba(125, 128, 53, 0.18);
++            --shadow-sm: 0 10px 28px rgba(166, 173, 73, 0.22);
++            --warning: #b45f3d;
++        }
++
++        * {
++            box-sizing: border-box;
++        }
++
++        body {
++            margin: 0;
++            font-family: 'Source Sans 3', sans-serif;
++            color: var(--ink);
++            background: linear-gradient(135deg, #ffffff 0%, var(--pear-50) 46%, rgba(188, 208, 84, 0.3) 100%);
++            overflow-x: hidden;
++        }
++
++        body::before {
++            content: "";
++            position: fixed;
++            inset: -160px;
++            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), transparent 60%),
++                        radial-gradient(circle at 78% 12%, rgba(217, 194, 124, 0.25), transparent 62%),
++                        radial-gradient(circle at 60% 88%, rgba(236, 230, 195, 0.85), transparent 70%);
++            z-index: -3;
++            animation: drift 18s ease-in-out infinite;
++        }
++
++        body::after {
++            content: "";
++            position: fixed;
++            inset: 0;
++            background: linear-gradient(160deg, rgba(188, 208, 84, 0.14) 0%, rgba(255, 255, 255, 0.0) 36%, rgba(217, 194, 124, 0.18) 100%);
++            pointer-events: none;
++            z-index: -2;
++        }
++
++        @keyframes drift {
++            0%, 100% { transform: translate3d(0,0,0); }
++            50% { transform: translate3d(26px,-18px,0); }
++        }
++
++        .sparkle {
++            position: fixed;
++            inset: 0;
++            pointer-events: none;
++            overflow: hidden;
++            z-index: -1;
++        }
++
++        .sparkle span {
++            position: absolute;
++            width: 180px;
++            height: 180px;
++            border-radius: 50%;
++            background: radial-gradient(circle, rgba(255,255,255,0.85) 0%, rgba(226,216,164,0.45) 55%, transparent 72%);
++            filter: blur(0);
++            animation: float 20s ease-in-out infinite;
++        }
++
++        .sparkle span:nth-child(1) { left: 8%; top: 28%; animation-delay: 0s; }
++        .sparkle span:nth-child(2) { right: 16%; top: 22%; animation-delay: 4s; }
++        .sparkle span:nth-child(3) { left: 12%; bottom: 16%; animation-delay: 8s; }
++        .sparkle span:nth-child(4) { right: 20%; bottom: 24%; animation-delay: 12s; }
++
++        @keyframes float {
++            0%, 100% { transform: translate3d(0,0,0) scale(1); opacity: 0.85; }
++            50% { transform: translate3d(24px,-18px,0) scale(1.05); opacity: 1; }
++        }
++
++        header {
++            padding: 120px 24px 96px;
++        }
++
++        .hero {
++            max-width: 1200px;
++            margin: 0 auto;
++            display: grid;
++            grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
++            gap: 88px;
++            align-items: center;
++        }
++
++        .hero-copy {
++            position: relative;
++        }
++
++        .hero-copy::before {
++            content: "";
++            position: absolute;
++            left: 0;
++            top: 14px;
++            width: 76px;
++            height: 4px;
++            background: linear-gradient(90deg, var(--champagne), rgba(217, 194, 124, 0));
++        }
++
++        .eyebrow {
++            text-transform: uppercase;
++            letter-spacing: 0.46em;
++            font-size: 0.78rem;
++            color: var(--champagne);
++            margin-left: 96px;
++            display: inline-block;
++        }
++
++        h1 {
++            font-family: 'Playfair Display', serif;
++            font-size: clamp(3.4rem, 6.2vw, 5rem);
++            margin: 26px 0 32px;
++            font-weight: 600;
++            letter-spacing: 0.01em;
++        }
++
++        .hero-actions {
++            display: flex;
++            flex-wrap: wrap;
++            gap: 18px;
++            align-items: center;
++        }
++
++        .cta-primary {
++            display: inline-flex;
++            align-items: center;
++            gap: 12px;
++            padding: 15px 32px;
++            border-radius: 999px;
++            background: linear-gradient(135deg, var(--accent), var(--pear-600));
++            color: #ffffff;
++            text-decoration: none;
++            font-weight: 600;
++            letter-spacing: 0.04em;
++            box-shadow: var(--shadow-lg);
++            transition: transform 0.35s ease, box-shadow 0.35s ease;
++        }
++
++        .cta-primary:hover {
++            transform: translateY(-4px);
++            box-shadow: 0 36px 74px rgba(95, 108, 44, 0.26);
++        }
++
++        .hero-note {
++            font-size: 0.95rem;
++            color: var(--ink-soft);
++        }
++
++        .hero-portrait {
++            position: relative;
++        }
++
++        .hero-portrait::before {
++            content: "";
++            position: absolute;
++            inset: -32px;
++            border-radius: 42px;
++            background: linear-gradient(140deg, rgba(255,255,255,0.88) 0%, rgba(217, 194, 124, 0.42) 100%);
++            filter: blur(0);
++            z-index: -1;
++        }
++
++        .hero-portrait img {
++            width: 100%;
++            display: block;
++            border-radius: 36px;
++            box-shadow: var(--shadow-lg);
++            object-fit: cover;
++        }
++
++        main {
++            position: relative;
++            z-index: 1;
++        }
++
++        section {
++            padding: 0 24px;
++        }
++
++        .section-heading {
++            max-width: 720px;
++            margin: 0 auto 48px;
++            text-align: center;
++        }
++
++        .section-heading h2 {
++            font-family: 'Playfair Display', serif;
++            font-size: clamp(2rem, 4vw, 3rem);
++            margin: 18px 0 12px;
++            font-weight: 600;
++        }
++
++        .section-heading p {
++            margin: 0 auto;
++            color: var(--ink-soft);
++            font-size: 1.02rem;
++            line-height: 1.7;
++            max-width: 640px;
++        }
++
++        .service-grid {
++            max-width: 1180px;
++            margin: 0 auto 120px;
++            display: grid;
++            gap: 32px;
++            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
++        }
++
++        .service-card {
++            background: var(--surface);
++            border-radius: 28px;
++            box-shadow: var(--shadow-md);
++            padding: 6px;
++            transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.5s ease;
++            position: relative;
++            overflow: hidden;
++        }
++
++        .service-card::after {
++            content: "";
++            position: absolute;
++            inset: 0;
++            border-radius: 24px;
++            background: linear-gradient(160deg, rgba(188, 208, 84, 0.16), rgba(217, 194, 124, 0.12));
++            opacity: 0;
++            transition: opacity 0.4s ease;
++            pointer-events: none;
++        }
++
++        .service-card.is-selected::after {
++            opacity: 1;
++        }
++
++        .service-option {
++            display: grid;
++            grid-template-rows: auto 1fr;
++            gap: 0;
++            text-decoration: none;
++            color: inherit;
++            cursor: pointer;
++            height: 100%;
++        }
++
++        .service-option input[type="checkbox"] {
++            position: absolute;
++            width: 1px;
++            height: 1px;
++            margin: -1px;
++            padding: 0;
++            border: 0;
++            clip: rect(0 0 0 0);
++            clip-path: inset(50%);
++            overflow: hidden;
++            white-space: nowrap;
++        }
++
++        .service-option input[type="checkbox"]:focus-visible + .service-check {
++            box-shadow: 0 0 0 4px rgba(188, 208, 84, 0.35);
++        }
++
++        .service-check {
++            position: absolute;
++            top: 22px;
++            right: 22px;
++            width: 28px;
++            height: 28px;
++            border-radius: 8px;
++            border: 2px solid rgba(36, 36, 15, 0.18);
++            background: rgba(255, 255, 255, 0.7);
++            display: grid;
++            place-items: center;
++            font-size: 0.78rem;
++            color: transparent;
++            transition: all 0.35s ease;
++        }
++
++        .service-card.is-selected .service-check {
++            border-color: transparent;
++            background: linear-gradient(135deg, var(--accent), var(--pear-600));
++            color: #fff;
++            box-shadow: var(--shadow-sm);
++        }
++
++        .service-card:hover {
++            transform: translateY(-6px);
++            box-shadow: 0 38px 84px rgba(125, 128, 53, 0.22);
++        }
++
++        .service-media {
++            position: relative;
++            overflow: hidden;
++            border-radius: 22px;
++            margin: 0;
++            aspect-ratio: 4 / 3;
++            display: flex;
++        }
++
++        .service-media img {
++            width: 100%;
++            height: 100%;
++            object-fit: cover;
++            transition: transform 0.6s ease;
++        }
++
++        .service-card:hover .service-media img {
++            transform: scale(1.05);
++        }
++
++        .service-badge {
++            position: absolute;
++            left: 20px;
++            bottom: 20px;
++            padding: 8px 16px;
++            border-radius: 999px;
++            background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,255,255,0.72));
++            color: var(--ink);
++            font-weight: 600;
++            font-size: 0.95rem;
++            box-shadow: var(--shadow-sm);
++        }
++
++        .service-body {
++            padding: 26px;
++            display: grid;
++            gap: 12px;
++        }
++
++        .service-body h3 {
++            font-family: 'Playfair Display', serif;
++            font-size: 1.5rem;
++            margin: 0;
++        }
++
++        .service-body p {
++            margin: 0;
++            color: var(--ink-soft);
++            line-height: 1.6;
++            font-size: 1rem;
++        }
++
++        .booking {
++            max-width: 1180px;
++            margin: 0 auto 120px;
++            display: grid;
++            grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
++            gap: 48px;
++            align-items: start;
++        }
++
++        .booking-illustration {
++            background: var(--surface);
++            border-radius: 30px;
++            padding: 56px 48px;
++            box-shadow: var(--shadow-md);
++            display: grid;
++            gap: 24px;
++        }
++
++        .booking-illustration h3 {
++            margin: 0;
++            font-family: 'Playfair Display', serif;
++            font-size: 2rem;
++        }
++
++        .booking-illustration p {
++            margin: 0;
++            color: var(--ink-soft);
++            line-height: 1.7;
++        }
++
++        .summary-card {
++            background: rgba(255, 255, 255, 0.88);
++            border-radius: 22px;
++            padding: 24px;
++            border: 1px solid rgba(188, 208, 84, 0.25);
++            display: grid;
++            gap: 14px;
++        }
++
++        .summary-card h4 {
++            margin: 0;
++            font-family: 'Playfair Display', serif;
++            font-size: 1.3rem;
++        }
++
++        .summary-list {
++            margin: 0;
++            padding-left: 20px;
++            color: var(--ink-soft);
++            line-height: 1.6;
++            font-size: 0.98rem;
++        }
++
++        .summary-total {
++            font-weight: 600;
++            color: var(--pear-700);
++            font-size: 1.1rem;
++        }
++
++        form {
++            background: var(--surface);
++            border-radius: 30px;
++            padding: 48px;
++            box-shadow: var(--shadow-md);
++            display: grid;
++            gap: 24px;
++        }
++
++        .input-group {
++            display: grid;
++            gap: 12px;
++        }
++
++        label span {
++            font-weight: 600;
++            letter-spacing: 0.03em;
++        }
++
++        input[type="text"], select, input[type="time"] {
++            font: inherit;
++            padding: 16px 18px;
++            border-radius: 16px;
++            border: 1px solid rgba(36, 36, 15, 0.18);
++            background: rgba(255, 255, 255, 0.9);
++            transition: border 0.3s ease, box-shadow 0.3s ease;
++        }
++
++        input[type="text"]:focus, select:focus, input[type="time"]:focus {
++            outline: none;
++            border-color: var(--accent);
++            box-shadow: 0 0 0 4px rgba(188, 208, 84, 0.25);
++        }
++
++        .form-actions {
++            display: flex;
++            flex-wrap: wrap;
++            gap: 18px;
++            align-items: center;
++        }
++
++        button[type="submit"] {
++            border: none;
++            cursor: pointer;
++            padding: 16px 36px;
++            border-radius: 999px;
++            font-weight: 600;
++            letter-spacing: 0.04em;
++            background: linear-gradient(135deg, var(--accent), var(--pear-600));
++            color: #ffffff;
++            box-shadow: var(--shadow-md);
++            transition: transform 0.35s ease, box-shadow 0.35s ease;
++        }
++
++        button[type="submit"]:hover {
++            transform: translateY(-3px);
++            box-shadow: 0 30px 70px rgba(125, 128, 53, 0.24);
++        }
++
++        #status-msg {
++            font-size: 0.95rem;
++            color: var(--pear-700);
++            min-height: 1.2em;
++        }
++
++        footer {
++            padding: 80px 24px 60px;
++            text-align: center;
++            color: var(--ink-soft);
++            font-size: 0.92rem;
++        }
++
++        .reveal {
++            opacity: 0;
++            transform: translateY(36px);
++            transition: opacity 0.7s ease, transform 0.7s ease;
++        }
++
++        .reveal.is-visible {
++            opacity: 1;
++            transform: translateY(0);
++        }
++
++        @media (max-width: 1080px) {
++            header {
++                padding-top: 96px;
++            }
++
++            .hero {
++                grid-template-columns: 1fr;
++                text-align: center;
++                gap: 52px;
++            }
++
++            .hero-copy::before {
++                left: 50%;
++                transform: translateX(-50%);
++            }
++
++            .eyebrow {
++                margin-left: 0;
++            }
++
++            .hero-actions {
++                justify-content: center;
++            }
++
++            .hero-note {
++                width: 100%;
++                text-align: center;
++            }
++
++            .booking {
++                grid-template-columns: 1fr;
++            }
++        }
++
++        @media (max-width: 720px) {
++            header {
++                padding: 84px 18px 72px;
++            }
++
++            section {
++                padding: 0 18px;
++            }
++
++            form {
++                padding: 36px 26px;
++            }
++
++            .booking-illustration {
++                padding: 42px 28px;
++            }
++        }
++
++        @media (prefers-reduced-motion: reduce) {
++            *, *::before, *::after {
++                animation-duration: 0.01ms !important;
++                animation-iteration-count: 1 !important;
++                transition-duration: 0.01ms !important;
++                scroll-behavior: auto !important;
++            }
++        }
++    </style>
++</head>
++<body>
++    <div class="sparkle" aria-hidden="true">
++        <span></span>
++        <span></span>
++        <span></span>
++        <span></span>
++    </div>
++
++    <header>
++        <div class="hero">
++            <div class="hero-copy reveal">
++                <span class="eyebrow">Estúdio boutique</span>
++                <h1>Amanda PMU</h1>
++                <div class="hero-actions">
++                    <a class="cta-primary" href="#agendamento">Agendar agora</a>
++                    <span class="hero-note">Atendimento de segunda a sábado, com horários personalizados.</span>
++                </div>
++            </div>
++            <figure class="hero-portrait reveal">
++                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgODAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmciIHgxPSIwIiB4Mj0iMSIgeTE9IjAiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmRmY2Y1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC41IiBzdG9wLWNvbG9yPSIjZjRlN2I1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2M5Y2Y2OSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iaGlnaGxpZ2h0IiB4MT0iMC4yIiB5MT0iMCIgeDI9IjAuOCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmY4ZDciIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2MxYjE2MyIgc3RvcC1vcGFjaXR5PSIwLjIiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iODAwIiBmaWxsPSJ1cmwoI2JnKSIvPgogIDxlbGxpcHNlIGN4PSI0ODAiIGN5PSIxODAiIHJ4PSIxNjAiIHJ5PSIxNDAiIGZpbGw9IiNmOWYyZDAiIG9wYWNpdHk9IjAuNiIvPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSI2MjAiIHJ4PSIyMjAiIHJ5PSIxODAiIGZpbGw9IiNmZmY3ZDMiIG9wYWNpdHk9IjAuNyIvPgogIDxwYXRoIGQ9Ik0yMjAgMTUwYzYwLTQwIDE0MC00MCAyMDAgMHM5MCAxMjAgNTAgMjEwYy0yMCA0Ni01OCA4Mi05OCAxMTAtMzYgMjUtNzAgNTYtNzggMTAyLTQgMjQgMCA1MiAxMCA4MiAxMiAzNi0xNiA3Ni01MiA3Mi0zMC0zLTYwLTM2LTc0LTgyLTE4LTYwLTE4LTEyNCAyLTE4MiAxNi00NiAyMi05NiAxNi0xNDQtNi01Ni0yLTEwMCAyNC0xNjh6IiBmaWxsPSIjZmRmOGRlIiBvcGFjaXR5PSIwLjg1Ii8+CiAgPHBhdGggZD0iTTI1OCAxODhjMzItMzIgODYtMzggMTMwLTE0IDUyIDI4IDc0IDk4IDQwIDE0Ni0yMiAzMC02MiA0MC05NCA1MC00MCAxMi02NCA0MC03OCA3Ni0xMCAyNi0xNiA1Mi0xNCA4MiAyIDQwLTQyIDY0LTY4IDM2LTIyLTI0LTMyLTc0LTI0LTEyMCAxMC01NiAzOC05OCA2Ni0xMzYgMjAtMjggMjgtNzQgNDItMTIweiIgZmlsbD0idXJsKCNoaWdobGlnaHQpIi8+CiAgPHBhdGggZD0iTTI4MCAyNTZjMTQtMjIgNDQtMzQgNzAtMjYgMzAgMTAgNDQgNDQgMzIgNzQtOCAxOC0yOCAyOC00NiAzNC0yNCA4LTM2IDIyLTQ0IDQ0LTYgMTgtMjIgMjgtMzggMjItMTQtNC0yMC0yMC0xOC0zNiAyLTI2IDE4LTQ4IDMwLTY4IDYtMTIgMTAtMjYgMTQtNDR6IiBmaWxsPSIjY2JiOTZhIiBvcGFjaXR5PSIwLjgiLz4KICA8cGF0aCBkPSJNMzQwIDUyMGMxMC0xNCAzMi0yMCA0OC0xMiAxNiA4IDIyIDI4IDE0IDQ0LTYgMTItMjAgMTgtMzIgMTgtMTQgMC0yOCA4LTM0IDIwLTYgMTItMjIgMTgtMzIgMTAtMTAtNi0xMC0yMi02LTM0IDYtMjAgMjItMzQgNDItNDZ6IiBmaWxsPSIjYjhhODViIiBvcGFjaXR5PSIwLjciLz4KPC9zdmc+" alt="Ilustração refinada simbolizando Amanda PMU">
++            </figure>
++        </div>
++    </header>
++
++    <main>
++        <section id="servicos">
++            <div class="section-heading reveal">
++                <span class="eyebrow">Seleção de serviços</span>
++                <h2>Escolha os cuidados que combinam com você</h2>
++                <p>Combine diferentes técnicas para criar uma experiência completa. Cada cartão destaca o visual do procedimento, o investimento e uma descrição delicada.</p>
++            </div>
++            <div class="service-grid" id="lista-servicos"></div>
++        </section>
++
++        <section id="agendamento" class="reveal">
++            <div class="booking">
++                <div class="booking-illustration">
++                    <h3>Finalize com elegância</h3>
++                    <p>Preencha seus dados, escolha o melhor dia e horário, e confirme pelo WhatsApp. A mensagem leva todos os serviços selecionados e o valor estimado direto para Amanda.</p>
++                    <div class="summary-card">
++                        <h4>Resumo do agendamento</h4>
++                        <ul class="summary-list" id="resumo-itens">
++                            <li>Selecione um serviço para começar.</li>
++                        </ul>
++                        <span class="summary-total" id="resumo-total">Total estimado: R$ 0,00</span>
++                    </div>
++                </div>
++                <form id="form-agendamento">
++                    <div class="input-group">
++                        <label for="nome">
++                            <span>Nome da cliente</span>
++                        </label>
++                        <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
++                    </div>
++                    <div class="input-group">
++                        <label for="dia">
++                            <span>Dia preferido</span>
++                        </label>
++                        <select id="dia" name="dia" required>
++                            <option value="">Escolha uma opção</option>
++                            <option>Segunda-feira</option>
++                            <option>Terça-feira</option>
++                            <option>Quarta-feira</option>
++                            <option>Quinta-feira</option>
++                            <option>Sexta-feira</option>
++                            <option>Sábado</option>
++                        </select>
++                    </div>
++                    <div class="input-group">
++                        <label for="hora">
++                            <span>Horário preferido</span>
++                        </label>
++                        <input type="time" id="hora" name="hora" required>
++                    </div>
++                    <div class="form-actions">
++                        <button type="submit">Confirmar pelo WhatsApp</button>
++                        <span id="status-msg"></span>
++                    </div>
++                </form>
++            </div>
++        </section>
++    </main>
++
++    <footer>
++        © <span id="ano"></span> Amanda PMU • Estúdio especializado em beleza e bem-estar.
++    </footer>
++
++    <script>
++        function createIllustration(title, icon, primary, accent) {
++            const svg = `
++                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
++                    <defs>
++                        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
++                            <stop offset="0" stop-color="${primary}" />
++                            <stop offset="1" stop-color="${accent}" />
++                        </linearGradient>
++                    </defs>
++                    <rect width="640" height="480" fill="url(#bg)" />
++                    <circle cx="520" cy="120" r="96" fill="rgba(255,255,255,0.35)" />
++                    <circle cx="140" cy="360" r="140" fill="rgba(255,255,255,0.25)" />
++                    <path d="M120 220c40-78 120-126 200-118s140 84 172 164c30 74 22 156-22 170-56 18-118-86-186-82-72 4-150 116-198 82-44-32-28-160 34-216z" fill="rgba(255,255,255,0.45)" />
++                    <text x="80" y="132" font-family="'Playfair Display', serif" font-size="88" fill="rgba(36,36,15,0.72)">${icon}</text>
++                    <text x="80" y="230" font-family="'Playfair Display', serif" font-size="46" fill="rgba(36,36,15,0.82)" letter-spacing="2">${title}</text>
++                </svg>
++            `.replace(/\s+/g, ' ');
++
++            return `data:image/svg+xml,${encodeURIComponent(svg)}`;
++        }
++
++        const services = [
++            {
++                name: 'Design Personalizado',
++                price: 35,
++                description: 'Mapeamento exclusivo, finalização polida e dicas de cuidado para sobrancelhas impecáveis.',
++                image: createIllustration('Design de Sobrancelhas', '✨', '#f3f8e8', '#bcd054')
++            },
++            {
++                name: 'Design com Henna',
++                price: 60,
++                description: 'Coloração suave e alinhamento que valorizam o desenho natural por até duas semanas.',
++                image: createIllustration('Henna Deluxe', '🎨', '#f9f5ec', '#d5b26f')
++            },
++            {
++                name: 'Micropigmentação',
++                price: 350,
++                description: 'Técnica premium que garante sobrancelhas preenchidas, harmônicas e de longa duração.',
++                image: createIllustration('Micropigmentação', '🖋️', '#f4f1ff', '#c7b3e6')
++            },
++            {
++                name: 'Brow Lamination',
++                price: 120,
++                description: 'Fios alinhados e volumosos com acabamento espelhado e definição impecável.',
++                image: createIllustration('Brow Lamination', '🌿', '#f1fbf4', '#9ed3a6')
++            },
++            {
++                name: 'Extensão de cílios (Tufo)',
++                price: 170,
++                description: 'Volume construído fio a fio com tufos estratégicos para um olhar intenso e confortável.',
++                image: createIllustration('Extensão Tufo', '👁️', '#f5f4ff', '#a6a6e8')
++            },
++            {
++                name: 'Cílios fio a fio (volume inglês)',
++                price: 90,
++                description: 'Camadas leves que alongam e destacam o olhar sem perder a naturalidade.',
++                image: createIllustration('Fio a Fio', '💫', '#f4faff', '#8ec5d8')
++            },
++            {
++                name: 'Limpeza de pele',
++                price: 90,
++                description: 'Protocolo detox que purifica, hidrata e devolve luminosidade imediata.',
++                image: createIllustration('Limpeza Facial', '🫧', '#f3f8ff', '#a6c4f3')
++            },
++            {
++                name: 'Hydra Gloss',
++                price: 90,
++                description: 'Tratamento labial com hidratação intensa e acabamento espelhado sofisticado.',
++                image: createIllustration('Hydra Gloss', '💋', '#fff2f7', '#f5a6c9')
++            },
++            {
++                name: 'Ensaio com maquiagem (10 fotos)',
++                price: 90,
++                description: 'Produção completa com maquiagem exclusiva e mini ensaio fotográfico autoral.',
++                image: createIllustration('Ensaio Beauty', '📸', '#fff6ed', '#f0b587')
++            }
++        ];
++
++        const whatsappNumber = '5571983996400';
++        const serviceGrid = document.getElementById('lista-servicos');
++        const resumoItens = document.getElementById('resumo-itens');
++        const resumoTotal = document.getElementById('resumo-total');
++        const form = document.getElementById('form-agendamento');
++        const statusMsg = document.getElementById('status-msg');
++        const yearEl = document.getElementById('ano');
++
++        yearEl.textContent = new Date().getFullYear();
++
++        const revealObserver = new IntersectionObserver((entries) => {
++            entries.forEach((entry) => {
++                if (entry.isIntersecting) {
++                    entry.target.classList.add('is-visible');
++                    revealObserver.unobserve(entry.target);
++                }
++            });
++        }, { threshold: 0.2 });
++
++        function observeReveal(element) {
++            if (element.classList.contains('reveal')) {
++                revealObserver.observe(element);
++            }
++        }
++
++        document.querySelectorAll('.reveal').forEach(observeReveal);
++
++        function formatCurrency(value) {
++            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
++        }
++
++        function renderServices() {
++            serviceGrid.innerHTML = '';
++            services.forEach((service, index) => {
++                const card = document.createElement('article');
++                card.className = 'service-card reveal';
++
++                const label = document.createElement('label');
++                label.className = 'service-option';
++
++                const checkbox = document.createElement('input');
++                checkbox.type = 'checkbox';
++                checkbox.id = `servico-${index}`;
++                checkbox.className = 'service-checkbox';
++                checkbox.dataset.name = service.name;
++                checkbox.dataset.price = String(service.price);
++
++                const checkMark = document.createElement('span');
++                checkMark.className = 'service-check';
++                checkMark.textContent = '✓';
++
++                const figure = document.createElement('figure');
++                figure.className = 'service-media';
++
++                const img = document.createElement('img');
++                img.src = service.image;
++                img.alt = `${service.name} - referência visual`;
++                img.loading = 'lazy';
++                figure.appendChild(img);
++
++                const badge = document.createElement('span');
++                badge.className = 'service-badge';
++                badge.textContent = formatCurrency(service.price);
++                figure.appendChild(badge);
++
++                const body = document.createElement('div');
++                body.className = 'service-body';
++
++                const title = document.createElement('h3');
++                title.textContent = service.name;
++                body.appendChild(title);
++
++                const description = document.createElement('p');
++                description.textContent = service.description;
++                body.appendChild(description);
++
++                label.appendChild(checkbox);
++                label.appendChild(checkMark);
++                label.appendChild(figure);
++                label.appendChild(body);
++
++                card.appendChild(label);
++                serviceGrid.appendChild(card);
++
++                observeReveal(card);
++
++                checkbox.addEventListener('change', () => {
++                    card.classList.toggle('is-selected', checkbox.checked);
++                    statusMsg.textContent = '';
++                    statusMsg.style.color = 'var(--pear-700)';
++                    updateSummary();
++                });
++            });
++        }
++
++        function updateSummary() {
++            const selected = Array.from(document.querySelectorAll('.service-checkbox:checked'));
++            resumoItens.innerHTML = '';
++
++            if (!selected.length) {
++                const li = document.createElement('li');
++                li.textContent = 'Selecione um serviço para começar.';
++                resumoItens.appendChild(li);
++                resumoTotal.textContent = 'Total estimado: R$ 0,00';
++                return;
++            }
++
++            let total = 0;
++            selected.forEach((checkbox) => {
++                const name = checkbox.dataset.name;
++                const price = Number(checkbox.dataset.price);
++                total += price;
++
++                const li = document.createElement('li');
++                li.textContent = `${name} (${formatCurrency(price)})`;
++                resumoItens.appendChild(li);
++            });
++
++            resumoTotal.textContent = `Total estimado: ${formatCurrency(total)}`;
++        }
++
++        form.addEventListener('submit', (event) => {
++            event.preventDefault();
++            const selected = Array.from(document.querySelectorAll('.service-checkbox:checked'));
++
++            if (!selected.length) {
++                statusMsg.textContent = 'Escolha pelo menos um serviço para agendar.';
++                statusMsg.style.color = 'var(--warning)';
++                return;
++            }
++
++            const nome = document.getElementById('nome').value.trim();
++            const dia = document.getElementById('dia').value;
++            const hora = document.getElementById('hora').value;
++
++            if (!nome || !dia || !hora) {
++                statusMsg.textContent = 'Preencha todos os campos para continuar.';
++                statusMsg.style.color = 'var(--warning)';
++                return;
++            }
++
++            const horaFormatada = hora.slice(0, 5);
++            const total = selected.reduce((sum, checkbox) => sum + Number(checkbox.dataset.price), 0);
++            const servicosTexto = selected
++                .map((checkbox) => `${checkbox.dataset.name} (${formatCurrency(Number(checkbox.dataset.price))})`)
++                .join(', ');
++
++            const message = `Olá, Amanda! Meu nome é ${nome}. Gostaria de agendar ${selected.length > 1 ? 'os serviços' : 'o serviço'} ${servicosTexto} para ${dia} às ${horaFormatada}. Valor estimado: ${formatCurrency(total)}.`;
++            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
++
++            statusMsg.textContent = 'Abrindo o WhatsApp…';
++            statusMsg.style.color = 'var(--pear-700)';
++            window.open(whatsappURL, '_blank');
++        });
++
++        renderServices();
++        updateSummary();
++    </script>
++</body>
++</html>
+
