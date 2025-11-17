@@ -16,6 +16,7 @@ Landing page estática para apresentar os serviços de Amanda PMU e permitir que
 - **Resumo**: painel lateral exibe os serviços escolhidos, total estimado e campos para nome, dia (segunda a sábado) e horário preferido.
 - **WhatsApp**: o botão “Confirmar pelo WhatsApp” monta a mensagem com todos os itens selecionados, inclui o valor total e envia para o número oficial `55 71 98399-6400`.
 - **Rodapé limpo**: o HTML remove automaticamente qualquer bloco de patch (linhas que começam com `diff --git`, `@@`, `+++`, etc.) que venha a ser colado por engano após o rodapé, evitando a duplicação da página.
+- **Sem redirecionador legado**: o antigo arquivo `index.html.html` foi removido para impedir bugs visuais em ambientes que listavam ambos os arquivos; abra sempre o `index.html` principal.
 
 ## Personalização
 
