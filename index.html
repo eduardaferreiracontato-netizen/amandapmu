@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda Sampaio · Ritual de Beleza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --mint: #bcd054;
+            --mint-soft: rgba(188, 208, 84, 0.16);
+            --gold: #d6c59b;
+            --ink: #1f2616;
+            --ink-soft: rgba(31, 38, 22, 0.75);
+            --surface: rgba(255, 255, 255, 0.94);
+            --shadow: 0 20px 60px rgba(38, 56, 8, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Source Sans 3', system-ui, sans-serif;
+            color: var(--ink);
+            background: linear-gradient(135deg, #ffffff 0%, #eff6dd 50%, #f7f2df 100%);
+        }
+
+        header {
+            position: relative;
+            padding: clamp(56px, 8vw, 120px) 24px 72px;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            inset: 20% -10% -10% 60%;
+            background: radial-gradient(circle at 30% 30%, rgba(188, 208, 84, 0.3), transparent 70%);
+            filter: blur(24px);
+            z-index: 0;
+        }
+
+        .hero {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(32px, 6vw, 80px);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            margin: 0 0 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-pretitle {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.38em;
+            color: rgba(31, 38, 22, 0.6);
+        }
+
+        .hero p {
+            margin: 0 0 28px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--ink-soft);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 999px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            color: var(--ink);
+            background: linear-gradient(120deg, #ffffff, rgba(255, 255, 255, 0.8));
+            border: 1px solid rgba(188, 208, 84, 0.6);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta:hover,
+        .cta:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(38, 56, 8, 0.25);
+        }
+
+        .ghost-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 26px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(31, 38, 22, 0.08);
+        }
+
+        .hero-visual {
+            position: relative;
+            border-radius: 36px;
+            padding: 48px;
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            min-height: 360px;
+        }
+
+        .hero-visual::after {
+            content: "";
+            position: absolute;
+            inset: 20px;
+            border-radius: 24px;
+            border: 1px solid rgba(214, 197, 155, 0.4);
+            pointer-events: none;
+        }
+
+        .hero-visual svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        main {
+            padding: 0 24px 100px;
+        }
+
+        .booking-grid {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: clamp(24px, 4vw, 48px);
+        }
+
+        @media (max-width: 960px) {
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+        }
+
+        .service-card {
+            position: relative;
+            display: block;
+            border-radius: 28px;
+            overflow: hidden;
+        }
+
+        .service-card input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .card-shell {
+            height: 100%;
+            padding: 24px;
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.85));
+            border-radius: 28px;
+            border: 1px solid rgba(31, 38, 22, 0.06);
+            box-shadow: 0 20px 40px rgba(30, 46, 12, 0.08);
+            display: grid;
+            gap: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card:hover .card-shell {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(30, 46, 12, 0.16);
+        }
+
+        .service-card input:checked + .card-shell {
+            border-color: rgba(188, 208, 84, 0.6);
+            box-shadow: 0 34px 70px rgba(30, 46, 12, 0.2);
+        }
+
+        .service-card input:checked + .card-shell::after {
+            content: "";
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: linear-gradient(140deg, var(--mint), #9eb139);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 18px;
+            background: var(--mint-soft);
+            display: grid;
+            place-items: center;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--ink);
+            stroke-width: 1.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+        }
+
+        .service-card p {
+            margin: 0;
+            color: var(--ink-soft);
+            line-height: 1.6;
+        }
+
+        .service-price {
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: 0.05em;
+        }
+
+        .summary {
+            position: sticky;
+            top: 32px;
+            align-self: start;
+            background: var(--surface);
+            border-radius: 32px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            display: grid;
+            gap: 20px;
+        }
+
+        .summary h2 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .summary-empty {
+            margin: 0;
+            color: var(--ink-soft);
+        }
+
+        .summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .summary-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.98rem;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 16px 0 0;
+            border-top: 1px solid rgba(31, 38, 22, 0.06);
+        }
+
+        .field-group {
+            display: grid;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        input,
+        select {
+            border: 1px solid rgba(31, 38, 22, 0.18);
+            border-radius: 14px;
+            padding: 12px 14px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: linear-gradient(130deg, var(--mint), #d6e58d);
+            color: #1c2215;
+            border: none;
+            box-shadow: 0 20px 40px rgba(30, 46, 12, 0.25);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .whatsapp-link[aria-disabled="true"] {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .whatsapp-link:not([aria-disabled="true"]):hover {
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 16px 60px;
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <div>
+                <span class="hero-pretitle">Estúdio Boutique em Salvador</span>
+                <h1>Amanda Sampaio</h1>
+                <p>Experiência personalizada em design de sobrancelhas, cílios, pele e maquiagem. Escolha seus serviços favoritos, informe sua disponibilidade e finalize pelo WhatsApp.</p>
+                <div class="hero-actions">
+                    <a class="cta" href="#agendamento">Montar ritual agora</a>
+                    <a class="ghost-link" href="#servicos">Ver serviços</a>
+                </div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <svg viewBox="0 0 360 360" role="presentation">
+                    <defs>
+                        <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fdfdfc" />
+                            <stop offset="100%" stop-color="#bcd054" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="180" cy="180" r="130" fill="url(#glow)" opacity="0.3" />
+                    <path d="M80 200c30-90 80-90 110 0s90 90 120 0" fill="none" stroke="#c9d989" stroke-width="4" stroke-linecap="round" />
+                    <path d="M70 120c40-30 90-30 130 10s90 40 120 0" fill="none" stroke="#d6c59b" stroke-width="3" stroke-linecap="round" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <main id="agendamento">
+        <div class="booking-grid">
+            <section aria-label="Serviços" id="servicos">
+                <div id="service-grid" class="service-grid" role="group" aria-label="Selecione os serviços desejados"></div>
+            </section>
+            <aside class="summary" aria-live="polite">
+                <h2>Resumo do ritual</h2>
+                <p id="empty-state" class="summary-empty">Escolha um ou mais serviços para começar.</p>
+                <ul id="summary-list" class="summary-list" hidden></ul>
+                <div id="summary-total" class="total" hidden>
+                    <span>Total estimado</span>
+                    <strong></strong>
+                </div>
+                <div class="field-group">
+                    <label for="client-name">Seu nome</label>
+                    <input id="client-name" type="text" placeholder="Digite como prefere ser chamada">
+                </div>
+                <div class="field-group">
+                    <label for="preferred-day">Dia preferido</label>
+                    <select id="preferred-day">
+                        <option value="">Selecione</option>
+                        <option>Segunda-feira</option>
+                        <option>Terça-feira</option>
+                        <option>Quarta-feira</option>
+                        <option>Quinta-feira</option>
+                        <option>Sexta-feira</option>
+                        <option>Sábado</option>
+                    </select>
+                </div>
+                <div class="field-group">
+                    <label for="preferred-time">Horário preferido</label>
+                    <input id="preferred-time" type="time">
+                </div>
+                <a id="whatsapp-link" class="whatsapp-link" href="#" target="_blank" rel="noopener" aria-disabled="true">Confirmar pelo WhatsApp</a>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        © <span id="current-year"></span> Amanda Sampaio · Estúdio Boutique em Salvador
+    </footer>
+
+    <script>
+        const serviceGrid = document.getElementById('service-grid');
+        const summaryList = document.getElementById('summary-list');
+        const summaryTotal = document.getElementById('summary-total');
+        const emptyState = document.getElementById('empty-state');
+        const clientName = document.getElementById('client-name');
+        const preferredDay = document.getElementById('preferred-day');
+        const preferredTime = document.getElementById('preferred-time');
+        const whatsappLink = document.getElementById('whatsapp-link');
+        const numberFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        const servicesData = [
+            { name: 'Design Personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', paths: ['M6 30c9-4 13-13 18-12s9 10 18 12','M14 32c2 4 8 8 10 8s8-4 10-8'] },
+            { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho com suavidade.', paths: ['M10 30c4-10 10-16 14-16s10 6 14 16','M14 28c2 4 6 8 10 8s8-4 10-8','M12 18l4-6 6-2'] },
+            { name: 'Micropigmentação', price: 350, description: 'Estrutura fio a fio com efeito duradouro e desenho sob medida para você.', paths: ['M12 16l12 12 12-12','M12 16l12-8 12 8','M12 32l12 8 12-8'] },
+            { name: 'Brow Lamination', price: 120, description: 'Alinhamento e brilho que levantam o olhar com acabamento polido.', paths: ['M10 24c6-6 22-6 28 0','M12 28c4-4 16-4 20 0','M14 32c2-2 12-2 14 0'] },
+            { name: 'Extensão de Cílios (Tufo)', price: 170, description: 'Volume elegante com aplicação precisa e conforto no dia a dia.', paths: ['M6 24c10 6 26 6 36 0','M12 26l-2 6','M18 28l-1 6','M24 28v6','M30 28l1 6','M36 26l2 6'] },
+            { name: 'Cílios fio a fio (volume inglês)', price: 90, description: 'Fios leves e alongados para um efeito sofisticado com naturalidade.', paths: ['M8 24c8 4 24 4 32 0','M16 26l-1 5','M22 27v5','M28 27v5','M34 26l1 5'] },
+            { name: 'Limpeza de pele', price: 90, description: 'Renovação suave com máscaras calmantes e toque hidratante.', paths: ['M18 12h12','M12 20c4-4 20-4 24 0','M14 24c2 4 6 10 10 10s8-6 10-10'] },
+            { name: 'Hydra Gloss', price: 90, description: 'Hidratação profunda para lábios com brilho acetinado e toque volumoso.', paths: ['M16 12l16 4v18c0 4-16 4-16 0z','M24 16v22'] },
+            { name: 'Ensaio com maquiagem (10 fotos)', price: 90, description: 'Produção completa e registro fotográfico com 10 imagens finalizadas.', paths: ['M8 14h32v22a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z','M16 14l2-4h12l2 4','M24 24a6 6 0 1 1 0 12a6 6 0 0 1 0-12'] }
+        ];
+
+        function createServiceCard(service) {
+            const label = document.createElement('label');
+            label.className = 'service-card';
+            label.innerHTML = `
+            <input type="checkbox" name="services" value="${service.name}" data-price="${service.price}">
+            <div class="card-shell">
+                <div class="card-accent">
+                    <svg class="service-icon" viewBox="0 0 48 48">
+                        ${service.paths.map(path => `<path d="${path}" />`).join('')}
+                    </svg>
+                </div>
+                <div class="card-copy">
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                </div>
+                <span class="service-price">${numberFormat.format(service.price)}</span>
+            </div>
+        `;
+            return label;
+        }
+
+        serviceGrid.innerHTML = '';
+        servicesData.forEach(service => serviceGrid.appendChild(createServiceCard(service)));
+
+        function getSelectedServices() {
+            return Array.from(serviceGrid.querySelectorAll('input[type="checkbox"]'))
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => ({ name: checkbox.value, price: Number(checkbox.dataset.price) }));
+        }
+
+        function updateSummary() {
+            const services = getSelectedServices();
+            if (services.length === 0) {
+                summaryList.hidden = true; summaryTotal.hidden = true; emptyState.hidden = false;
+            } else {
+                summaryList.innerHTML = services.map(s => `<li><span>${s.name}</span><span>${numberFormat.format(s.price)}</span></li>`).join('');
+                summaryList.hidden = false; summaryTotal.hidden = false; emptyState.hidden = true;
+                summaryTotal.querySelector('strong').textContent = numberFormat.format(services.reduce((a,b) => a + b.price, 0));
+            }
+            updateWhatsAppLink(services);
+        }
+
+        function updateWhatsAppLink(services) {
+            const name = clientName.value.trim();
+            const day = preferredDay.value;
+            const time = preferredTime.value;
+            if (services.length === 0) { whatsappLink.setAttribute('aria-disabled','true'); whatsappLink.href = '#'; return; }
+
+            const serviceLines = services.map(s => `• ${s.name} — ${numberFormat.format(s.price)}`).join('\n');
+            const total = services.reduce((acc,s) => acc + s.price, 0);
+            const greeting = name ? `Olá, Amanda! Aqui é ${name}.` : 'Olá, Amanda!';
+            const scheduling = day ? `Preferência de dia: ${day}.` : 'Gostaria de verificar disponibilidade.';
+            const timeInfo = time ? `Horário sugerido: ${time}.` : '';
+
+            const message = `${greeting}\n\nTenho interesse nos serviços:\n${serviceLines}\n\nTotal estimado: ${numberFormat.format(total)}.\n${scheduling}${timeInfo ? ` ${timeInfo}` : ''}\n\nPodemos agendar?`;
+            whatsappLink.href = `https://wa.me/5571983996400?text=${encodeURIComponent(message)}`;
+            whatsappLink.setAttribute('aria-disabled','false');
+        }
+
+        // Listeners & init
+        document.addEventListener('input', updateSummary);
+        document.addEventListener('change', updateSummary);
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        updateSummary();
+    </script>
+</body>
+</html>
