@@ -16,6 +16,7 @@
             --ink-soft: rgba(31, 38, 22, 0.75);
             --surface: rgba(255, 255, 255, 0.94);
             --shadow: 0 20px 60px rgba(38, 56, 8, 0.18);
+            --gallery-bg: rgba(255, 255, 255, 0.55);
         }
 
         * {
@@ -39,9 +40,10 @@
         header::after {
             content: "";
             position: absolute;
-            inset: 20% -10% -10% 60%;
-            background: radial-gradient(circle at 30% 30%, rgba(188, 208, 84, 0.3), transparent 70%);
-            filter: blur(24px);
+            inset: -40% 20% auto -10%;
+            height: 120%;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.35), transparent 65%);
+            filter: blur(35px);
             z-index: 0;
         }
 
@@ -61,6 +63,9 @@
             font-family: 'Playfair Display', serif;
             font-size: clamp(3rem, 6vw, 4.5rem);
             letter-spacing: 0.02em;
+            background: linear-gradient(120deg, #1f2616, #bcd054);
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         .hero-pretitle {
@@ -121,30 +126,6 @@
             border: 1px solid rgba(31, 38, 22, 0.08);
         }
 
-        .hero-visual {
-            position: relative;
-            border-radius: 36px;
-            padding: 48px;
-            background: var(--surface);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            min-height: 360px;
-        }
-
-        .hero-visual::after {
-            content: "";
-            position: absolute;
-            inset: 20px;
-            border-radius: 24px;
-            border: 1px solid rgba(214, 197, 155, 0.4);
-            pointer-events: none;
-        }
-
-        .hero-visual svg {
-            width: 100%;
-            height: 100%;
-        }
-
         main {
             padding: 0 24px 100px;
         }
@@ -165,7 +146,7 @@
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 22px;
         }
 
@@ -183,13 +164,13 @@
 
         .card-shell {
             height: 100%;
-            padding: 24px;
             background: linear-gradient(150deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.85));
             border-radius: 28px;
             border: 1px solid rgba(31, 38, 22, 0.06);
             box-shadow: 0 20px 40px rgba(30, 46, 12, 0.08);
             display: grid;
             gap: 18px;
+            padding: 18px;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
@@ -214,23 +195,22 @@
             background: linear-gradient(140deg, var(--mint), #9eb139);
         }
 
-        .service-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 18px;
-            background: var(--mint-soft);
-            display: grid;
-            place-items: center;
+        .card-media {
+            border-radius: 22px;
+            overflow: hidden;
+            position: relative;
+            height: 180px;
         }
 
-        .service-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: var(--ink);
-            stroke-width: 1.5;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .card-media img {
+            transform: scale(1.05);
         }
 
         .service-card h3 {
@@ -342,6 +322,41 @@
             transform: translateY(-3px);
         }
 
+        .gallery {
+            margin-top: clamp(60px, 8vw, 100px);
+            padding: 40px;
+            background: var(--gallery-bg);
+            border-radius: 36px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .gallery h2 {
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 20px;
+            animation: scroll 30s linear infinite;
+        }
+
+        .gallery-track img {
+            width: 240px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
         footer {
             text-align: center;
             padding: 40px 16px 60px;
@@ -361,19 +376,6 @@
                     <a class="cta" href="#agendamento">Montar ritual agora</a>
                     <a class="ghost-link" href="#servicos">Ver serviços</a>
                 </div>
-            </div>
-            <div class="hero-visual" aria-hidden="true">
-                <svg viewBox="0 0 360 360" role="presentation">
-                    <defs>
-                        <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#fdfdfc" />
-                            <stop offset="100%" stop-color="#bcd054" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="180" cy="180" r="130" fill="url(#glow)" opacity="0.3" />
-                    <path d="M80 200c30-90 80-90 110 0s90 90 120 0" fill="none" stroke="#c9d989" stroke-width="4" stroke-linecap="round" />
-                    <path d="M70 120c40-30 90-30 130 10s90 40 120 0" fill="none" stroke="#d6c59b" stroke-width="3" stroke-linecap="round" />
-                </svg>
             </div>
         </div>
     </header>
@@ -414,6 +416,10 @@
                 <a id="whatsapp-link" class="whatsapp-link" href="#" target="_blank" rel="noopener" aria-disabled="true">Confirmar pelo WhatsApp</a>
             </aside>
         </div>
+        <section class="gallery" aria-label="Resultados recentes">
+            <h2>Resultados que inspiram</h2>
+            <div id="gallery-track" class="gallery-track"></div>
+        </section>
     </main>
 
     <footer>
@@ -421,6 +427,7 @@
     </footer>
 
     <script>
+        const galleryTrack = document.getElementById('gallery-track');
         const serviceGrid = document.getElementById('service-grid');
         const summaryList = document.getElementById('summary-list');
         const summaryTotal = document.getElementById('summary-total');
@@ -431,16 +438,34 @@
         const whatsappLink = document.getElementById('whatsapp-link');
         const numberFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
+        function createServiceImage(accent, glow, stroke) {
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                    <linearGradient id="grad" x1="0%" x2="100%" y1="0%" y2="100%">
+                        <stop offset="0%" stop-color="${accent}" />
+                        <stop offset="100%" stop-color="${glow}" />
+                    </linearGradient>
+                </defs>
+                <rect width="400" height="320" fill="url(#grad)" />
+                <circle cx="320" cy="60" r="70" fill="rgba(255,255,255,0.35)" />
+                <circle cx="80" cy="260" r="90" fill="rgba(255,255,255,0.22)" />
+                <path d="M60 210 Q200 140 340 210" stroke="${stroke}" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.8" />
+                <path d="M80 140 Q200 80 320 140" stroke="${stroke}" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.5" />
+                <path d="M110 90 Q200 40 290 90" stroke="${stroke}" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.35" />
+            </svg>`;
+            return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+        }
+
         const servicesData = [
-            { name: 'Design Personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', paths: ['M6 30c9-4 13-13 18-12s9 10 18 12','M14 32c2 4 8 8 10 8s8-4 10-8'] },
-            { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho com suavidade.', paths: ['M10 30c4-10 10-16 14-16s10 6 14 16','M14 28c2 4 6 8 10 8s8-4 10-8','M12 18l4-6 6-2'] },
-            { name: 'Micropigmentação', price: 350, description: 'Estrutura fio a fio com efeito duradouro e desenho sob medida para você.', paths: ['M12 16l12 12 12-12','M12 16l12-8 12 8','M12 32l12 8 12-8'] },
-            { name: 'Brow Lamination', price: 120, description: 'Alinhamento e brilho que levantam o olhar com acabamento polido.', paths: ['M10 24c6-6 22-6 28 0','M12 28c4-4 16-4 20 0','M14 32c2-2 12-2 14 0'] },
-            { name: 'Extensão de Cílios (Tufo)', price: 170, description: 'Volume elegante com aplicação precisa e conforto no dia a dia.', paths: ['M6 24c10 6 26 6 36 0','M12 26l-2 6','M18 28l-1 6','M24 28v6','M30 28l1 6','M36 26l2 6'] },
-            { name: 'Cílios fio a fio (volume inglês)', price: 90, description: 'Fios leves e alongados para um efeito sofisticado com naturalidade.', paths: ['M8 24c8 4 24 4 32 0','M16 26l-1 5','M22 27v5','M28 27v5','M34 26l1 5'] },
-            { name: 'Limpeza de pele', price: 90, description: 'Renovação suave com máscaras calmantes e toque hidratante.', paths: ['M18 12h12','M12 20c4-4 20-4 24 0','M14 24c2 4 6 10 10 10s8-6 10-10'] },
-            { name: 'Hydra Gloss', price: 90, description: 'Hidratação profunda para lábios com brilho acetinado e toque volumoso.', paths: ['M16 12l16 4v18c0 4-16 4-16 0z','M24 16v22'] },
-            { name: 'Ensaio com maquiagem (10 fotos)', price: 90, description: 'Produção completa e registro fotográfico com 10 imagens finalizadas.', paths: ['M8 14h32v22a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6z','M16 14l2-4h12l2 4','M24 24a6 6 0 1 1 0 12a6 6 0 0 1 0-12'] }
+            { name: 'Design Personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: createServiceImage('#f4d8c6', '#fdf6ef', '#c98f61') },
+            { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho com suavidade.', image: createServiceImage('#f8e1d4', '#fff5f0', '#c47f55') },
+            { name: 'Micropigmentação', price: 350, description: 'Estrutura fio a fio com efeito duradouro e desenho sob medida para você.', image: createServiceImage('#eed5f4', '#f9ebff', '#a475c6') },
+            { name: 'Brow Lamination', price: 120, description: 'Alinhamento e brilho que levantam o olhar com acabamento polido.', image: createServiceImage('#d4f1eb', '#f2fbf8', '#4b9c8a') },
+            { name: 'Extensão de Cílios (Tufo)', price: 170, description: 'Volume elegante com aplicação precisa e conforto no dia a dia.', image: createServiceImage('#fde2e1', '#fff4f3', '#d67878') },
+            { name: 'Cílios fio a fio (volume inglês)', price: 90, description: 'Fios leves e alongados para um efeito sofisticado com naturalidade.', image: createServiceImage('#dff0ff', '#f1f8ff', '#5980b6') },
+            { name: 'Limpeza de pele', price: 90, description: 'Renovação suave com máscaras calmantes e toque hidratante.', image: createServiceImage('#f2f5db', '#fbfde9', '#9aaf4f') },
+            { name: 'Hydra Gloss', price: 90, description: 'Hidratação profunda para lábios com brilho acetinado e toque volumoso.', image: createServiceImage('#ffe6f1', '#fff2f8', '#d5689b') },
+            { name: 'Ensaio com maquiagem (10 fotos)', price: 90, description: 'Produção completa e registro fotográfico com 10 imagens finalizadas.', image: createServiceImage('#f0e1ff', '#f8f0ff', '#8f75d0') }
         ];
 
         function createServiceCard(service) {
@@ -449,10 +474,8 @@
             label.innerHTML = `
             <input type="checkbox" name="services" value="${service.name}" data-price="${service.price}">
             <div class="card-shell">
-                <div class="card-accent">
-                    <svg class="service-icon" viewBox="0 0 48 48">
-                        ${service.paths.map(path => `<path d="${path}" />`).join('')}
-                    </svg>
+                <div class="card-media">
+                    <img src="${service.image}" alt="${service.name}">
                 </div>
                 <div class="card-copy">
                     <h3>${service.name}</h3>
@@ -502,10 +525,24 @@
             whatsappLink.setAttribute('aria-disabled','false');
         }
 
+        function populateGallery() {
+            const galleryImages = [
+                createServiceImage('#f6ded4', '#fff4ed', '#d08a5b'),
+                createServiceImage('#dcefeb', '#f1fbf7', '#549b83'),
+                createServiceImage('#f1e1ff', '#f9f0ff', '#8f78d0'),
+                createServiceImage('#fde2e1', '#fff4f3', '#d67878')
+            ];
+            const fullSequence = galleryImages.concat(galleryImages);
+            galleryTrack.innerHTML = fullSequence
+                .map((src, index) => `<img src="${src}" alt="Resultado ${index % galleryImages.length + 1}" loading="lazy"${index >= galleryImages.length ? ' aria-hidden="true"' : ''}>`)
+                .join('');
+        }
+
         // Listeners & init
         document.addEventListener('input', updateSummary);
         document.addEventListener('change', updateSummary);
         document.getElementById('current-year').textContent = new Date().getFullYear();
+        populateGallery();
         updateSummary();
     </script>
 </body>
