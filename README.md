@@ -15,6 +15,7 @@ Landing page estática para apresentar os serviços de Amanda PMU e permitir que
 - **Serviços**: grade responsiva gerada via JavaScript, com cartões animados, ícones SVG e múltipla seleção.
 - **Resumo**: painel lateral exibe os serviços escolhidos, total estimado e campos para nome, dia (segunda a sábado) e horário preferido.
 - **WhatsApp**: o botão “Confirmar pelo WhatsApp” monta a mensagem com todos os itens selecionados, inclui o valor total e envia para o número oficial `55 71 98399-6400`.
+- **Rodapé limpo**: o HTML remove automaticamente qualquer bloco de patch (linhas que começam com `diff --git`, `@@`, `+++`, etc.) que venha a ser colado por engano após o rodapé, evitando a duplicação da página.
 
 ## Personalização
 
@@ -22,6 +23,7 @@ Landing page estática para apresentar os serviços de Amanda PMU e permitir que
 - Os valores dos serviços estão definidos na propriedade `price` de cada item do array.
 - A lista de dias pode ser ajustada editando as opções do `<select id="preferred-day">`.
 - Os ícones dos serviços são SVGs inline (nenhum arquivo binário é necessário). Você pode adaptar os traços dentro de cada `<svg>` conforme preferir.
+- Se um editor colar um trecho de `git diff` no final do arquivo, basta remover a partir de `diff --git a/index.html b/index.html`. O script também detecta e exclui automaticamente esses resíduos para impedir que apareçam na página.
 
 ## Testing
 

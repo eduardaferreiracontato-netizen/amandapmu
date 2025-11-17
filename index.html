@@ -713,6 +713,9 @@
             </div>
         </form>
     </main>
+    <footer>
+        © <span id="current-year"></span> Amanda PMU · Estúdio Boutique em Salvador
+    </footer>
 
     <footer>
         © <span id="current-year"></span> Amanda PMU · Estúdio Boutique em Salvador
@@ -846,6 +849,8 @@
             return label;
         }
 
+        serviceGrid.innerHTML = '';
+
         servicesData.forEach(service => {
             serviceGrid.appendChild(createServiceCard(service));
         });
@@ -922,6 +927,29 @@
             field.addEventListener('change', updateSummary);
         });
 
+        function removeGitPatchArtifacts() {
+            const footer = document.querySelector('footer');
+            if (!footer) return;
+
+            const diffPattern = /(diff --git|@@|\+\+\+\s|---\s|^index\s[0-9a-f]+)/m;
+            let node = footer.nextSibling;
+
+            while (node) {
+                const next = node.nextSibling;
+                const text = node.textContent || '';
+                if (diffPattern.test(text)) {
+                    node.remove();
+                }
+                node = next;
+            }
+        }
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        updateSummary();
+        removeGitPatchArtifacts();
+    </script>
+</body>
+</html>
         document.getElementById('current-year').textContent = new Date().getFullYear();
         updateSummary();
     </script>
