@@ -24,7 +24,7 @@ Landing page estática para apresentar os serviços de Amanda PMU e permitir que
 - Os valores dos serviços estão definidos na propriedade `price` de cada item do array.
 - A lista de dias pode ser ajustada editando as opções do `<select id="preferred-day">`.
 - Os ícones dos serviços são SVGs inline (nenhum arquivo binário é necessário). Você pode adaptar os traços dentro de cada `<svg>` conforme preferir.
-- Se um editor colar um trecho de `git diff` no final do arquivo, basta remover a partir de `diff --git a/index.html b/index.html`. O script também detecta e exclui automaticamente esses resíduos para impedir que apareçam na página.
+- Basta manter apenas o conteúdo do `index.html` (não há scripts extras para limpar rodapés duplicados) para preservar o layout.
 
 ## Testing
 
