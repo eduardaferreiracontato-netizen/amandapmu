@@ -6,17 +6,22 @@
     <title>Amanda Sampaio · Ritual de Beleza</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --mint: #bcd054;
-            --mint-soft: rgba(188, 208, 84, 0.16);
+            --brand-1: #67be9b;
+            --brand-2: #97b42a;
+            --brand-3: #89a46f;
+            --brand-gradient: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 48%, var(--brand-3) 100%);
+            --brand-soft: rgba(151, 180, 42, 0.16);
             --gold: #d6c59b;
-            --ink: #1f2616;
-            --ink-soft: rgba(31, 38, 22, 0.75);
-            --surface: rgba(255, 255, 255, 0.94);
-            --shadow: 0 20px 60px rgba(38, 56, 8, 0.18);
-            --gallery-bg: rgba(255, 255, 255, 0.55);
+            --gold-deep: #b78a2f;
+            --ink: #1c2415;
+            --ink-soft: rgba(28, 36, 21, 0.8);
+            --surface: rgba(255, 255, 255, 0.96);
+            --shadow: 0 20px 60px rgba(27, 43, 14, 0.16);
+            --gallery-bg: rgba(255, 255, 255, 0.65);
+            --section-max: 1180px;
         }
 
         * {
@@ -28,33 +33,38 @@
             min-height: 100vh;
             font-family: 'Source Sans 3', system-ui, sans-serif;
             color: var(--ink);
-            background: linear-gradient(135deg, #ffffff 0%, #eff6dd 50%, #f7f2df 100%);
+            background:
+                radial-gradient(160% 100% at 20% 10%, rgba(151, 180, 42, 0.12), transparent 45%),
+                radial-gradient(120% 90% at 82% 6%, rgba(103, 190, 155, 0.12), transparent 50%),
+                linear-gradient(180deg, #fbfcfa 0%, #f7f9f4 55%, #ffffff 100%);
         }
 
         header {
             position: relative;
-            padding: clamp(56px, 8vw, 120px) 24px 72px;
+            padding: clamp(64px, 8vw, 130px) 24px 88px;
             overflow: hidden;
-            background: linear-gradient(120deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.75)),
-                url('https://drive.google.com/uc?export=view&id=1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn') center/cover no-repeat;
+            background:
+                linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.86)),
+                linear-gradient(135deg, rgba(103, 190, 155, 0.18), rgba(151, 180, 42, 0.14)),
+                var(--hero-background, url('https://drive.google.com/uc?export=view&id=1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn')) center/cover no-repeat;
         }
 
         header::after {
             content: "";
             position: absolute;
-            inset: -40% 20% auto -10%;
-            height: 120%;
-            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.35), transparent 65%);
-            filter: blur(35px);
+            inset: -30% 10% auto -20%;
+            height: 130%;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.45), transparent 65%);
+            filter: blur(38px);
             z-index: 0;
         }
 
         .hero {
-            max-width: 1180px;
+            max-width: var(--section-max);
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: clamp(32px, 6vw, 80px);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: clamp(32px, 6vw, 72px);
             align-items: center;
             position: relative;
             z-index: 1;
@@ -63,20 +73,30 @@
         .hero h1 {
             margin: 0 0 20px;
             font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 6vw, 4.5rem);
-            letter-spacing: 0.02em;
-            background: linear-gradient(120deg, #1f2616, #bcd054);
+            font-size: clamp(3.6rem, 7vw, 5rem);
+            letter-spacing: 0.015em;
+            background: linear-gradient(110deg, #1c2415 0%, #67be9b 32%, #b78a2f 75%, #f2e2b7 100%);
             -webkit-background-clip: text;
             color: transparent;
+            text-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
         }
 
         .hero-pretitle {
             display: inline-block;
             margin-bottom: 12px;
-            font-size: 0.85rem;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 0.38em;
-            color: rgba(31, 38, 22, 0.6);
+            letter-spacing: 0.36em;
+            background: linear-gradient(120deg, #fdf6e3, #f1d9a7 38%, #c99a3d 62%, #f8e4ba 80%, #d2a955);
+            color: transparent;
+            -webkit-background-clip: text;
+            text-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.14),
+                0 0 14px rgba(233, 200, 120, 0.32);
+            border: 1px solid rgba(214, 197, 155, 0.35);
+            background-color: rgba(255, 255, 255, 0.65);
         }
 
         .hero p {
@@ -84,12 +104,14 @@
             font-size: 1.15rem;
             line-height: 1.8;
             color: var(--ink-soft);
+            max-width: 620px;
         }
 
         .hero-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
+            align-items: center;
         }
 
         .cta {
@@ -101,11 +123,11 @@
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            font-weight: 600;
-            color: var(--ink);
-            background: linear-gradient(120deg, #ffffff, rgba(255, 255, 255, 0.8));
-            border: 1px solid rgba(188, 208, 84, 0.6);
-            box-shadow: var(--shadow);
+            font-weight: 700;
+            color: #0f150a;
+            background: var(--brand-gradient);
+            border: 1px solid rgba(28, 36, 21, 0.08);
+            box-shadow: 0 22px 50px rgba(27, 43, 14, 0.25);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -124,20 +146,55 @@
             text-decoration: none;
             font-weight: 600;
             color: var(--ink);
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(31, 38, 22, 0.08);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(31, 38, 22, 0.12);
         }
 
         main {
             padding: 0 24px 100px;
         }
 
+        .section {
+            padding: clamp(48px, 8vw, 120px) 0;
+        }
+
+        .section .shell {
+            max-width: var(--section-max);
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 0 0 28px;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.1rem, 4vw, 2.7rem);
+            letter-spacing: 0.01em;
+        }
+
+        .section-title p {
+            margin: 12px auto 0;
+            max-width: 640px;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
+
         .booking-grid {
-            max-width: 1180px;
+            max-width: var(--section-max);
             margin: 0 auto;
             display: grid;
             grid-template-columns: minmax(0, 1fr) 340px;
             gap: clamp(24px, 4vw, 48px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.92)),
+                linear-gradient(135deg, rgba(103, 190, 155, 0.16), rgba(151, 180, 42, 0.16));
+            padding: clamp(28px, 4vw, 48px);
+            border-radius: 36px;
+            box-shadow: 0 30px 70px rgba(24, 36, 12, 0.12);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(151, 180, 42, 0.2);
         }
 
         @media (max-width: 960px) {
@@ -149,7 +206,7 @@
         .service-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 22px;
+            gap: clamp(18px, 3vw, 24px);
         }
 
         .service-card {
@@ -166,12 +223,13 @@
 
         .card-shell {
             height: 100%;
-            background: linear-gradient(150deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.85));
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.9));
             border-radius: 28px;
             border: 1px solid rgba(31, 38, 22, 0.06);
             box-shadow: 0 20px 40px rgba(30, 46, 12, 0.08);
-            display: grid;
-            gap: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
             padding: 18px;
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
@@ -182,7 +240,7 @@
         }
 
         .service-card input:checked + .card-shell {
-            border-color: rgba(188, 208, 84, 0.6);
+            border-color: rgba(151, 180, 42, 0.45);
             box-shadow: 0 34px 70px rgba(30, 46, 12, 0.2);
         }
 
@@ -194,20 +252,40 @@
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background: linear-gradient(140deg, var(--mint), #9eb139);
+            background: var(--brand-gradient);
         }
 
         .card-media {
             border-radius: 22px;
             overflow: hidden;
             position: relative;
-            height: 180px;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(140deg, rgba(214, 197, 155, 0.35), rgba(247, 233, 194, 0.2));
+            padding: 6px;
+        }
+
+        .card-copy {
+            flex: 1;
+            display: grid;
+            gap: 10px;
+            align-content: center;
+        }
+
+        .card-media::after {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border-radius: 16px;
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), inset 0 12px 24px rgba(183, 138, 47, 0.18);
+            pointer-events: none;
         }
 
         .card-media img {
             width: 100%;
             height: 100%;
+            border-radius: 14px;
             object-fit: cover;
+            object-position: center;
             transition: transform 0.4s ease;
         }
 
@@ -217,20 +295,27 @@
 
         .service-card h3 {
             margin: 0;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
+            font-family: 'Baskerville', 'Libre Baskerville', 'Playfair Display', serif;
+            font-size: 1.22rem;
+            letter-spacing: 0.01em;
+            text-align: center;
         }
 
         .service-card p {
             margin: 0;
             color: var(--ink-soft);
             line-height: 1.6;
+            text-align: center;
         }
 
         .service-price {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--ink);
-            letter-spacing: 0.05em;
+            letter-spacing: 0.06em;
+            text-align: center;
+            background: rgba(151, 180, 42, 0.14);
+            border-radius: 14px;
+            padding: 10px;
         }
 
         .summary {
@@ -243,6 +328,7 @@
             box-shadow: var(--shadow);
             display: grid;
             gap: 20px;
+            border: 1px solid rgba(28, 36, 21, 0.05);
         }
 
         .summary h2 {
@@ -296,6 +382,7 @@
             padding: 12px 14px;
             font-size: 1rem;
             font-family: inherit;
+            background-color: rgba(255, 255, 255, 0.9);
         }
 
         .whatsapp-link {
@@ -305,12 +392,12 @@
             padding: 16px;
             border-radius: 18px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            background: linear-gradient(130deg, var(--mint), #d6e58d);
-            color: #1c2215;
-            border: none;
+            background: var(--brand-gradient);
+            color: #0f150a;
+            border: 1px solid rgba(28, 36, 21, 0.1);
             box-shadow: 0 20px 40px rgba(30, 46, 12, 0.25);
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
@@ -325,9 +412,11 @@
         }
 
         .gallery {
-            margin-top: clamp(60px, 8vw, 100px);
-            padding: 40px;
-            background: var(--gallery-bg);
+            margin-top: clamp(40px, 8vw, 80px);
+            padding: clamp(28px, 6vw, 44px);
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.86)),
+                linear-gradient(135deg, rgba(103, 190, 155, 0.12), rgba(151, 180, 42, 0.16));
             border-radius: 36px;
             box-shadow: var(--shadow);
             overflow: hidden;
@@ -352,6 +441,8 @@
             object-fit: cover;
             border-radius: 24px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(140deg, rgba(214, 197, 155, 0.35), rgba(247, 233, 194, 0.25));
+            padding: 5px;
         }
 
         @keyframes scroll {
@@ -360,9 +451,68 @@
         }
 
         footer {
-            text-align: center;
-            padding: 40px 16px 60px;
-            font-size: 0.9rem;
+            padding: 48px 20px 64px;
+            background: linear-gradient(180deg, rgba(151, 180, 42, 0.14), rgba(255, 255, 255, 0.96));
+        }
+
+        .footer-shell {
+            max-width: var(--section-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            align-items: start;
+        }
+
+        .footer-brand h3 {
+            margin: 0 0 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            background: linear-gradient(110deg, #1c2415 0%, #b78a2f 60%, #f2e2b7 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .footer-brand p {
+            margin: 0;
+            color: var(--ink-soft);
+            line-height: 1.6;
+        }
+
+        .footer-group h4 {
+            margin: 0 0 12px;
+            font-size: 1rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: var(--ink);
+            text-decoration: none;
+            padding: 8px 0;
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .footer-meta {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(28, 36, 21, 0.08);
+            font-size: 0.95rem;
             color: var(--ink-soft);
         }
     </style>
@@ -371,7 +521,7 @@
     <header>
         <div class="hero">
             <div>
-                <span class="hero-pretitle">Estúdio Boutique em Salvador</span>
+                <span class="hero-pretitle">Beauty Boss</span>
                 <h1>Amanda Sampaio</h1>
                 <p>Experiência personalizada em design de sobrancelhas, cílios, pele e maquiagem. Escolha seus serviços favoritos, informe sua disponibilidade e finalize pelo WhatsApp.</p>
                 <div class="hero-actions">
@@ -382,54 +532,93 @@
         </div>
     </header>
 
-    <main id="agendamento">
-        <div class="booking-grid">
-            <section aria-label="Serviços" id="servicos">
-                <div id="service-grid" class="service-grid" role="group" aria-label="Selecione os serviços desejados"></div>
-            </section>
-            <aside class="summary" aria-live="polite">
-                <h2>Resumo do ritual</h2>
-                <p id="empty-state" class="summary-empty">Escolha um ou mais serviços para começar.</p>
-                <ul id="summary-list" class="summary-list" hidden></ul>
-                <div id="summary-total" class="total" hidden>
-                    <span>Total estimado</span>
-                    <strong></strong>
+    <main>
+        <section class="section services-section" id="agendamento">
+            <div class="shell">
+                <div class="section-title">
+                    <h2>Escolha seu ritual Beauty Boss</h2>
+                    <p>Combine os serviços preferidos com um clique, veja o resumo em tempo real e finalize de forma prática pelo WhatsApp.</p>
                 </div>
-                <div class="field-group">
-                    <label for="client-name">Seu nome</label>
-                    <input id="client-name" type="text" placeholder="Digite como prefere ser chamada">
+                <div class="booking-grid">
+                    <section aria-label="Serviços" id="servicos">
+                        <div id="service-grid" class="service-grid" role="group" aria-label="Selecione os serviços desejados"></div>
+                    </section>
+                    <aside class="summary" aria-live="polite">
+                        <h2>Resumo do ritual</h2>
+                        <p id="empty-state" class="summary-empty">Escolha um ou mais serviços para começar.</p>
+                        <ul id="summary-list" class="summary-list" hidden></ul>
+                        <div id="summary-total" class="total" hidden>
+                            <span>Total estimado</span>
+                            <strong></strong>
+                        </div>
+                        <div class="field-group">
+                            <label for="client-name">Seu nome</label>
+                            <input id="client-name" type="text" placeholder="Digite como prefere ser chamada">
+                        </div>
+                        <div class="field-group">
+                            <label for="preferred-day">Dia preferido</label>
+                            <select id="preferred-day">
+                                <option value="">Selecione</option>
+                                <option>Segunda-feira</option>
+                                <option>Terça-feira</option>
+                                <option>Quarta-feira</option>
+                                <option>Quinta-feira</option>
+                                <option>Sexta-feira</option>
+                                <option>Sábado</option>
+                            </select>
+                        </div>
+                        <div class="field-group">
+                            <label for="preferred-time">Horário preferido</label>
+                            <input id="preferred-time" type="time">
+                        </div>
+                        <a id="whatsapp-link" class="whatsapp-link" href="#" target="_blank" rel="noopener" aria-disabled="true">Confirmar pelo WhatsApp</a>
+                    </aside>
                 </div>
-                <div class="field-group">
-                    <label for="preferred-day">Dia preferido</label>
-                    <select id="preferred-day">
-                        <option value="">Selecione</option>
-                        <option>Segunda-feira</option>
-                        <option>Terça-feira</option>
-                        <option>Quarta-feira</option>
-                        <option>Quinta-feira</option>
-                        <option>Sexta-feira</option>
-                        <option>Sábado</option>
-                    </select>
+            </div>
+        </section>
+        <section class="section gallery-section" aria-label="Resultados recentes">
+            <div class="shell">
+                <div class="section-title">
+                    <h2>Resultados que inspiram</h2>
+                    <p>Fotos reais dos atendimentos para você visualizar o acabamento e a delicadeza de cada técnica.</p>
                 </div>
-                <div class="field-group">
-                    <label for="preferred-time">Horário preferido</label>
-                    <input id="preferred-time" type="time">
+                <div class="gallery">
+                    <div id="gallery-track" class="gallery-track"></div>
                 </div>
-                <a id="whatsapp-link" class="whatsapp-link" href="#" target="_blank" rel="noopener" aria-disabled="true">Confirmar pelo WhatsApp</a>
-            </aside>
-        </div>
-        <section class="gallery" aria-label="Resultados recentes">
-            <h2>Resultados que inspiram</h2>
-            <div id="gallery-track" class="gallery-track"></div>
+            </div>
         </section>
     </main>
 
     <footer>
-        © <span id="current-year"></span> Amanda Sampaio · Estúdio Boutique em Salvador
+        <div class="footer-shell">
+            <div class="footer-brand">
+                <h3>Beauty Boss</h3>
+                <p>Atendimento premium em sobrancelhas, cílios, pele e maquiagem, com cuidado individual em cada detalhe.</p>
+            </div>
+            <div class="footer-group">
+                <h4>Fale comigo</h4>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/5571983996400" target="_blank" rel="noopener">WhatsApp direto</a></li>
+                    <li><a href="tel:+5571983996400">Ligar agora</a></li>
+                    <li><a href="mailto:amandapmu@gmail.com">amandapmu@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-group">
+                <h4>Documentos / Termos</h4>
+                <ul class="footer-links">
+                    <li><a href="https://drive.google.com/file/d/10N4jWxnySrCR3iMipQ-us6B_GZCIV7Iw/view?usp=drive_link" target="_blank" rel="noopener">Termos e condições</a></li>
+                    <li><a href="https://drive.google.com/file/d/1x3Svg3ITSipL2M1cBQb0YT9MkVebQwVl/view?usp=drive_link" target="_blank" rel="noopener">Política de privacidade</a></li>
+                    <li><a href="https://drive.google.com/file/d/167XvLaiRKOEab-G8ZGkJzdN5pC00E8BZ/view?usp=drive_link" target="_blank" rel="noopener">LGPD & consentimento</a></li>
+                </ul>
+            </div>
+            <div class="footer-meta">
+                <span>© <span id="current-year"></span> Amanda Sampaio · Beauty Boss</span>
+                <span>Salvador · Atendimento com hora marcada</span>
+            </div>
+        </div>
     </footer>
 
     <script>
-      <script>
 const galleryTrack = document.getElementById('gallery-track');
 const serviceGrid = document.getElementById('service-grid');
 const summaryList = document.getElementById('summary-list');
@@ -442,33 +631,51 @@ const whatsappLink = document.getElementById('whatsapp-link');
 const numberFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
 /* ==========================
-   SERVIÇOS (CORRIGIDO)
+   FOTOS DO GOOGLE DRIVE
+========================== */
+function driveResource(input) {
+    const text = String(input || '').trim();
+    const idMatch = text.match(/[-\w]{25,}/);
+    const id = idMatch ? idMatch[0] : text;
+    const src = `https://drive.google.com/uc?export=view&id=${id}`;
+    const fallback = `https://lh3.googleusercontent.com/d/${id}=w1600`;
+    return { id, src, fallback };
+}
+
+function buildImg({ source, alt, lazy = true }) {
+    const { src, fallback } = driveResource(source);
+    const loading = lazy ? 'loading="lazy"' : '';
+    return `<img src="${src}" alt="${alt}" ${loading} decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='${fallback}'">`;
+}
+
+/* ==========================
+   SERVIÇOS (ORDENADOS)
 ========================== */
 const servicesData = [
-    { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: 'https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' },
-    { name: 'Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: 'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
-    { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: 'https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28' },
-    { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: 'https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
-    { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho.', image: 'https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj' },
-    { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor para um acabamento polido.', image: 'https://drive.google.com/uc?export=view&id=1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq' },
-    { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas.', image: 'https://drive.google.com/uc?export=view&id=1gnTPlQ_1sobkmSLSKpbYxGwNbRtyM_Fl' },
-    { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado.', image: 'https://drive.google.com/uc?export=view&id=1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle' },
-    { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e confortável.', image: 'https://drive.google.com/uc?export=view&id=12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN' },
-    { name: 'Limpeza de pele', price: 90, description: 'Renovação profunda com máscaras calmantes e hidratação.', image: 'https://drive.google.com/uc?export=view&id=1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp' },
-    { name: 'Hidragloss', price: 100, description: 'Hidratação profunda e brilho volumoso para os lábios.', image: 'https://drive.google.com/uc?export=view&id=1_SE0g0qjmfws_IEgEXs0V8h2-V8bFn05' }
-];
-
+    { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor para um acabamento polido.', image: '1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq' },
+    { name: 'Extensão de Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: '1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
+    { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho.', image: '10N4jWxnySrCR3iMipQ-us6B_GZCIV7Iw' },
+    { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: '1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
+    { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: '1Pp3JdmhHeVhUswEgeHPQp6fXbqdqqfpj' },
+    { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e confortável.', image: '12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN' },
+    { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado.',  image: '1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle' },
+    { name: 'Hidragloss', price: 100, description: 'Hidratação profunda e brilho volumoso para os lábios.', image: '1SFDAsxykXsAiSQ3wIytalBcfkelhnZlQ' },
+    { name: 'Limpeza de pele', price: 90, description: 'Renovação profunda com máscaras calmantes e hidratação.', image: '1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp' },
+    { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas.', image: '1AxR1Y6yQ6zhw-zpyhoa37Fo7jSfIioCs' },
+    { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: '19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' }
+].sort((a, b) => a.name.localeCompare(b.name, 'pt', { sensitivity: 'base' }));
 /* ==========================
    GERAR CARDS DE SERVIÇOS
 ========================== */
 function createServiceCard(service) {
     const label = document.createElement('label');
     label.className = 'service-card';
+    const media = buildImg({ source: service.image, alt: service.name });
     label.innerHTML = `
         <input type="checkbox" name="services" value="${service.name}" data-price="${service.price}">
         <div class="card-shell">
             <div class="card-media">
-                <img src="${service.image}" alt="${service.name}">
+                ${media}
             </div>
             <div class="card-copy">
                 <h3>${service.name}</h3>
@@ -544,51 +751,53 @@ Podemos agendar?`;
 ========================== */
 function populateGallery() {
     const galleryImages = [
-        "https://drive.google.com/uc?export=view&id=12ueIRfpWPQ0LYQUhMfzFTJ4T1_5VVHcP",
-        "https://drive.google.com/uc?export=view&id=1gnTPlQ_1sobkmSLSKpbYxGwNbRtyM_Fl",
-        "https://drive.google.com/uc?export=view&id=1AxR1Y6yQ6zhw-zpyhoa37Fo7jSfIioCs",
-        "https://drive.google.com/uc?export=view&id=1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp",
-        "https://drive.google.com/uc?export=view&id=1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq",
-        "https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28",
-        "https://drive.google.com/uc?export=view&id=1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle",
-        "https://drive.google.com/uc?export=view&id=1_SE0g0qjmfws_IEgEXs0V8h2-V8bFn05",
-        "https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4",
-        "https://drive.google.com/uc?export=view&id=1Xfe5W0P_AjEb8Ib6zjNbwFg5P2rX6SbH",
-        "https://drive.google.com/uc?export=view&id=1t8XW1nDS5QCF5eZ0NS1Q2XO6gUeq9pA-",
-        "https://drive.google.com/uc?export=view&id=1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn",
-        "https://drive.google.com/uc?export=view&id=1HI3hm5An5nq3ZZSIJ2fxxB8h5P6Q0Mqx",
-        "https://drive.google.com/uc?export=view&id=1GohhgvRFgXAQzN4lWnh5QbvDtaPNj8FN",
-        "https://drive.google.com/uc?export=view&id=1Q10Toz4ZK-w-ddNyJhT-i6qKZCZWD5O7",
-        "https://drive.google.com/uc?export=view&id=160kZmcmDZSvicgTDYKF0sAzz6jGJp7tC",
-        "https://drive.google.com/uc?export=view&id=1jYLzQH9NFIrLR72xdti4CF0OsAZMEEZF",
-        "https://drive.google.com/uc?export=view&id=1QOrLszuCjRHrjYc5PqpVdO4QhVsfw3c8",
-        "https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj",
-        "https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J",
-        "https://drive.google.com/uc?export=view&id=1v7sWTM4jz8nV4qQVsDvpEUE4LMfkfQTK",
-        "https://drive.google.com/uc?export=view&id=12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN",
-        "https://drive.google.com/uc?export=view&id=17b5M3Nqs_31LedNToWZFXXyj4YBapnz8",
-        "https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp",
-        "https://drive.google.com/uc?export=view&id=1N42u5yVWwze8zGZP0q8W5uPDiSmD5H6E",
-        "https://drive.google.com/uc?export=view&id=1z8gtaWGnMXGawm65eujE3zsJLw8rZRGx"
+        '10N4jWxnySrCR3iMipQ-us6B_GZCIV7Iw',
+        '1x3Svg3ITSipL2M1cBQb0YT9MkVebQwVl',
+        '167XvLaiRKOEab-G8ZGkJzdN5pC00E8BZ',
+        '12ueIRfpWPQ0LYQUhMfzFTJ4T1_5VVHcP',
+        '1AxR1Y6yQ6zhw-zpyhoa37Fo7jSfIioCs',
+        '1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp',
+        '1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq',
+        '1Pp3JdmhHeVhUswEgeHPQp6fXbqdqqfpj',
+        '1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle',
+        '1SFDAsxykXsAiSQ3wIytalBcfkelhnZlQ',
+        '19lDqwhW68USfZd4UDyipLCVYIYpZC5l4',
+        '1Xfe5W0P_AjEb8Ib6zjNbwFg5P2rX6SbH',
+        '1t8XW1nDS5QCF5eZ0NS1Q2XO6gUeq9pA-',
+        '1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn',
+        '1HI3hm5An5nq3ZZSIJ2fxxB8h5P6Q0Mqx',
+        '1GohhgvRFgXAQzN4lWnh5QbvDtaPNj8FN',
+        '1Q10Toz4ZK-w-ddNyJhT-i6qKZCZWD5O7',
+        '160kZmcmDZSvicgTDYKF0sAzz6jGJp7tC',
+        '1jYLzQH9NFIrLR72xdti4CF0OsAZMEEZF',
+        '1QOrLszuCjRHrjYc5PqpVdO4QhVsfw3c8',
+        '1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J',
+        '1v7sWTM4jz8nV4qQVsDvpEUE4LMfkfQTK',
+        '12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN',
+        '17b5M3Nqs_31LedNToWZFXXyj4YBapnz8',
+        '1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp',
+        '1N42u5yVWwze8zGZP0q8W5uPDiSmD5H6E',
+        '1z8gtaWGnMXGawm65eujE3zsJLw8rZRGx'
     ];
 
     const fullSequence = [...galleryImages, ...galleryImages];
     galleryTrack.innerHTML = fullSequence
-        .map(src => `<img src="${src}" loading="lazy">`)
+        .map(id => buildImg({ source: id, alt: 'Resultado de atendimento Amanda Sampaio' }))
         .join('');
 }
 
 /* ==========================
    INICIALIZAR
 ========================== */
+const heroPhoto = driveResource('1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn');
+document.documentElement.style.setProperty('--hero-background', `url('${heroPhoto.src}')`);
+
 document.addEventListener('input', updateSummary);
 document.addEventListener('change', updateSummary);
 document.getElementById('current-year').textContent = new Date().getFullYear();
 
 populateGallery();
 updateSummary();
-</script>
-
     </script>
 </body>
 </html>
