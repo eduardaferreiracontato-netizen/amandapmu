@@ -35,6 +35,8 @@
             position: relative;
             padding: clamp(56px, 8vw, 120px) 24px 72px;
             overflow: hidden;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.75)),
+                url('https://drive.google.com/uc?export=view&id=1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn') center/cover no-repeat;
         }
 
         header::after {
@@ -438,36 +440,18 @@
         const whatsappLink = document.getElementById('whatsapp-link');
         const numberFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
-        function createServiceImage(accent, glow, stroke) {
-            const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                    <linearGradient id="grad" x1="0%" x2="100%" y1="0%" y2="100%">
-                        <stop offset="0%" stop-color="${accent}" />
-                        <stop offset="100%" stop-color="${glow}" />
-                    </linearGradient>
-                </defs>
-                <rect width="400" height="320" fill="url(#grad)" />
-                <circle cx="320" cy="60" r="70" fill="rgba(255,255,255,0.35)" />
-                <circle cx="80" cy="260" r="90" fill="rgba(255,255,255,0.22)" />
-                <path d="M60 210 Q200 140 340 210" stroke="${stroke}" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.8" />
-                <path d="M80 140 Q200 80 320 140" stroke="${stroke}" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.5" />
-                <path d="M110 90 Q200 40 290 90" stroke="${stroke}" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.35" />
-            </svg>`;
-            return `data:image/svg+xml,${encodeURIComponent(svg)}`;
-        }
-
         const servicesData = [
-            { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: createServiceImage('#ffdbe8', '#fff3f8', '#d9799e') },
-            { name: 'Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: createServiceImage('#e3e8ff', '#f4f6ff', '#7a88d6') },
-            { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: createServiceImage('#f0e1ff', '#f8f0ff', '#8f75d0') },
-            { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: createServiceImage('#f4d8c6', '#fdf6ef', '#c98f61') },
-            { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho com suavidade.', image: createServiceImage('#f8e1d4', '#fff5f0', '#c47f55') },
-            { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor que levantam o olhar com acabamento polido.', image: createServiceImage('#d4f1eb', '#f2fbf8', '#4b9c8a') },
-            { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas e elegantes.', image: createServiceImage('#eed5f4', '#f9ebff', '#a475c6') },
-            { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado com naturalidade.', image: createServiceImage('#dff0ff', '#f1f8ff', '#5980b6') },
-            { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e conforto no dia a dia.', image: createServiceImage('#fde2e1', '#fff4f3', '#d67878') },
-            { name: 'Limpeza de pele', price: 90, description: 'Renovação suave com máscaras calmantes e toque hidratante.', image: createServiceImage('#f2f5db', '#fbfde9', '#9aaf4f') },
-            { name: 'Hidragloss', price: 100, description: 'Hidratação profunda para lábios com brilho acetinado e toque volumoso.', image: createServiceImage('#ffe6f1', '#fff2f8', '#d5689b') }
+            { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor que levantam o olhar com acabamento polido.', image: 'https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj' },
+            { name: 'Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: 'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
+            { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho com suavidade.', image: 'https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj' },
+            { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: 'https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
+            { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: 'https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28' },
+            { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e conforto no dia a dia.', image: 'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
+            { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado com naturalidade.', image: 'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
+            { name: 'Hidragloss', price: 100, description: 'Hidratação profunda para lábios com brilho acetinado e toque volumoso.', image: 'https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' },
+            { name: 'Limpeza de pele', price: 90, description: 'Renovação suave com máscaras calmantes e toque hidratante.', image: 'https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
+            { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas e elegantes.', image: 'https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28' },
+            { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: 'https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' }
         ];
 
         function createServiceCard(service) {
@@ -529,10 +513,11 @@
 
         function populateGallery() {
             const galleryImages = [
-                'https://images.unsplash.com/photo-1506617420156-8e4536971650?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1526045612212-70caf35c14df?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80'
+                'https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4',
+                'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp',
+                'https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28',
+                'https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J',
+                'https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj'
             ];
             const fullSequence = galleryImages.concat(galleryImages);
             galleryTrack.innerHTML = fullSequence
