@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --brand-1: #6baa59;
-            --brand-2: #9fc45d;
-            --brand-3: #c2d66a;
-            --brand-gradient: linear-gradient(135deg, #6baa59 0%, #9fc45d 46%, #c2d66a 100%);
-            --brand-soft: rgba(111, 170, 89, 0.12);
+            --brand-1: #67be9b;
+            --brand-2: #95d0b8;
+            --brand-3: #89a46f;
+            --brand-gradient: linear-gradient(135deg, #67be9b 0%, #95d0b8 46%, #89a46f 100%);
+            --brand-soft: rgba(103, 190, 155, 0.16);
             --gold: #d6c59b;
             --gold-deep: #b78a2f;
             --ink: #1c2415;
@@ -34,9 +34,9 @@
             font-family: 'Source Sans 3', system-ui, sans-serif;
             color: var(--ink);
             background:
-                radial-gradient(160% 100% at 20% 10%, rgba(111, 170, 89, 0.16), transparent 45%),
-                radial-gradient(120% 90% at 82% 6%, rgba(159, 196, 93, 0.14), transparent 50%),
-                linear-gradient(180deg, #f9f9f4 0%, #f6f7f1 55%, #fdfdfb 100%);
+                radial-gradient(160% 100% at 20% 10%, rgba(103, 190, 155, 0.12), transparent 45%),
+                radial-gradient(120% 90% at 82% 6%, rgba(149, 208, 184, 0.12), transparent 50%),
+                linear-gradient(180deg, #fbfcfa 0%, #f7f9f4 55%, #ffffff 100%);
         }
 
         header {
@@ -44,8 +44,8 @@
             padding: clamp(64px, 8vw, 130px) 24px 88px;
             overflow: hidden;
             background:
-                linear-gradient(120deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.82)),
-                linear-gradient(135deg, rgba(107, 170, 89, 0.24), rgba(194, 214, 106, 0.16)),
+                linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.86)),
+                linear-gradient(135deg, rgba(103, 190, 155, 0.18), rgba(149, 208, 184, 0.12)),
                 var(--hero-background, url('https://drive.google.com/uc?export=view&id=1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn')) center/cover no-repeat;
         }
 
@@ -75,7 +75,7 @@
             font-family: 'Playfair Display', serif;
             font-size: clamp(3.6rem, 7vw, 5rem);
             letter-spacing: 0.015em;
-            background: linear-gradient(110deg, #1c2415 0%, #6baa59 32%, #b78a2f 75%, #f2e2b7 100%);
+            background: linear-gradient(110deg, #1c2415 0%, #67be9b 32%, #b78a2f 75%, #f2e2b7 100%);
             -webkit-background-clip: text;
             color: transparent;
             text-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
@@ -188,13 +188,13 @@
             display: grid;
             grid-template-columns: minmax(0, 1fr) 340px;
             gap: clamp(24px, 4vw, 48px);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.9)),
-                linear-gradient(135deg, rgba(111, 170, 89, 0.08), rgba(194, 214, 106, 0.08));
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.92)),
+                linear-gradient(135deg, rgba(103, 190, 155, 0.16), rgba(149, 208, 184, 0.16));
             padding: clamp(28px, 4vw, 48px);
             border-radius: 36px;
             box-shadow: 0 30px 70px rgba(24, 36, 12, 0.12);
             backdrop-filter: blur(6px);
-            border: 1px solid rgba(111, 170, 89, 0.14);
+            border: 1px solid rgba(103, 190, 155, 0.2);
         }
 
         @media (max-width: 960px) {
@@ -240,7 +240,7 @@
         }
 
         .service-card input:checked + .card-shell {
-            border-color: rgba(111, 170, 89, 0.45);
+            border-color: rgba(103, 190, 155, 0.45);
             box-shadow: 0 34px 70px rgba(30, 46, 12, 0.2);
         }
 
@@ -313,7 +313,7 @@
             color: var(--ink);
             letter-spacing: 0.06em;
             text-align: center;
-            background: rgba(111, 170, 89, 0.1);
+            background: rgba(103, 190, 155, 0.12);
             border-radius: 14px;
             padding: 10px;
         }
@@ -415,8 +415,8 @@
             margin-top: clamp(40px, 8vw, 80px);
             padding: clamp(28px, 6vw, 44px);
             background:
-                linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82)),
-                linear-gradient(135deg, rgba(111, 170, 89, 0.08), rgba(194, 214, 106, 0.14));
+                linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.86)),
+                linear-gradient(135deg, rgba(103, 190, 155, 0.12), rgba(149, 208, 184, 0.16));
             border-radius: 36px;
             box-shadow: var(--shadow);
             overflow: hidden;
@@ -452,7 +452,7 @@
 
         footer {
             padding: 48px 20px 64px;
-            background: linear-gradient(180deg, rgba(111, 170, 89, 0.14), rgba(255, 255, 255, 0.95));
+            background: linear-gradient(180deg, rgba(103, 190, 155, 0.16), rgba(255, 255, 255, 0.96));
         }
 
         .footer-shell {
@@ -637,39 +637,17 @@ function driveResource(input) {
     const text = String(input || '').trim();
     const idMatch = text.match(/[-\w]{25,}/);
     const id = idMatch ? idMatch[0] : text;
-    const src = `https://lh3.googleusercontent.com/d/${id}=w1600`;
-    const fallback = `https://drive.google.com/uc?export=view&id=${id}`;
+    const src = `https://drive.google.com/uc?export=view&id=${id}`;
+    const fallback = `https://lh3.googleusercontent.com/d/${id}=w1600`;
     return { id, src, fallback };
 }
 
 function buildImg({ source, alt, lazy = true }) {
     const { src, fallback } = driveResource(source);
     const loading = lazy ? 'loading="lazy"' : '';
-    return `<img src="${src}" alt="${alt}" ${loading} onerror="this.onerror=null;this.src='${fallback}'">`;
+    return `<img src="${src}" alt="${alt}" ${loading} decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='${fallback}'">`;
 }
 
-function buildImg({ source, alt, lazy = true }) {
-    const { src, fallback } = driveResource(source);
-    const loading = lazy ? 'loading="lazy"' : '';
-    return `<img src="${src}" alt="${alt}" ${loading} onerror="this.onerror=null;this.src='${fallback}'">`;
-}
-
-/* ==========================
-   SERVIÇOS (ORDENADOS)
-========================== */
-const servicesData = [
-    { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor para um acabamento polido.', image: '1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq' },
-    { name: 'Extensão de Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: '1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
-    { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho.', image: '1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj' },
-    { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: '1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
-    { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: '1Pp3JdmhHeVhUswEgeHPQp6fXbqdqqfpj' },
-    { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e confortável.', image: '12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN' },
-    { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado.',  image: '1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle' },
-    { name: 'Hidragloss', price: 100, description: 'Hidratação profunda e brilho volumoso para os lábios.', image: '1SFDAsxykXsAiSQ3wIytalBcfkelhnZlQ' },
-    { name: 'Limpeza de pele', price: 90, description: 'Renovação profunda com máscaras calmantes e hidratação.', image: '1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp' },
-    { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas.', image: '1AxR1Y6yQ6zhw-zpyhoa37Fo7jSfIioCs' },
-    { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: '19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' }
-].sort((a, b) => a.name.localeCompare(b.name, 'pt', { sensitivity: 'base' }));
 /* ==========================
    SERVIÇOS (ORDENADOS)
 ========================== */
