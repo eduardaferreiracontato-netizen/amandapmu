@@ -77,10 +77,15 @@
         .hero-pretitle {
             display: inline-block;
             margin-bottom: 12px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.38em;
-            color: rgba(31, 38, 22, 0.6);
+            background: linear-gradient(120deg, #fdf6e3, #f1d9a7 38%, #c99a3d 62%, #f8e4ba 80%, #d2a955);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.16),
+                0 0 18px rgba(233, 200, 120, 0.35);
         }
 
         .hero p {
@@ -380,7 +385,7 @@
     <header>
         <div class="hero">
             <div>
-                <span class="hero-pretitle">Estúdio Boutique em Salvador</span>
+                <span class="hero-pretitle">Beauty Boss</span>
                 <h1>Amanda Sampaio</h1>
                 <p>Experiência personalizada em design de sobrancelhas, cílios, pele e maquiagem. Escolha seus serviços favoritos, informe sua disponibilidade e finalize pelo WhatsApp.</p>
                 <div class="hero-actions">
@@ -434,7 +439,7 @@
     </main>
 
     <footer>
-        © <span id="current-year"></span> Amanda Sampaio · Estúdio Boutique em Salvador
+        © <span id="current-year"></span> Amanda Sampaio · Beauty Boss
     </footer>
 
     <script>
