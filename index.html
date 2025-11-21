@@ -429,120 +429,120 @@
     </footer>
 
     <script>
-        const galleryTrack = document.getElementById('gallery-track');
-        const serviceGrid = document.getElementById('service-grid');
-        const summaryList = document.getElementById('summary-list');
-        const summaryTotal = document.getElementById('summary-total');
-        const emptyState = document.getElementById('empty-state');
-        const clientName = document.getElementById('client-name');
-        const preferredDay = document.getElementById('preferred-day');
-        const preferredTime = document.getElementById('preferred-time');
-        const whatsappLink = document.getElementById('whatsapp-link');
-        const numberFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+      <script>
+const galleryTrack = document.getElementById('gallery-track');
+const serviceGrid = document.getElementById('service-grid');
+const summaryList = document.getElementById('summary-list');
+const summaryTotal = document.getElementById('summary-total');
+const emptyState = document.getElementById('empty-state');
+const clientName = document.getElementById('client-name');
+const preferredDay = document.getElementById('preferred-day');
+const preferredTime = document.getElementById('preferred-time');
+const whatsappLink = document.getElementById('whatsapp-link');
+const numberFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
-        const servicesData = [
-            { const servicesData = [
+/* ==========================
+   SERVIÇOS (CORRIGIDO)
+========================== */
+const servicesData = [
     { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: 'https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' },
-
     { name: 'Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: 'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
-
     { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: 'https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28' },
-
     { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: 'https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
-
     { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho.', image: 'https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj' },
-
     { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor para um acabamento polido.', image: 'https://drive.google.com/uc?export=view&id=1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq' },
-
     { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas.', image: 'https://drive.google.com/uc?export=view&id=1gnTPlQ_1sobkmSLSKpbYxGwNbRtyM_Fl' },
-
     { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado.', image: 'https://drive.google.com/uc?export=view&id=1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle' },
-
     { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e confortável.', image: 'https://drive.google.com/uc?export=view&id=12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN' },
-
     { name: 'Limpeza de pele', price: 90, description: 'Renovação profunda com máscaras calmantes e hidratação.', image: 'https://drive.google.com/uc?export=view&id=1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp' },
-
     { name: 'Hidragloss', price: 100, description: 'Hidratação profunda e brilho volumoso para os lábios.', image: 'https://drive.google.com/uc?export=view&id=1_SE0g0qjmfws_IEgEXs0V8h2-V8bFn05' }
 ];
 
-        ];
-
-        function createServiceCard(service) {
-            const label = document.createElement('label');
-            label.className = 'service-card';
-            label.innerHTML = `
-            <input type="checkbox" name="services" value="${service.name}" data-price="${service.price}">
-            <div class="card-shell">
-                <div class="card-media">
-                    <img src="${service.image}" alt="${service.name}">
-                </div>
-                <div class="card-copy">
-                    <h3>${service.name}</h3>
-                    <p>${service.description}</p>
-                </div>
-                <span class="service-price">${numberFormat.format(service.price)}</span>
+/* ==========================
+   GERAR CARDS DE SERVIÇOS
+========================== */
+function createServiceCard(service) {
+    const label = document.createElement('label');
+    label.className = 'service-card';
+    label.innerHTML = `
+        <input type="checkbox" name="services" value="${service.name}" data-price="${service.price}">
+        <div class="card-shell">
+            <div class="card-media">
+                <img src="${service.image}" alt="${service.name}">
             </div>
-        `;
-            return label;
-        }
+            <div class="card-copy">
+                <h3>${service.name}</h3>
+                <p>${service.description}</p>
+            </div>
+            <span class="service-price">${numberFormat.format(service.price)}</span>
+        </div>
+    `;
+    return label;
+}
 
-        serviceGrid.innerHTML = '';
-        servicesData.forEach(service => serviceGrid.appendChild(createServiceCard(service)));
+serviceGrid.innerHTML = '';
+servicesData.forEach(service => serviceGrid.appendChild(createServiceCard(service)));
 
-        function getSelectedServices() {
-            return Array.from(serviceGrid.querySelectorAll('input[type="checkbox"]'))
-                .filter(checkbox => checkbox.checked)
-                .map(checkbox => ({ name: checkbox.value, price: Number(checkbox.dataset.price) }));
-        }
+/* ==========================
+   RESUMO + WHATSAPP
+========================== */
+function getSelectedServices() {
+    return Array.from(serviceGrid.querySelectorAll('input[type="checkbox"]'))
+        .filter(cb => cb.checked)
+        .map(cb => ({ name: cb.value, price: Number(cb.dataset.price) }));
+}
 
-        function updateSummary() {
-            const services = getSelectedServices();
-            if (services.length === 0) {
-                summaryList.hidden = true; summaryTotal.hidden = true; emptyState.hidden = false;
-            } else {
-                summaryList.innerHTML = services.map(s => `<li><span>${s.name}</span><span>${numberFormat.format(s.price)}</span></li>`).join('');
-                summaryList.hidden = false; summaryTotal.hidden = false; emptyState.hidden = true;
-                summaryTotal.querySelector('strong').textContent = numberFormat.format(services.reduce((a,b) => a + b.price, 0));
-            }
-            updateWhatsAppLink(services);
-        }
+function updateSummary() {
+    const services = getSelectedServices();
+    if (services.length === 0) {
+        summaryList.hidden = true;
+        summaryTotal.hidden = true;
+        emptyState.hidden = false;
+    } else {
+        summaryList.innerHTML = services
+            .map(s => `<li><span>${s.name}</span><span>${numberFormat.format(s.price)}</span></li>`)
+            .join('');
+        summaryList.hidden = false;
+        summaryTotal.hidden = false;
+        emptyState.hidden = true;
+        summaryTotal.querySelector('strong').textContent =
+            numberFormat.format(services.reduce((a, b) => a + b.price, 0));
+    }
+    updateWhatsAppLink(services);
+}
 
-        function updateWhatsAppLink(services) {
-            const name = clientName.value.trim();
-            const day = preferredDay.value;
-            const time = preferredTime.value;
-            if (services.length === 0) { whatsappLink.setAttribute('aria-disabled','true'); whatsappLink.href = '#'; return; }
+function updateWhatsAppLink(services) {
+    const name = clientName.value.trim();
+    const day = preferredDay.value;
+    const time = preferredTime.value;
 
-            const serviceLines = services.map(s => `• ${s.name} — ${numberFormat.format(s.price)}`).join('\n');
-            const total = services.reduce((acc,s) => acc + s.price, 0);
-            const greeting = name ? `Olá, Amanda! Aqui é ${name}.` : 'Olá, Amanda!';
-            const scheduling = day ? `Preferência de dia: ${day}.` : 'Gostaria de verificar disponibilidade.';
-            const timeInfo = time ? `Horário sugerido: ${time}.` : '';
+    if (services.length === 0) {
+        whatsappLink.setAttribute('aria-disabled', 'true');
+        whatsappLink.href = '#';
+        return;
+    }
 
-            const message = `${greeting}\n\nTenho interesse nos serviços:\n${serviceLines}\n\nTotal estimado: ${numberFormat.format(total)}.\n${scheduling}${timeInfo ? ` ${timeInfo}` : ''}\n\nPodemos agendar?`;
-            whatsappLink.href = `https://wa.me/5571983996400?text=${encodeURIComponent(message)}`;
-            whatsappLink.setAttribute('aria-disabled','false');
-        }
+    const serviceLines = services.map(s => `• ${s.name} — ${numberFormat.format(s.price)}`).join('\n');
+    const total = services.reduce((acc, s) => acc + s.price, 0);
 
-        function populateGallery() {
-            const galleryImages = [
-                'https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4',
-                'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp',
-                'https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28',
-                'https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J',
-                'https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj'
-            ];
-            const fullSequence = galleryImages.concat(galleryImages);
-            galleryTrack.innerHTML = fullSequence
-                .map((src, index) => `<img src="${src}" alt="Resultado ${index % galleryImages.length + 1}" loading="lazy"${index >= galleryImages.length ? ' aria-hidden="true"' : ''}>`)
-                .join('');
-        }
+    const msg = `${name ? `Olá, Amanda! Aqui é ${name}.` : 'Olá, Amanda!'}
+Tenho interesse nos serviços:
+${serviceLines}
 
-        // Listeners & init
-        document.addEventListener('input', updateSummary);
-        document.addEventListener('change', updateSummary);
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        function populateGallery() {
+Total estimado: ${numberFormat.format(total)}.
+${day ? `Preferência de dia: ${day}.` : 'Gostaria de verificar disponibilidade.'}
+${time ? `Horário sugerido: ${time}.` : ''}
+
+Podemos agendar?`;
+
+    whatsappLink.href = `https://wa.me/5571983996400?text=${encodeURIComponent(msg)}`;
+    whatsappLink.setAttribute('aria-disabled', 'false');
+}
+
+/* ==========================
+   GALERIA FINAL (27 FOTOS)
+========================== */
+function populateGallery() {
     const galleryImages = [
         "https://drive.google.com/uc?export=view&id=12ueIRfpWPQ0LYQUhMfzFTJ4T1_5VVHcP",
         "https://drive.google.com/uc?export=view&id=1gnTPlQ_1sobkmSLSKpbYxGwNbRtyM_Fl",
@@ -572,15 +572,23 @@
         "https://drive.google.com/uc?export=view&id=1z8gtaWGnMXGawm65eujE3zsJLw8rZRGx"
     ];
 
-    // duplicar para rolagem infinita
-    const fullSequence = galleryImages.concat(galleryImages);
-
+    const fullSequence = [...galleryImages, ...galleryImages];
     galleryTrack.innerHTML = fullSequence
         .map(src => `<img src="${src}" loading="lazy">`)
         .join('');
 }
 
-        updateSummary();
+/* ==========================
+   INICIALIZAR
+========================== */
+document.addEventListener('input', updateSummary);
+document.addEventListener('change', updateSummary);
+document.getElementById('current-year').textContent = new Date().getFullYear();
+
+populateGallery();
+updateSummary();
+</script>
+
     </script>
 </body>
 </html>
