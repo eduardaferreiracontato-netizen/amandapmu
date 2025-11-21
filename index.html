@@ -441,17 +441,30 @@
         const numberFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
         const servicesData = [
-            { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor que levantam o olhar com acabamento polido.', image: 'https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj' },
-            { name: 'Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: 'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
-            { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho com suavidade.', image: 'https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj' },
-            { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: 'https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
-            { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: 'https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28' },
-            { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e conforto no dia a dia.', image: 'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
-            { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado com naturalidade.', image: 'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
-            { name: 'Hidragloss', price: 100, description: 'Hidratação profunda para lábios com brilho acetinado e toque volumoso.', image: 'https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' },
-            { name: 'Limpeza de pele', price: 90, description: 'Renovação suave com máscaras calmantes e toque hidratante.', image: 'https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
-            { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas e elegantes.', image: 'https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28' },
-            { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: 'https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' }
+            { const servicesData = [
+    { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: 'https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' },
+
+    { name: 'Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: 'https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
+
+    { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: 'https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28' },
+
+    { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: 'https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
+
+    { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho.', image: 'https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj' },
+
+    { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor para um acabamento polido.', image: 'https://drive.google.com/uc?export=view&id=1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq' },
+
+    { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas.', image: 'https://drive.google.com/uc?export=view&id=1gnTPlQ_1sobkmSLSKpbYxGwNbRtyM_Fl' },
+
+    { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado.', image: 'https://drive.google.com/uc?export=view&id=1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle' },
+
+    { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e confortável.', image: 'https://drive.google.com/uc?export=view&id=12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN' },
+
+    { name: 'Limpeza de pele', price: 90, description: 'Renovação profunda com máscaras calmantes e hidratação.', image: 'https://drive.google.com/uc?export=view&id=1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp' },
+
+    { name: 'Hidragloss', price: 100, description: 'Hidratação profunda e brilho volumoso para os lábios.', image: 'https://drive.google.com/uc?export=view&id=1_SE0g0qjmfws_IEgEXs0V8h2-V8bFn05' }
+];
+
         ];
 
         function createServiceCard(service) {
@@ -529,7 +542,44 @@
         document.addEventListener('input', updateSummary);
         document.addEventListener('change', updateSummary);
         document.getElementById('current-year').textContent = new Date().getFullYear();
-        populateGallery();
+        function populateGallery() {
+    const galleryImages = [
+        "https://drive.google.com/uc?export=view&id=12ueIRfpWPQ0LYQUhMfzFTJ4T1_5VVHcP",
+        "https://drive.google.com/uc?export=view&id=1gnTPlQ_1sobkmSLSKpbYxGwNbRtyM_Fl",
+        "https://drive.google.com/uc?export=view&id=1AxR1Y6yQ6zhw-zpyhoa37Fo7jSfIioCs",
+        "https://drive.google.com/uc?export=view&id=1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp",
+        "https://drive.google.com/uc?export=view&id=1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq",
+        "https://drive.google.com/uc?export=view&id=1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28",
+        "https://drive.google.com/uc?export=view&id=1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle",
+        "https://drive.google.com/uc?export=view&id=1_SE0g0qjmfws_IEgEXs0V8h2-V8bFn05",
+        "https://drive.google.com/uc?export=view&id=19lDqwhW68USfZd4UDyipLCVYIYpZC5l4",
+        "https://drive.google.com/uc?export=view&id=1Xfe5W0P_AjEb8Ib6zjNbwFg5P2rX6SbH",
+        "https://drive.google.com/uc?export=view&id=1t8XW1nDS5QCF5eZ0NS1Q2XO6gUeq9pA-",
+        "https://drive.google.com/uc?export=view&id=1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn",
+        "https://drive.google.com/uc?export=view&id=1HI3hm5An5nq3ZZSIJ2fxxB8h5P6Q0Mqx",
+        "https://drive.google.com/uc?export=view&id=1GohhgvRFgXAQzN4lWnh5QbvDtaPNj8FN",
+        "https://drive.google.com/uc?export=view&id=1Q10Toz4ZK-w-ddNyJhT-i6qKZCZWD5O7",
+        "https://drive.google.com/uc?export=view&id=160kZmcmDZSvicgTDYKF0sAzz6jGJp7tC",
+        "https://drive.google.com/uc?export=view&id=1jYLzQH9NFIrLR72xdti4CF0OsAZMEEZF",
+        "https://drive.google.com/uc?export=view&id=1QOrLszuCjRHrjYc5PqpVdO4QhVsfw3c8",
+        "https://drive.google.com/uc?export=view&id=1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj",
+        "https://drive.google.com/uc?export=view&id=1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J",
+        "https://drive.google.com/uc?export=view&id=1v7sWTM4jz8nV4qQVsDvpEUE4LMfkfQTK",
+        "https://drive.google.com/uc?export=view&id=12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN",
+        "https://drive.google.com/uc?export=view&id=17b5M3Nqs_31LedNToWZFXXyj4YBapnz8",
+        "https://drive.google.com/uc?export=view&id=1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp",
+        "https://drive.google.com/uc?export=view&id=1N42u5yVWwze8zGZP0q8W5uPDiSmD5H6E",
+        "https://drive.google.com/uc?export=view&id=1z8gtaWGnMXGawm65eujE3zsJLw8rZRGx"
+    ];
+
+    // duplicar para rolagem infinita
+    const fullSequence = galleryImages.concat(galleryImages);
+
+    galleryTrack.innerHTML = fullSequence
+        .map(src => `<img src="${src}" loading="lazy">`)
+        .join('');
+}
+
         updateSummary();
     </script>
 </body>
