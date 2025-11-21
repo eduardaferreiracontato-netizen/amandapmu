@@ -28,7 +28,11 @@
             min-height: 100vh;
             font-family: 'Source Sans 3', system-ui, sans-serif;
             color: var(--ink);
-            background: linear-gradient(135deg, #ffffff 0%, #eff6dd 50%, #f7f2df 100%);
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12) 0 22%, transparent 35%),
+                radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.12) 0 18%, transparent 34%),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.1) 0 20%, transparent 36%),
+                linear-gradient(135deg, #67be9b 0%, #95d0b8 50%, #89a46f 100%);
         }
 
         header {
@@ -217,7 +221,7 @@
 
         .service-card h3 {
             margin: 0;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Baskerville', 'Playfair Display', serif;
             font-size: 1.25rem;
         }
 
@@ -463,13 +467,13 @@ function buildImg({ source, alt, lazy = true }) {
 ========================== */
 const servicesData = [
     { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor para um acabamento polido.', image: '1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq' },
-    { name: 'Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: '1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
+    { name: 'Extensão de Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: '1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
     { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho.', image: '1Iu_4XqjEkICFDtnI4NgwWSB9iXvdMjKj' },
     { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: '1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
-    { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: '1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28' },
+    { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: '1Pp3JdmhHeVhUswEgeHPQp6fXbqdqqfpj' },
     { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e confortável.', image: '12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN' },
     { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado.',  image: '1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle' },
-    { name: 'Hidragloss', price: 100, description: 'Hidratação profunda e brilho volumoso para os lábios.', image: '1_SE0g0qjmfws_IEgEXs0V8h2-V8bFn05' },
+    { name: 'Hidragloss', price: 100, description: 'Hidratação profunda e brilho volumoso para os lábios.', image: '1SFDAsxykXsAiSQ3wIytalBcfkelhnZlQ' },
     { name: 'Limpeza de pele', price: 90, description: 'Renovação profunda com máscaras calmantes e hidratação.', image: '1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp' },
     { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas.', image: '1gnTPlQ_1sobkmSLSKpbYxGwNbRtyM_Fl' },
     { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: '19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' }
@@ -566,9 +570,9 @@ function populateGallery() {
         '1AxR1Y6yQ6zhw-zpyhoa37Fo7jSfIioCs',
         '1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp',
         '1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq',
-        '1165w4p7gMSLPVRwIEWWpAT2O9CC3ma28',
+        '1Pp3JdmhHeVhUswEgeHPQp6fXbqdqqfpj',
         '1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle',
-        '1_SE0g0qjmfws_IEgEXs0V8h2-V8bFn05',
+        '1SFDAsxykXsAiSQ3wIytalBcfkelhnZlQ',
         '19lDqwhW68USfZd4UDyipLCVYIYpZC5l4',
         '1Xfe5W0P_AjEb8Ib6zjNbwFg5P2rX6SbH',
         '1t8XW1nDS5QCF5eZ0NS1Q2XO6gUeq9pA-',
