@@ -1,679 +1,804 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Publique sua obra acadêmica ou literária com a chancela da UCSal Press.">
-  <title>Publique seu livro com a UCSal Press</title>
-  <style>
-    :root {
-      --azul: #0f3d75;
-      --azul-escuro: #08294f;
-      --dourado: #c89f42;
-      --vinho: #7a295d;
-      --texto: #1f2937;
-      --texto-suave: #5b6472;
-      --fundo: #f7f8fb;
-      --branco: #ffffff;
-      --borda: #d9dfeb;
-      --sombra: 0 18px 45px rgba(8, 41, 79, 0.12);
-      --raio: 18px;
-      --largura: 1140px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda Sampaio · Ritual de Beleza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Libre+Baskerville:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-1: #67be9b;
+            --brand-2: #97b42a;
+            --brand-3: #89a46f;
+            --brand-gradient: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 48%, var(--brand-3) 100%);
+            --brand-soft: rgba(151, 180, 42, 0.16);
+            --gold: #d6c59b;
+            --gold-deep: #b78a2f;
+            --ink: #1c2415;
+            --ink-soft: rgba(28, 36, 21, 0.8);
+            --surface: rgba(255, 255, 255, 0.96);
+            --shadow: 0 20px 60px rgba(27, 43, 14, 0.16);
+            --gallery-bg: rgba(255, 255, 255, 0.65);
+            --section-max: 1180px;
+        }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--texto);
-      background: var(--fundo);
-      line-height: 1.6;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; }
-    .container { width: min(var(--largura), calc(100% - 32px)); margin: 0 auto; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Source Sans 3', system-ui, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(160% 100% at 20% 10%, rgba(151, 180, 42, 0.12), transparent 45%),
+                radial-gradient(120% 90% at 82% 6%, rgba(103, 190, 155, 0.12), transparent 50%),
+                linear-gradient(180deg, #fbfcfa 0%, #f7f9f4 55%, #ffffff 100%);
+        }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid var(--borda);
-      backdrop-filter: blur(10px);
-    }
+        header {
+            position: relative;
+            padding: clamp(64px, 8vw, 130px) 24px 88px;
+            overflow: hidden;
+            background:
+                linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.86)),
+                linear-gradient(135deg, rgba(103, 190, 155, 0.18), rgba(151, 180, 42, 0.14)),
+                var(--hero-background, url('https://drive.google.com/uc?export=view&id=1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn')) center/cover no-repeat;
+        }
 
-    .topbar .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
-      flex-wrap: wrap;
-    }
+        header::after {
+            content: "";
+            position: absolute;
+            inset: -30% 10% auto -20%;
+            height: 130%;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.45), transparent 65%);
+            filter: blur(38px);
+            z-index: 0;
+        }
 
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      color: var(--azul);
-    }
+        .hero {
+            max-width: var(--section-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: clamp(32px, 6vw, 72px);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--azul), var(--dourado));
-      color: #fff;
-      display: grid;
-      place-items: center;
-      font-size: 12px;
-      font-weight: 700;
-    }
+        .hero h1 {
+            margin: 0 0 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.6rem, 7vw, 5rem);
+            letter-spacing: 0.015em;
+            background: linear-gradient(110deg, #1c2415 0%, #67be9b 32%, #b78a2f 75%, #f2e2b7 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+        }
 
-    .menu {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      font-size: 14px;
-      color: var(--texto-suave);
-    }
+        .hero-pretitle {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.36em;
+            background: linear-gradient(120deg, #fdf6e3, #f1d9a7 38%, #c99a3d 62%, #f8e4ba 80%, #d2a955);
+            color: transparent;
+            -webkit-background-clip: text;
+            text-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.14),
+                0 0 14px rgba(233, 200, 120, 0.32);
+            border: 1px solid rgba(214, 197, 155, 0.35);
+            background-color: rgba(255, 255, 255, 0.65);
+        }
 
-    .menu a { text-decoration: none; }
-    .menu a:hover { color: var(--azul); }
+        .hero p {
+            margin: 0 0 28px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--ink-soft);
+            max-width: 620px;
+        }
 
-    .hero {
-      background: linear-gradient(135deg, rgba(8, 41, 79, 0.96), rgba(15, 61, 117, 0.88));
-      color: #fff;
-      padding: 76px 0 54px;
-    }
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: center;
-    }
+        .cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 999px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            color: #0f150a;
+            background: var(--brand-gradient);
+            border: 1px solid rgba(28, 36, 21, 0.08);
+            box-shadow: 0 22px 50px rgba(27, 43, 14, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .hero-kicker,
-    .seal {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.22);
-      background: rgba(255,255,255,0.08);
-      font-size: 13px;
-      margin: 0 8px 10px 0;
-    }
+        .cta:hover,
+        .cta:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(38, 56, 8, 0.25);
+        }
 
-    h1, h2, h3 { line-height: 1.2; margin-top: 0; }
-    h1 { font-size: clamp(2.1rem, 5vw, 3.5rem); margin-bottom: 16px; }
-    h2.section-title { font-size: clamp(1.7rem, 3vw, 2.5rem); color: var(--azul-escuro); margin-bottom: 12px; }
-    .lead { font-size: 1.1rem; opacity: 0.95; max-width: 720px; }
+        .ghost-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 26px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--ink);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(31, 38, 22, 0.12);
+        }
 
-    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      border: 1px solid transparent;
-      cursor: pointer;
-    }
-    .btn-primary { background: var(--dourado); color: #1d1d1d; }
-    .btn-secondary { background: transparent; color: #fff; border-color: rgba(255,255,255,0.35); }
-    .btn-outline { background: #fff; color: var(--azul); border-color: var(--borda); }
-    .btn-tab.active { background: var(--azul); color: #fff; border-color: var(--azul); }
+        main {
+            padding: 0 24px 100px;
+        }
 
-    .hero-panel {
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 22px;
-      padding: 22px;
-    }
+        .section {
+            padding: clamp(48px, 8vw, 120px) 0;
+        }
 
-    .hero-panel ul { margin: 0; padding-left: 18px; }
+        .section .shell {
+            max-width: var(--section-max);
+            margin: 0 auto;
+        }
 
-    section { padding: 64px 0; }
-    .section-intro { max-width: 760px; color: var(--texto-suave); margin-bottom: 24px; }
+        .section-title {
+            text-align: center;
+            margin: 0 0 28px;
+        }
 
-    .grid-3, .grid-2, .books-grid, .footer-grid {
-      display: grid;
-      gap: 18px;
-    }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .books-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+        .section-title h2 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.1rem, 4vw, 2.7rem);
+            letter-spacing: 0.01em;
+        }
 
-    .card,
-    .process-card,
-    .contact-card,
-    .faq-item,
-    .book-card,
-    .testimonial {
-      background: var(--branco);
-      border: 1px solid var(--borda);
-      border-radius: var(--raio);
-      box-shadow: var(--sombra);
-    }
+        .section-title p {
+            margin: 12px auto 0;
+            max-width: 640px;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
 
-    .card,
-    .process-card,
-    .contact-card,
-    .testimonial { padding: 22px; }
+        .booking-grid {
+            max-width: var(--section-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: clamp(24px, 4vw, 48px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.92)),
+                linear-gradient(135deg, rgba(103, 190, 155, 0.16), rgba(151, 180, 42, 0.16));
+            padding: clamp(28px, 4vw, 48px);
+            border-radius: 36px;
+            box-shadow: 0 30px 70px rgba(24, 36, 12, 0.12);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(151, 180, 42, 0.2);
+        }
 
-    .card-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-size: 24px;
-      margin-bottom: 12px;
-      background: rgba(15, 61, 117, 0.08);
-    }
+        @media (max-width: 960px) {
+            .booking-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-    .testimonials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 18px; }
-    .testimonial small { color: var(--texto-suave); }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: clamp(18px, 3vw, 24px);
+        }
 
-    .selector-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+        .service-card {
+            position: relative;
+            display: block;
+            border-radius: 28px;
+            overflow: hidden;
+        }
 
-    .process-layout {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 18px;
-      align-items: start;
-    }
+        .service-card input {
+            position: absolute;
+            opacity: 0;
+        }
 
-    .steps-list {
-      margin: 16px 0;
-      padding-left: 20px;
-    }
+        .card-shell {
+            height: 100%;
+            background: linear-gradient(150deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.9));
+            border-radius: 28px;
+            border: 1px solid rgba(31, 38, 22, 0.06);
+            box-shadow: 0 20px 40px rgba(30, 46, 12, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
 
-    .badge-mode {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      background: rgba(15, 61, 117, 0.08);
-      color: var(--azul);
-      font-weight: 700;
-    }
+        .service-card:hover .card-shell {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(30, 46, 12, 0.16);
+        }
 
-    form { margin: 0; }
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .full { grid-column: 1 / -1; }
-    label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-    input, textarea, select {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 1px solid #cbd5e1;
-      background: #fff;
-      font: inherit;
-    }
-    textarea { min-height: 120px; resize: vertical; }
-    .hint { font-size: 13px; color: var(--texto-suave); margin-top: 6px; }
-    .status { min-height: 24px; margin-top: 14px; font-weight: 700; }
+        .service-card input:checked + .card-shell {
+            border-color: rgba(151, 180, 42, 0.45);
+            box-shadow: 0 34px 70px rgba(30, 46, 12, 0.2);
+        }
 
-    .book-card { overflow: hidden; text-decoration: none; }
-    .book-cover { aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
-    .book-copy { padding: 16px; }
-    .tag {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      background: rgba(200, 159, 66, 0.14);
-      color: var(--azul-escuro);
-    }
+        .service-card input:checked + .card-shell::after {
+            content: "";
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--brand-gradient);
+        }
 
-    .faq-list { display: grid; gap: 12px; }
-    .faq-trigger {
-      width: 100%;
-      border: 0;
-      background: transparent;
-      padding: 18px 20px;
-      text-align: left;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      color: var(--azul-escuro);
-    }
-    .faq-content {
-      display: none;
-      padding: 0 20px 18px;
-      color: var(--texto-suave);
-    }
-    .faq-item.open .faq-content { display: block; }
+        .card-media {
+            border-radius: 22px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 4 / 3;
+            background: linear-gradient(140deg, rgba(214, 197, 155, 0.35), rgba(247, 233, 194, 0.2));
+            padding: 6px;
+        }
 
-    .contact-card {
-      background: linear-gradient(135deg, #eef4ff, #ffffff);
-    }
+        .card-copy {
+            flex: 1;
+            display: grid;
+            gap: 10px;
+            align-content: center;
+        }
 
-    footer {
-      background: var(--azul-escuro);
-      color: #e5ebf5;
-      padding: 42px 0;
-    }
+        .card-media::after {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border-radius: 16px;
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.35), inset 0 12px 24px rgba(183, 138, 47, 0.18);
+            pointer-events: none;
+        }
 
-    .logo-list, .social-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
+        .card-media img {
+            width: 100%;
+            height: 100%;
+            border-radius: 14px;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
 
-    .logo-chip, .social-chip {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 36px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.18);
-      text-decoration: none;
-    }
+        .service-card:hover .card-media img {
+            transform: scale(1.05);
+        }
 
-    .desidera { color: #ffd7f0; border-color: rgba(255,215,240,0.25); }
-    .footer-note {
-      margin-top: 24px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255,255,255,0.15);
-      font-size: 14px;
-      color: #c5d2e7;
-    }
+        .service-card h3 {
+            margin: 0;
+            font-family: 'Baskerville', 'Libre Baskerville', 'Playfair Display', serif;
+            font-size: 1.22rem;
+            letter-spacing: 0.01em;
+            text-align: center;
+        }
 
-    @media (max-width: 960px) {
-      .hero-grid,
-      .process-layout,
-      .grid-3,
-      .grid-2,
-      .books-grid,
-      .footer-grid,
-      .testimonials,
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+        .service-card p {
+            margin: 0;
+            color: var(--ink-soft);
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .service-price {
+            font-weight: 700;
+            color: var(--ink);
+            letter-spacing: 0.06em;
+            text-align: center;
+            background: rgba(151, 180, 42, 0.14);
+            border-radius: 14px;
+            padding: 10px;
+        }
+
+        .summary {
+            position: sticky;
+            top: 32px;
+            align-self: start;
+            background: var(--surface);
+            border-radius: 32px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            display: grid;
+            gap: 20px;
+            border: 1px solid rgba(28, 36, 21, 0.05);
+        }
+
+        .summary h2 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .summary-empty {
+            margin: 0;
+            color: var(--ink-soft);
+        }
+
+        .summary-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .summary-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 0.98rem;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 16px 0 0;
+            border-top: 1px solid rgba(31, 38, 22, 0.06);
+        }
+
+        .field-group {
+            display: grid;
+            gap: 6px;
+        }
+
+        label {
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        input,
+        select {
+            border: 1px solid rgba(31, 38, 22, 0.18);
+            border-radius: 14px;
+            padding: 12px 14px;
+            font-size: 1rem;
+            font-family: inherit;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 16px;
+            border-radius: 18px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: var(--brand-gradient);
+            color: #0f150a;
+            border: 1px solid rgba(28, 36, 21, 0.1);
+            box-shadow: 0 20px 40px rgba(30, 46, 12, 0.25);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .whatsapp-link[aria-disabled="true"] {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .whatsapp-link:not([aria-disabled="true"]):hover {
+            transform: translateY(-3px);
+        }
+
+        .gallery {
+            margin-top: clamp(40px, 8vw, 80px);
+            padding: clamp(28px, 6vw, 44px);
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.86)),
+                linear-gradient(135deg, rgba(103, 190, 155, 0.12), rgba(151, 180, 42, 0.16));
+            border-radius: 36px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .gallery h2 {
+            font-family: 'Playfair Display', serif;
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 20px;
+            animation: scroll 30s linear infinite;
+        }
+
+        .gallery-track img {
+            width: 240px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(140deg, rgba(214, 197, 155, 0.35), rgba(247, 233, 194, 0.25));
+            padding: 5px;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        footer {
+            padding: 48px 20px 64px;
+            background: linear-gradient(180deg, rgba(151, 180, 42, 0.14), rgba(255, 255, 255, 0.96));
+        }
+
+        .footer-shell {
+            max-width: var(--section-max);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            align-items: start;
+        }
+
+        .footer-brand h3 {
+            margin: 0 0 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            background: linear-gradient(110deg, #1c2415 0%, #b78a2f 60%, #f2e2b7 100%);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .footer-brand p {
+            margin: 0;
+            color: var(--ink-soft);
+            line-height: 1.6;
+        }
+
+        .footer-group h4 {
+            margin: 0 0 12px;
+            font-size: 1rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            color: var(--ink);
+            text-decoration: none;
+            padding: 8px 0;
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .footer-meta {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(28, 36, 21, 0.08);
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+        }
+    </style>
 </head>
 <body>
-  <nav class="topbar" aria-label="Navegação principal">
-    <div class="container">
-      <div class="brand-wrap">
-        <div class="brand-mark">PRESS</div>
-        <div>
-          <div>UCSal Press</div>
-          <small>Chancela institucional UCSAL</small>
-        </div>
-      </div>
-      <div class="menu">
-        <a href="#porque">Por que publicar</a>
-        <a href="#processo">Processo</a>
-        <a href="#publicacoes">Publicações</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contato">Contato</a>
-      </div>
-    </div>
-  </nav>
-
-  <header class="hero">
-    <div class="container hero-grid">
-      <div>
-        <span class="hero-kicker">UCSal Press · protagonista</span>
-        <span class="hero-kicker">UCSAL · chancela institucional</span>
-        <span class="hero-kicker">Selo DeSidera · literário</span>
-        <h1>Publique seu sonho e perpetue sua marca! 📚</h1>
-        <p class="lead">Transforme sua pesquisa ou sua arte em um livro com a chancela da UCSal Press. Seu legado começa aqui.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#processo">Quero publicar!</a>
-          <a class="btn btn-secondary" href="#contato">Fale Conosco</a>
-        </div>
-      </div>
-      <aside class="hero-panel" aria-label="Resumo da proposta editorial">
-        <h3>Uma jornada simples para o autor</h3>
-        <ul>
-          <li>Entenda claramente como funciona a publicação acadêmica e literária.</li>
-          <li>Escolha o tipo de obra e envie sua submissão pelo formulário.</li>
-          <li>Fale diretamente com a equipe da UCSal Press pelo e-mail oficial.</li>
-        </ul>
-      </aside>
-    </div>
-  </header>
-
-  <main>
-    <section id="porque">
-      <div class="container">
-        <h2 class="section-title">Sua Obra merece a chancela da UCSAL. 🎓</h2>
-        <p class="section-intro">Publicar com a UCSal Press significa associar sua obra à credibilidade e excelência de uma Universidade com 65 anos de produção de conhecimento. Nosso processo editorial conta com rigor técnico, corpo editorial qualificado e ampla visibilidade para que seu trabalho alcance o público certo.</p>
-        <div class="grid-3">
-          <article class="card">
-            <div class="card-icon">📘</div>
-            <h3>Credibilidade editorial</h3>
-            <p>Seu livro nasce com o respaldo institucional da UCSAL e de uma editora comprometida com qualidade e relevância.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon">🏅</div>
-            <h3>Processo rigoroso</h3>
-            <p>Avaliação, preparação editorial e acompanhamento do manuscrito em todas as etapas do fluxo de publicação.</p>
-          </article>
-          <article class="card">
-            <div class="card-icon">🔎</div>
-            <h3>Mais visibilidade</h3>
-            <p>Alcance leitores, pesquisadores e comunidades interessadas no seu conteúdo acadêmico ou literário.</p>
-          </article>
-        </div>
-        <div class="testimonials">
-          <article class="testimonial">
-            <strong>“Publicar com a UCSal Press ampliou o alcance da minha pesquisa.”</strong>
-            <p>Uma experiência segura, organizada e com retorno editorial claro.</p>
-            <small>Autora convidada · obra acadêmica</small>
-          </article>
-          <article class="testimonial">
-            <strong>“O selo DeSidera deu identidade e sensibilidade ao meu livro.”</strong>
-            <p>Um cuidado especial para obras literárias, poéticas e autorais.</p>
-            <small>Autor convidado · obra literária</small>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="processo">
-      <div class="container">
-        <h2 class="section-title">Do Manuscrito ao Livro: Seu Caminho com a UCSal Press.</h2>
-        <p class="section-intro">Escolha o tipo de obra para visualizar o fluxo e preencher o formulário correspondente.</p>
-
-        <div class="selector-row" role="tablist" aria-label="Escolha o tipo de obra">
-          <button class="btn btn-outline btn-tab active" type="button" data-mode="academico" aria-selected="true">Artigo Científico / Obra Acadêmica 🔬</button>
-          <button class="btn btn-outline btn-tab" type="button" data-mode="literario" aria-selected="false">Obra Literária / Poética (Selo DeSidera) ✨</button>
-        </div>
-
-        <div class="process-layout">
-          <article class="process-card">
-            <span class="badge-mode" id="mode-badge">Fluxo acadêmico</span>
-            <h3 id="process-title">Publicação acadêmica com curadoria editorial</h3>
-            <p id="process-description">Ideal para artigos científicos, pesquisas, coletâneas, dissertações adaptadas e obras de interesse acadêmico.</p>
-            <ol class="steps-list" id="process-steps">
-              <li>Envio da proposta editorial e do manuscrito.</li>
-              <li>Triagem inicial e avaliação técnica por pareceristas.</li>
-              <li>Retorno editorial com sugestões, ajustes e aprovação.</li>
-              <li>Preparação editorial, registro, diagramação e publicação.</li>
-            </ol>
-            <p id="process-hint"><strong>Dica:</strong> Envie também currículo, mini bio e resumo da relevância da obra.</p>
-          </article>
-
-          <article class="process-card">
-            <h3 id="form-title">Formulário de submissão acadêmica</h3>
-            <form id="submission-form" novalidate>
-              <input type="hidden" id="tipo-obra" name="tipoObra" value="Acadêmica">
-              <div class="form-grid">
-                <div>
-                  <label for="nome">Nome completo *</label>
-                  <input id="nome" name="nome" required>
+    <header>
+        <div class="hero">
+            <div>
+                <span class="hero-pretitle">Beauty Boss</span>
+                <h1>Amanda Sampaio</h1>
+                <p>Experiência personalizada em design de sobrancelhas, cílios, pele e maquiagem. Escolha seus serviços favoritos, informe sua disponibilidade e finalize pelo WhatsApp.</p>
+                <div class="hero-actions">
+                    <a class="cta" href="#agendamento">Montar ritual agora</a>
+                    <a class="ghost-link" href="#servicos">Ver serviços</a>
                 </div>
-                <div>
-                  <label for="email">E-mail *</label>
-                  <input id="email" name="email" type="email" required>
-                </div>
-                <div>
-                  <label for="telefone">Telefone *</label>
-                  <input id="telefone" name="telefone" required>
-                </div>
-                <div>
-                  <label for="instituicao">Instituição / vínculo</label>
-                  <input id="instituicao" name="instituicao">
-                </div>
-                <div class="full">
-                  <label for="titulo-obra">Título da obra *</label>
-                  <input id="titulo-obra" name="tituloObra" required>
-                </div>
-                <div class="full">
-                  <label for="sinopse">Resumo / sinopse *</label>
-                  <textarea id="sinopse" name="sinopse" required></textarea>
-                </div>
-                <div>
-                  <label for="arquivo-manuscrito">Upload do manuscrito *</label>
-                  <input id="arquivo-manuscrito" name="manuscrito" type="file" accept=".doc,.docx,.pdf" required>
-                  <div class="hint">Arquivos aceitos: DOC, DOCX e PDF. Limite sugerido: 10 MB.</div>
-                </div>
-                <div>
-                  <label for="arquivo-curriculo">Upload de currículo / mini bio</label>
-                  <input id="arquivo-curriculo" name="curriculo" type="file" accept=".doc,.docx,.pdf">
-                </div>
-                <div class="full">
-                  <button class="btn btn-primary" type="submit">Enviar submissão</button>
-                </div>
-              </div>
-              <div class="status" id="form-status" aria-live="polite"></div>
-            </form>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="publicacoes">
-      <div class="container">
-        <h2 class="section-title">Nossas Publicações: Inspiração e Conhecimento. 📖</h2>
-        <p class="section-intro">Explore o catálogo da UCSal Press e as obras que inauguram o selo DeSidera. Cada livro é um convite à descoberta, ao aprofundamento e ao diálogo com novos leitores.</p>
-        <div class="books-grid">
-          <a class="book-card" href="https://ucsal.br" target="_blank" rel="noopener noreferrer">
-            <img class="book-cover" src="foto 1 - designer personalizad.jpeg" alt="Capa de publicação da UCSal Press com proposta acadêmica.">
-            <div class="book-copy">
-              <h3>Educação, Pesquisa e Transformação</h3>
-              <p>Uma publicação voltada ao fortalecimento do conhecimento e da produção universitária.</p>
-              <span class="tag">UCSal Press</span>
             </div>
-          </a>
-          <a class="book-card" href="https://ucsal.br" target="_blank" rel="noopener noreferrer">
-            <img class="book-cover" src="foto 2.jpeg" alt="Capa de obra literária vinculada ao selo DeSidera.">
-            <div class="book-copy">
-              <h3>Poéticas do Recôncavo</h3>
-              <p>Uma obra de sensibilidade literária com destaque para linguagem, ritmo e identidade autoral.</p>
-              <span class="tag">Selo DeSidera</span>
+        </div>
+    </header>
+
+    <main>
+        <section class="section services-section" id="agendamento">
+            <div class="shell">
+                <div class="section-title">
+                    <h2>Escolha seu ritual Beauty Boss</h2>
+                    <p>Combine os serviços preferidos com um clique, veja o resumo em tempo real e finalize de forma prática pelo WhatsApp.</p>
+                </div>
+                <div class="booking-grid">
+                    <section aria-label="Serviços" id="servicos">
+                        <div id="service-grid" class="service-grid" role="group" aria-label="Selecione os serviços desejados"></div>
+                    </section>
+                    <aside class="summary" aria-live="polite">
+                        <h2>Resumo do ritual</h2>
+                        <p id="empty-state" class="summary-empty">Escolha um ou mais serviços para começar.</p>
+                        <ul id="summary-list" class="summary-list" hidden></ul>
+                        <div id="summary-total" class="total" hidden>
+                            <span>Total estimado</span>
+                            <strong></strong>
+                        </div>
+                        <div class="field-group">
+                            <label for="client-name">Seu nome</label>
+                            <input id="client-name" type="text" placeholder="Digite como prefere ser chamada">
+                        </div>
+                        <div class="field-group">
+                            <label for="preferred-day">Dia preferido</label>
+                            <select id="preferred-day">
+                                <option value="">Selecione</option>
+                                <option>Segunda-feira</option>
+                                <option>Terça-feira</option>
+                                <option>Quarta-feira</option>
+                                <option>Quinta-feira</option>
+                                <option>Sexta-feira</option>
+                                <option>Sábado</option>
+                            </select>
+                        </div>
+                        <div class="field-group">
+                            <label for="preferred-time">Horário preferido</label>
+                            <input id="preferred-time" type="time">
+                        </div>
+                        <a id="whatsapp-link" class="whatsapp-link" href="#" target="_blank" rel="noopener" aria-disabled="true">Confirmar pelo WhatsApp</a>
+                    </aside>
+                </div>
             </div>
-          </a>
-          <a class="book-card" href="https://ucsal.br" target="_blank" rel="noopener noreferrer">
-            <img class="book-cover" src="foto 3.jpeg" alt="Capa de publicação científica da UCSal Press.">
-            <div class="book-copy">
-              <h3>Ciência Aplicada e Sociedade</h3>
-              <p>Conteúdo de relevância acadêmica com potencial de impacto social e institucional.</p>
-              <span class="tag">Catálogo UCSal</span>
+        </section>
+        <section class="section gallery-section" aria-label="Resultados recentes">
+            <div class="shell">
+                <div class="section-title">
+                    <h2>Resultados que inspiram</h2>
+                    <p>Fotos reais dos atendimentos para você visualizar o acabamento e a delicadeza de cada técnica.</p>
+                </div>
+                <div class="gallery">
+                    <div id="gallery-track" class="gallery-track"></div>
+                </div>
             </div>
-          </a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-shell">
+            <div class="footer-brand">
+                <h3>Beauty Boss</h3>
+                <p>Atendimento premium em sobrancelhas, cílios, pele e maquiagem, com cuidado individual em cada detalhe.</p>
+            </div>
+            <div class="footer-group">
+                <h4>Fale comigo</h4>
+                <ul class="footer-links">
+                    <li><a href="https://wa.me/5571983996400" target="_blank" rel="noopener">WhatsApp direto</a></li>
+                    <li><a href="tel:+5571983996400">Ligar agora</a></li>
+                    <li><a href="mailto:amandapmu@gmail.com">amandapmu@gmail.com</a></li>
+                </ul>
+            </div>
+            <div class="footer-group">
+                <h4>Documentos / Termos</h4>
+                <ul class="footer-links">
+                    <li><a href="https://drive.google.com/file/d/10N4jWxnySrCR3iMipQ-us6B_GZCIV7Iw/view?usp=drive_link" target="_blank" rel="noopener">Termos e condições</a></li>
+                    <li><a href="https://drive.google.com/file/d/1x3Svg3ITSipL2M1cBQb0YT9MkVebQwVl/view?usp=drive_link" target="_blank" rel="noopener">Política de privacidade</a></li>
+                    <li><a href="https://drive.google.com/file/d/167XvLaiRKOEab-G8ZGkJzdN5pC00E8BZ/view?usp=drive_link" target="_blank" rel="noopener">LGPD & consentimento</a></li>
+                </ul>
+            </div>
+            <div class="footer-meta">
+                <span>© <span id="current-year"></span> Amanda Sampaio · Beauty Boss</span>
+                <span>Salvador · Atendimento com hora marcada</span>
+            </div>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <section id="faq">
-      <div class="container">
-        <h2 class="section-title">Perguntas Frequentes (FAQ). 🤔</h2>
-        <div class="faq-list">
-          <article class="faq-item open">
-            <button class="faq-trigger" type="button" aria-expanded="true">Direitos autorais e contratos.</button>
-            <div class="faq-content">Os direitos e responsabilidades são definidos em contrato editorial, com transparência sobre publicação, circulação e uso da obra.</div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-trigger" type="button" aria-expanded="false">Prazos de avaliação e publicação.</button>
-            <div class="faq-content">Os prazos dependem do tipo de obra e do volume editorial, mas a triagem inicial busca dar retorno claro ao autor o quanto antes.</div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-trigger" type="button" aria-expanded="false">Custos envolvidos.</button>
-            <div class="faq-content">Quando houver custos ou exigências específicas, essas informações devem ser apresentadas com transparência ao longo do processo.</div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-trigger" type="button" aria-expanded="false">Formato de submissão de manuscritos.</button>
-            <div class="faq-content">O envio pode ser feito em DOC, DOCX ou PDF, com campos obrigatórios no formulário e indicação dos arquivos complementares.</div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-trigger" type="button" aria-expanded="false">Processo de distribuição e divulgação.</button>
-            <div class="faq-content">As obras podem integrar o catálogo da UCSal Press e ações de divulgação institucional, acadêmica e cultural.</div>
-          </article>
-          <article class="faq-item">
-            <button class="faq-trigger" type="button" aria-expanded="false">Diferença entre UCSal Press e Selo DeSidera.</button>
-            <div class="faq-content">A UCSal Press é a editora institucional. O Selo DeSidera destaca obras literárias e poéticas com identidade própria.</div>
-          </article>
+    <script>
+const galleryTrack = document.getElementById('gallery-track');
+const serviceGrid = document.getElementById('service-grid');
+const summaryList = document.getElementById('summary-list');
+const summaryTotal = document.getElementById('summary-total');
+const emptyState = document.getElementById('empty-state');
+const clientName = document.getElementById('client-name');
+const preferredDay = document.getElementById('preferred-day');
+const preferredTime = document.getElementById('preferred-time');
+const whatsappLink = document.getElementById('whatsapp-link');
+const numberFormat = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+
+/* ==========================
+   FOTOS DO GOOGLE DRIVE
+========================== */
+function driveResource(input) {
+    const text = String(input || '').trim();
+    const idMatch = text.match(/[-\w]{25,}/);
+    const id = idMatch ? idMatch[0] : text;
+    const src = `https://drive.google.com/uc?export=view&id=${id}`;
+    const fallback = `https://lh3.googleusercontent.com/d/${id}=w1600`;
+    return { id, src, fallback };
+}
+
+function buildImg({ source, alt, lazy = true }) {
+    const { src, fallback } = driveResource(source);
+    const loading = lazy ? 'loading="lazy"' : '';
+    return `<img src="${src}" alt="${alt}" ${loading} decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='${fallback}'">`;
+}
+
+/* ==========================
+   SERVIÇOS (ORDENADOS)
+========================== */
+const servicesData = [
+    { name: 'Brow lamination (com coloração)', price: 120, description: 'Alinhamento, brilho e cor para um acabamento polido.', image: '1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq' },
+    { name: 'Extensão de Cílios look francês', price: 35, description: 'Curvatura elegante e delicada para um olhar clássico.', image: '1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp' },
+    { name: 'Design com Henna', price: 60, description: 'Coloração temporária que preenche falhas e destaca o desenho.', image: 'https://drive.google.com/file/d/1IehD6ys1ry02b9lsmy_1aQDEH8VSJn2S/view?usp=drive_link' },
+    { name: 'Design personalizado', price: 35, description: 'Simetria impecável e acabamento natural para realçar suas sobrancelhas.', image: '1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J' },
+    { name: 'Ensaio de fotos + Maquiagem', price: 250, description: 'Produção completa e ensaio com fotos finalizadas.', image: '1Pp3JdmhHeVhUswEgeHPQp6fXbqdqqfpj' },
+    { name: 'Extensão de cílios (tufos de seda)', price: 90, description: 'Volume elegante com aplicação precisa e confortável.', image: '12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN' },
+    { name: 'Extensão de cílios (volume inglês)', price: 170, description: 'Fios leves e alongados para um efeito sofisticado.',  image: '1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle' },
+    { name: 'Hidragloss', price: 100, description: 'Hidratação profunda e brilho volumoso para os lábios.', image: '1SFDAsxykXsAiSQ3wIytalBcfkelhnZlQ' },
+    { name: 'Limpeza de pele', price: 90, description: 'Renovação profunda com máscaras calmantes e hidratação.', image: '1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp' },
+    { name: 'Micropigmentação de sobrancelhas (shadow)', price: 350, description: 'Efeito sombreado duradouro para sobrancelhas definidas.', image: '1AxR1Y6yQ6zhw-zpyhoa37Fo7jSfIioCs' },
+    { name: 'Micropigmentação labial', price: 350, description: 'Cor e definição natural para lábios com efeito duradouro.', image: '19lDqwhW68USfZd4UDyipLCVYIYpZC5l4' }
+].sort((a, b) => a.name.localeCompare(b.name, 'pt', { sensitivity: 'base' }));
+/* ==========================
+   GERAR CARDS DE SERVIÇOS
+========================== */
+function createServiceCard(service) {
+    const label = document.createElement('label');
+    label.className = 'service-card';
+    const media = buildImg({ source: service.image, alt: service.name });
+    label.innerHTML = `
+        <input type="checkbox" name="services" value="${service.name}" data-price="${service.price}">
+        <div class="card-shell">
+            <div class="card-media">
+                ${media}
+            </div>
+            <div class="card-copy">
+                <h3>${service.name}</h3>
+                <p>${service.description}</p>
+            </div>
+            <span class="service-price">${numberFormat.format(service.price)}</span>
         </div>
-      </div>
-    </section>
+    `;
+    return label;
+}
 
-    <section id="contato">
-      <div class="container">
-        <div class="contact-card">
-          <h2 class="section-title">Pronto para Publicar? Fale conosco! 💬</h2>
-          <p>Envie as informações no e-mail e fale com a UCSal Press.</p>
-          <p><strong>E-mail:</strong> <a href="mailto:ucsalpress@ucsal.br">ucsalpress@ucsal.br</a></p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="mailto:ucsalpress@ucsal.br?subject=Submiss%C3%A3o%20de%20obra%20-%20UCSal%20Press">Enviar as informações por e-mail</a>
-            <a class="btn btn-outline" href="#processo">Preencher formulário</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+serviceGrid.innerHTML = '';
+servicesData.forEach(service => serviceGrid.appendChild(createServiceCard(service)));
 
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <h3>Identidade institucional</h3>
-        <div class="logo-list">
-          <span class="logo-chip">UCSAL</span>
-          <span class="logo-chip">Selo 65 anos</span>
-          <span class="logo-chip">UCSal Press</span>
-          <span class="logo-chip desidera">Selo DeSidera</span>
-        </div>
-      </div>
-      <div>
-        <h3>Redes sociais UCSAL</h3>
-        <div class="social-list">
-          <a class="social-chip" href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a class="social-chip" href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a class="social-chip" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="social-chip" href="https://youtube.com" target="_blank" rel="noopener noreferrer">YouTube</a>
-          <a class="social-chip" href="https://tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a>
-        </div>
-      </div>
-      <div>
-        <h3>Informações legais</h3>
-        <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
-      </div>
-    </div>
-    <div class="container footer-note">Landing page institucional da UCSal Press para captação de autores interessados em publicar obras acadêmicas e literárias.</div>
-  </footer>
+/* ==========================
+   RESUMO + WHATSAPP
+========================== */
+function getSelectedServices() {
+    return Array.from(serviceGrid.querySelectorAll('input[type="checkbox"]'))
+        .filter(cb => cb.checked)
+        .map(cb => ({ name: cb.value, price: Number(cb.dataset.price) }));
+}
 
-  <script>
-    const contentByMode = {
-      academico: {
-        badge: 'Fluxo acadêmico',
-        title: 'Publicação acadêmica com curadoria editorial',
-        description: 'Ideal para artigos científicos, pesquisas, coletâneas, dissertações adaptadas e obras de interesse acadêmico.',
-        steps: [
-          'Envio da proposta editorial e do manuscrito.',
-          'Triagem inicial e avaliação técnica por pareceristas.',
-          'Retorno editorial com sugestões, ajustes e aprovação.',
-          'Preparação editorial, registro, diagramação e publicação.'
-        ],
-        hint: '<strong>Dica:</strong> Envie também currículo, mini bio e resumo da relevância da obra.',
-        formTitle: 'Formulário de submissão acadêmica',
-        typeValue: 'Acadêmica'
-      },
-      literario: {
-        badge: 'Fluxo literário · Selo DeSidera',
-        title: 'Publicação literária, poética e autoral',
-        description: 'Voltado para romances, poesia, contos, crônicas e projetos literários com identidade própria.',
-        steps: [
-          'Envio do original, da sinopse e da apresentação do autor.',
-          'Leitura crítica e parecer editorial voltado ao selo DeSidera.',
-          'Ajustes de texto, revisão e alinhamento da proposta visual.',
-          'Preparação final, publicação e ações de lançamento e divulgação.'
-        ],
-        hint: '<strong>Dica:</strong> Inclua mini bio, proposta estética e breve apresentação da trajetória literária.',
-        formTitle: 'Formulário de submissão literária',
-        typeValue: 'Literária'
-      }
-    };
+function updateSummary() {
+    const services = getSelectedServices();
+    if (services.length === 0) {
+        summaryList.hidden = true;
+        summaryTotal.hidden = true;
+        emptyState.hidden = false;
+    } else {
+        summaryList.innerHTML = services
+            .map(s => `<li><span>${s.name}</span><span>${numberFormat.format(s.price)}</span></li>`)
+            .join('');
+        summaryList.hidden = false;
+        summaryTotal.hidden = false;
+        emptyState.hidden = true;
+        summaryTotal.querySelector('strong').textContent =
+            numberFormat.format(services.reduce((a, b) => a + b.price, 0));
+    }
+    updateWhatsAppLink(services);
+}
 
-    const tabButtons = document.querySelectorAll('.btn-tab');
-    const modeBadge = document.getElementById('mode-badge');
-    const processTitle = document.getElementById('process-title');
-    const processDescription = document.getElementById('process-description');
-    const processSteps = document.getElementById('process-steps');
-    const processHint = document.getElementById('process-hint');
-    const formTitle = document.getElementById('form-title');
-    const typeField = document.getElementById('tipo-obra');
+function updateWhatsAppLink(services) {
+    const name = clientName.value.trim();
+    const day = preferredDay.value;
+    const time = preferredTime.value;
 
-    tabButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const mode = button.dataset.mode;
-        const data = contentByMode[mode];
-
-        tabButtons.forEach((item) => {
-          item.classList.remove('active');
-          item.setAttribute('aria-selected', 'false');
-        });
-
-        button.classList.add('active');
-        button.setAttribute('aria-selected', 'true');
-
-        modeBadge.textContent = data.badge;
-        processTitle.textContent = data.title;
-        processDescription.textContent = data.description;
-        processSteps.innerHTML = data.steps.map((step) => '<li>' + step + '</li>').join('');
-        processHint.innerHTML = data.hint;
-        formTitle.textContent = data.formTitle;
-        typeField.value = data.typeValue;
-      });
-    });
-
-    document.querySelectorAll('.faq-trigger').forEach((button) => {
-      button.addEventListener('click', () => {
-        const item = button.parentElement;
-        const open = item.classList.contains('open');
-        item.classList.toggle('open');
-        button.setAttribute('aria-expanded', String(!open));
-      });
-    });
-
-    document.getElementById('submission-form').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const form = event.currentTarget;
-      const status = document.getElementById('form-status');
-      const manuscript = document.getElementById('arquivo-manuscrito').files[0];
-
-      if (!form.checkValidity()) {
-        status.style.color = '#b42318';
-        status.textContent = 'Por favor, preencha todos os campos obrigatórios corretamente.';
-        form.reportValidity();
+    if (services.length === 0) {
+        whatsappLink.setAttribute('aria-disabled', 'true');
+        whatsappLink.href = '#';
         return;
-      }
+    }
 
-      if (manuscript && manuscript.size > 10 * 1024 * 1024) {
-        status.style.color = '#b42318';
-        status.textContent = 'O manuscrito ultrapassa o limite sugerido de 10 MB.';
-        return;
-      }
+    const serviceLines = services.map(s => `• ${s.name} — ${numberFormat.format(s.price)}`).join('\n');
+    const total = services.reduce((acc, s) => acc + s.price, 0);
 
-      status.style.color = '#166534';
-      status.textContent = 'Submissão registrada com sucesso! A equipe da UCSal Press entrará em contato pelo e-mail informado.';
-      form.reset();
-      typeField.value = document.querySelector('.btn-tab.active').dataset.mode === 'literario' ? 'Literária' : 'Acadêmica';
-    });
-  </script>
+    const msg = `${name ? `Olá, Amanda! Aqui é ${name}.` : 'Olá, Amanda!'}
+Tenho interesse nos serviços:
+${serviceLines}
+
+Total estimado: ${numberFormat.format(total)}.
+${day ? `Preferência de dia: ${day}.` : 'Gostaria de verificar disponibilidade.'}
+${time ? `Horário sugerido: ${time}.` : ''}
+
+Podemos agendar?`;
+
+    whatsappLink.href = `https://wa.me/5571983996400?text=${encodeURIComponent(msg)}`;
+    whatsappLink.setAttribute('aria-disabled', 'false');
+}
+
+/* ==========================
+   GALERIA FINAL (28 FOTOS)
+========================== */
+function populateGallery() {
+    const galleryImages = [
+        'https://drive.google.com/file/d/1IehD6ys1ry02b9lsmy_1aQDEH8VSJn2S/view?usp=drive_link',
+        '10N4jWxnySrCR3iMipQ-us6B_GZCIV7Iw',
+        '1x3Svg3ITSipL2M1cBQb0YT9MkVebQwVl',
+        '167XvLaiRKOEab-G8ZGkJzdN5pC00E8BZ',
+        '12ueIRfpWPQ0LYQUhMfzFTJ4T1_5VVHcP',
+        '1AxR1Y6yQ6zhw-zpyhoa37Fo7jSfIioCs',
+        '1oqIsDwYiAL3XgtOBYPYFApIgFVj9s3Pp',
+        '1qSd2o2pxepltRGQqCSchdeQDv0qkc7qq',
+        '1Pp3JdmhHeVhUswEgeHPQp6fXbqdqqfpj',
+        '1cSaY-WpPT7-DztX8ECNcKeioVVHMXtle',
+        '1SFDAsxykXsAiSQ3wIytalBcfkelhnZlQ',
+        '19lDqwhW68USfZd4UDyipLCVYIYpZC5l4',
+        '1Xfe5W0P_AjEb8Ib6zjNbwFg5P2rX6SbH',
+        '1t8XW1nDS5QCF5eZ0NS1Q2XO6gUeq9pA-',
+        '1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn',
+        '1HI3hm5An5nq3ZZSIJ2fxxB8h5P6Q0Mqx',
+        '1GohhgvRFgXAQzN4lWnh5QbvDtaPNj8FN',
+        '1Q10Toz4ZK-w-ddNyJhT-i6qKZCZWD5O7',
+        '160kZmcmDZSvicgTDYKF0sAzz6jGJp7tC',
+        '1jYLzQH9NFIrLR72xdti4CF0OsAZMEEZF',
+        '1QOrLszuCjRHrjYc5PqpVdO4QhVsfw3c8',
+        '1R9u_KK4ODLrIHZVrMfTMnEsDsqS4je_J',
+        '1v7sWTM4jz8nV4qQVsDvpEUE4LMfkfQTK',
+        '12wp7aOHT4JbRGWevfBcDC6PbCZh5EUjN',
+        '17b5M3Nqs_31LedNToWZFXXyj4YBapnz8',
+        '1mNJeQbb6DHr4y6WD9GkjM00BaMjTYCKp',
+        '1N42u5yVWwze8zGZP0q8W5uPDiSmD5H6E',
+        '1z8gtaWGnMXGawm65eujE3zsJLw8rZRGx'
+    ];
+
+    const fullSequence = [...galleryImages, ...galleryImages];
+    galleryTrack.innerHTML = fullSequence
+        .map(id => buildImg({ source: id, alt: 'Resultado de atendimento Amanda Sampaio' }))
+        .join('');
+}
+
+/* ==========================
+   INICIALIZAR
+========================== */
+const heroPhoto = driveResource('1waRGbGgOUBriRR9-T4GpD_6hn0kuoDWn');
+document.documentElement.style.setProperty('--hero-background', `url('${heroPhoto.src}')`);
+
+document.addEventListener('input', updateSummary);
+document.addEventListener('change', updateSummary);
+document.getElementById('current-year').textContent = new Date().getFullYear();
+
+populateGallery();
+updateSummary();
+    </script>
 </body>
 </html>
